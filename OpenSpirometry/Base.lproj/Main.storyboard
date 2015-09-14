@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -45,7 +45,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback for test happens here!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="UbL-i6-UCf">
-                                <rect key="frame" x="176" y="289" width="249" height="21"/>
+                                <rect key="frame" x="176" y="289" width="248.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="adk-VX-79K"/>
                                 </constraints>
@@ -65,7 +65,7 @@
                                 </variation>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flow: 0.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="SnZ-Th-Ifk">
-                                <rect key="frame" x="506" y="327" width="70" height="21"/>
+                                <rect key="frame" x="506" y="327" width="70" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -78,6 +78,12 @@
                                 <connections>
                                     <action selector="overrideEffort:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="eON-7x-T9k"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WD3-rD-V3K">
+                                <rect key="frame" x="208" y="570" width="184" height="30"/>
+                                <state key="normal" title="Enter Gaming Environment">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -99,6 +105,8 @@
                             <constraint firstItem="SnZ-Th-Ifk" firstAttribute="bottom" secondItem="eWb-Yo-lMa" secondAttribute="bottom" id="cur-hS-ONx"/>
                             <constraint firstItem="eWb-Yo-lMa" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="gTJ-3T-Aoo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SnZ-Th-Ifk" secondAttribute="trailing" constant="8" id="mPC-2i-IzP"/>
+                            <constraint firstAttribute="centerX" secondItem="WD3-rD-V3K" secondAttribute="centerX" id="qaR-cE-Hqu"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="WD3-rD-V3K" secondAttribute="bottom" id="s4O-GT-fOy"/>
                             <constraint firstItem="eWb-Yo-lMa" firstAttribute="top" secondItem="UbL-i6-UCf" secondAttribute="bottom" constant="8" id="vu1-3J-vE6"/>
                             <constraint firstItem="UbL-i6-UCf" firstAttribute="centerX" secondItem="Zcf-qk-FU1" secondAttribute="centerX" id="xZW-XF-mg5"/>
                             <constraint firstItem="eWb-Yo-lMa" firstAttribute="centerX" secondItem="Zcf-qk-FU1" secondAttribute="centerX" id="xjv-LQ-eRk"/>
