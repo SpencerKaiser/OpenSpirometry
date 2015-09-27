@@ -39,6 +39,10 @@
     
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+}
+
 #pragma mark IBActions From View
 - (IBAction)startEffort:(UIButton *)sender {
     self.feedbackLabel.text = @"Calibrating sound, please remain silent...";

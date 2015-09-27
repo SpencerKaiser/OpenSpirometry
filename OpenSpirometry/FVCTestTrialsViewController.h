@@ -1,5 +1,5 @@
 //
-//  TestingEnvironmentViewController.h
+//  FVCTestTrialsViewController.h
 //  OpenSpirometry
 //
 //  Created by Spencer Kaiser on 9/14/15.
@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SpirometerEffortAnalyzer.h"
 #import "SpirometerTestAnalyzer.h"
 
-@interface TestingEnvironmentViewController : UIViewController
+@interface FVCTestTrialsViewController : UIViewController <SpirometerEffortDelegate>
 
 @end

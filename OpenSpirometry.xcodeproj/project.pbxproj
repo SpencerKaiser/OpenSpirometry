@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09A6BAA71BAB56B20024360F /* EffortPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6BAA61BAB56B20024360F /* EffortPopoverViewController.m */; settings = {ASSET_TAGS = (); }; };
+		09AE68651BB87F6200684D81 /* SpiroGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09AE68641BB87F6200684D81 /* SpiroGameViewController.m */; settings = {ASSET_TAGS = (); }; };
 		09F933EA1BA752B80041FFB2 /* SpirometerTestAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F933E91BA752B80041FFB2 /* SpirometerTestAnalyzer.m */; };
-		09F933ED1BA7583C0041FFB2 /* TestingEnvironmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F933EC1BA7583C0041FFB2 /* TestingEnvironmentViewController.m */; };
+		09F933ED1BA7583C0041FFB2 /* FVCTestTrialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F933EC1BA7583C0041FFB2 /* FVCTestTrialsViewController.m */; };
 		B63612221B1CC38500289665 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B63612211B1CC38500289665 /* main.m */; };
 		B63612251B1CC38500289665 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B63612241B1CC38500289665 /* AppDelegate.m */; };
 		B63612281B1CC38500289665 /* SpiroAnalyzeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63612271B1CC38500289665 /* SpiroAnalyzeViewController.m */; };
@@ -39,10 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09A6BAA51BAB56B20024360F /* EffortPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffortPopoverViewController.h; sourceTree = "<group>"; };
+		09A6BAA61BAB56B20024360F /* EffortPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffortPopoverViewController.m; sourceTree = "<group>"; };
+		09AE68631BB87F6200684D81 /* SpiroGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiroGameViewController.h; sourceTree = "<group>"; };
+		09AE68641BB87F6200684D81 /* SpiroGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiroGameViewController.m; sourceTree = "<group>"; };
 		09F933E81BA7529B0041FFB2 /* SpirometerTestAnalyzer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpirometerTestAnalyzer.h; sourceTree = "<group>"; };
 		09F933E91BA752B80041FFB2 /* SpirometerTestAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpirometerTestAnalyzer.m; sourceTree = "<group>"; };
-		09F933EB1BA7583C0041FFB2 /* TestingEnvironmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestingEnvironmentViewController.h; sourceTree = "<group>"; };
-		09F933EC1BA7583C0041FFB2 /* TestingEnvironmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestingEnvironmentViewController.m; sourceTree = "<group>"; };
+		09F933EB1BA7583C0041FFB2 /* FVCTestTrialsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FVCTestTrialsViewController.h; sourceTree = "<group>"; };
+		09F933EC1BA7583C0041FFB2 /* FVCTestTrialsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FVCTestTrialsViewController.m; sourceTree = "<group>"; };
 		B636121C1B1CC38500289665 /* OpenSpirometry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenSpirometry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63612201B1CC38500289665 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B63612211B1CC38500289665 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -120,10 +126,14 @@
 				B636124B1B1CC4C800289665 /* SpiroAnalysisModel */,
 				B63612261B1CC38500289665 /* SpiroAnalyzeViewController.h */,
 				B63612271B1CC38500289665 /* SpiroAnalyzeViewController.m */,
-				09F933EB1BA7583C0041FFB2 /* TestingEnvironmentViewController.h */,
-				09F933EC1BA7583C0041FFB2 /* TestingEnvironmentViewController.m */,
+				09F933EB1BA7583C0041FFB2 /* FVCTestTrialsViewController.h */,
+				09F933EC1BA7583C0041FFB2 /* FVCTestTrialsViewController.m */,
 				B63612291B1CC38500289665 /* Main.storyboard */,
+				09AE68631BB87F6200684D81 /* SpiroGameViewController.h */,
+				09AE68641BB87F6200684D81 /* SpiroGameViewController.m */,
 				B636121F1B1CC38500289665 /* Supporting Files */,
+				09A6BAA51BAB56B20024360F /* EffortPopoverViewController.h */,
+				09A6BAA61BAB56B20024360F /* EffortPopoverViewController.m */,
 			);
 			path = OpenSpirometry;
 			sourceTree = "<group>";
@@ -247,11 +257,12 @@
 		B63612141B1CC38500289665 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Eric Larson";
 				TargetAttributes = {
 					B636121B1B1CC38500289665 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 94ZPG8Z9JM;
 					};
 					B63612341B1CC38500289665 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -308,16 +319,18 @@
 				B636124A1B1CC48900289665 /* Novocaine.m in Sources */,
 				B63612611B1F556800289665 /* PeakFinder.m in Sources */,
 				B636125B1B1DFFB000289665 /* BufferedOverlapQueue.m in Sources */,
+				09AE68651BB87F6200684D81 /* SpiroGameViewController.m in Sources */,
 				B63612551B1CEB3C00289665 /* SpirometerEffortAnalyzer.m in Sources */,
 				B6C3FF511B751243000D1B93 /* CubicSpline.m in Sources */,
 				B63612521B1CC70E00289665 /* FFTHelper.m in Sources */,
 				09F933EA1BA752B80041FFB2 /* SpirometerTestAnalyzer.m in Sources */,
+				09A6BAA71BAB56B20024360F /* EffortPopoverViewController.m in Sources */,
 				B63612281B1CC38500289665 /* SpiroAnalyzeViewController.m in Sources */,
 				B63612251B1CC38500289665 /* AppDelegate.m in Sources */,
 				B6A761641B20C97A00EB4121 /* SpirometryWhistle.m in Sources */,
 				B6A761671B21107C00EB4121 /* FlowVolumeDataAnalyzer.m in Sources */,
 				B63612221B1CC38500289665 /* main.m in Sources */,
-				09F933ED1BA7583C0041FFB2 /* TestingEnvironmentViewController.m in Sources */,
+				09F933ED1BA7583C0041FFB2 /* FVCTestTrialsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +393,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -443,8 +457,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = OpenSpirometry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "SMU.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -453,8 +469,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = OpenSpirometry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "SMU.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -463,16 +481,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = OpenSpirometryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "SMU.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenSpirometry.app/OpenSpirometry";
 			};
@@ -482,12 +497,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = OpenSpirometryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "SMU.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenSpirometry.app/OpenSpirometry";
 			};
