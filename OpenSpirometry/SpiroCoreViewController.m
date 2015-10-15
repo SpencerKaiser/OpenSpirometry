@@ -182,7 +182,8 @@
     
     NSLog(@"[super] didEndEffortWithResults");
     
-    SpiroTestState currentTestState = [self.testAnalyzer getCurrentSpiroTestState];
+    // Not sure if this should be saved to the property or if this line should just be deleteds
+//    SpiroTestState currentTestState = [self.testAnalyzer getCurrentSpiroTestState];
 
     [self userFinishedTest];
     
