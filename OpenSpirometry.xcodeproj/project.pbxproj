@@ -11,10 +11,8 @@
 		09786C8B1BB8D363006F4315 /* SpiroGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */; settings = {ASSET_TAGS = (); }; };
 		09A6BAA71BAB56B20024360F /* SpiroModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */; settings = {ASSET_TAGS = (); }; };
 		09F933EA1BA752B80041FFB2 /* SpirometerTestAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F933E91BA752B80041FFB2 /* SpirometerTestAnalyzer.m */; };
-		09F933ED1BA7583C0041FFB2 /* FVCTestTrialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F933EC1BA7583C0041FFB2 /* FVCTestTrialsViewController.m */; };
 		B63612221B1CC38500289665 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B63612211B1CC38500289665 /* main.m */; };
 		B63612251B1CC38500289665 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B63612241B1CC38500289665 /* AppDelegate.m */; };
-		B63612281B1CC38500289665 /* SpiroAnalyzeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63612271B1CC38500289665 /* SpiroAnalyzeViewController.m */; };
 		B636122B1B1CC38500289665 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B63612291B1CC38500289665 /* Main.storyboard */; };
 		B636122D1B1CC38500289665 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B636122C1B1CC38500289665 /* Images.xcassets */; };
 		B63612301B1CC38500289665 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B636122E1B1CC38500289665 /* LaunchScreen.xib */; };
@@ -50,15 +48,11 @@
 		09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiroModalViewController.m; sourceTree = "<group>"; };
 		09F933E81BA7529B0041FFB2 /* SpirometerTestAnalyzer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpirometerTestAnalyzer.h; sourceTree = "<group>"; };
 		09F933E91BA752B80041FFB2 /* SpirometerTestAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpirometerTestAnalyzer.m; sourceTree = "<group>"; };
-		09F933EB1BA7583C0041FFB2 /* FVCTestTrialsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FVCTestTrialsViewController.h; sourceTree = "<group>"; };
-		09F933EC1BA7583C0041FFB2 /* FVCTestTrialsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FVCTestTrialsViewController.m; sourceTree = "<group>"; };
 		B636121C1B1CC38500289665 /* OpenSpirometry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenSpirometry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63612201B1CC38500289665 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B63612211B1CC38500289665 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B63612231B1CC38500289665 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B63612241B1CC38500289665 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B63612261B1CC38500289665 /* SpiroAnalyzeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpiroAnalyzeViewController.h; sourceTree = "<group>"; };
-		B63612271B1CC38500289665 /* SpiroAnalyzeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpiroAnalyzeViewController.m; sourceTree = "<group>"; };
 		B636122A1B1CC38500289665 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B636122C1B1CC38500289665 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B636122F1B1CC38500289665 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -132,10 +126,6 @@
 				09786C891BB8D363006F4315 /* SpiroGameViewController.h */,
 				09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */,
 				B63612291B1CC38500289665 /* Main.storyboard */,
-				B63612261B1CC38500289665 /* SpiroAnalyzeViewController.h */,
-				B63612271B1CC38500289665 /* SpiroAnalyzeViewController.m */,
-				09F933EB1BA7583C0041FFB2 /* FVCTestTrialsViewController.h */,
-				09F933EC1BA7583C0041FFB2 /* FVCTestTrialsViewController.m */,
 				B636121F1B1CC38500289665 /* Supporting Files */,
 				09A6BAA51BAB56B20024360F /* SpiroModalViewController.h */,
 				09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */,
@@ -331,12 +321,10 @@
 				B63612521B1CC70E00289665 /* FFTHelper.m in Sources */,
 				09F933EA1BA752B80041FFB2 /* SpirometerTestAnalyzer.m in Sources */,
 				09A6BAA71BAB56B20024360F /* SpiroModalViewController.m in Sources */,
-				B63612281B1CC38500289665 /* SpiroAnalyzeViewController.m in Sources */,
 				B63612251B1CC38500289665 /* AppDelegate.m in Sources */,
 				B6A761641B20C97A00EB4121 /* SpirometryWhistle.m in Sources */,
 				B6A761671B21107C00EB4121 /* FlowVolumeDataAnalyzer.m in Sources */,
 				B63612221B1CC38500289665 /* main.m in Sources */,
-				09F933ED1BA7583C0041FFB2 /* FVCTestTrialsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
