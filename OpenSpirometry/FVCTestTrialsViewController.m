@@ -9,7 +9,7 @@
 #import "FVCTestTrialsViewController.h"
 #import "SpirometerEffortAnalyzer.h"
 #import "SpirometerTestAnalyzer.h"
-#import "EffortPopoverViewController.h"
+#import "SpiroModalViewController.h"
 
 @interface FVCTestTrialsViewController ()
 @property (strong, nonatomic) SpirometerEffortAnalyzer* effortAnalyzer;
@@ -67,7 +67,6 @@
 }
 
 - (IBAction)startEffortButtonPressed:(id)sender {
-    [self.effortAnalyzer beginListeningForEffort];
     self.startButton.enabled = false;
 }
 
@@ -89,7 +88,7 @@
 }
 
 - (IBAction)addEffort:(id)sender {
-    [self.testAnalyzer addEffortResults:[[NSDictionary alloc]init]];
+//    [self.testAnalyzer addEffortResults:[[NSDictionary alloc]init]];
 }
 - (IBAction)clearEffortButtonPressed:(id)sender {
     [self.testAnalyzer clearAllEfforts];

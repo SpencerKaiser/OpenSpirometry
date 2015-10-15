@@ -2,12 +2,12 @@
 //  SpiroGameViewController.h
 //  OpenSpirometry
 //
-//  Created by Spencer Kaiser on 9/15/15.
-//  Copyright (c) 2015 Eric Larson. All rights reserved.
+//  Created by Spencer Kaiser on 9/27/15.
+//  Copyright © 2015 Eric Larson. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SpiroCoreViewController.h"
 
-@interface SpiroGameViewController : UIViewController
--(bool)gameWillEndWithEffortCompletion;
+@interface SpiroGameViewController : SpiroCoreViewController
+
 @end

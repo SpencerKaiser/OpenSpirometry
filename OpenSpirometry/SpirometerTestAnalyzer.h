@@ -11,7 +11,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-typedef enum : NSUInteger {
+//SpiroTestState - Used to determine whether testing should continue
+typedef enum {
     SpiroTestStateNoEffortsAdded,
     SpiroTestStateTestComplete,
     SpiroTestStateInsufficient
@@ -19,10 +20,11 @@ typedef enum : NSUInteger {
 
 @interface SpirometerTestAnalyzer : NSObject
 
--(void)addEffortResults:(NSDictionary*)effortResults;
-//-(void)addEffortResults:(NSDictionary*)effortResults withNote:(NSString*)effortNote;        //TODO: Add functionality
-//getSpiroTestState() which will return enum value for state
+-(SpiroTestState)addEffortResults:(NSDictionary*)effortResults;
+-(SpiroTestState)addEffortResults:(NSDictionary*)effortResults withNote:(NSString*)effortNote;
+-(SpiroTestState)getCurrentSpiroTestState;
 -(void)clearAllEfforts;
 -(void)addTestNotes:(NSString*)testNotes;
-//saveToPersistentStore
+-(void)saveToPersistentStore;
+
 @end
