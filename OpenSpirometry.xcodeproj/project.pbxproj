@@ -99,6 +99,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		090359ED1BD03AAB00DFC582 /* SpiroModal */ = {
+			isa = PBXGroup;
+			children = (
+				09A6BAA51BAB56B20024360F /* SpiroModalViewController.h */,
+				09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */,
+			);
+			name = SpiroModal;
+			sourceTree = "<group>";
+		};
 		B63612131B1CC38500289665 = {
 			isa = PBXGroup;
 			children = (
@@ -123,12 +132,11 @@
 				B636124B1B1CC4C800289665 /* SpiroAnalysisModel */,
 				09786C861BB8810F006F4315 /* SpiroCoreViewController.h */,
 				09786C871BB8810F006F4315 /* SpiroCoreViewController.m */,
+				090359ED1BD03AAB00DFC582 /* SpiroModal */,
 				09786C891BB8D363006F4315 /* SpiroGameViewController.h */,
 				09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */,
 				B63612291B1CC38500289665 /* Main.storyboard */,
 				B636121F1B1CC38500289665 /* Supporting Files */,
-				09A6BAA51BAB56B20024360F /* SpiroModalViewController.h */,
-				09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */,
 			);
 			path = OpenSpirometry;
 			sourceTree = "<group>";

@@ -48,14 +48,14 @@
     self.spiroTestStatus = [self.testAnalyzer getCurrentSpiroTestState];
     
     
-    
     //----------------UI-----------------
-    // Create reference to modal view controller and configure modal settings
+    // Declare self as the presentation context
     self.definesPresentationContext = YES;
-    self.spiroTestTransitionModal = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SpiroModalViewControllerScene"];
+    // Instantiate and configure SpiroModalViewController (no scene on storyboard)
+    self.spiroTestTransitionModal = [[SpiroModalViewController alloc] init];
     self.spiroTestTransitionModal.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     self.spiroTestTransitionModal.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    self.spiroTestTransitionModal.delegate = self;
+    self.spiroTestTransitionModal.modalDelegate = self;
 }
 
 

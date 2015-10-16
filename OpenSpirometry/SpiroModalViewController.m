@@ -18,6 +18,36 @@
 
 @implementation SpiroModalViewController
 -(void)viewDidLoad {
+    [super viewDidLoad];
+    
+    // Grab reference to main storyboard
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    // Instantiate page VC as a scrolling with horizontal orientation
+    self.modalPageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+            navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+                          options:nil];
+    
+    
+    self.modalPageViewController.dataSource = self;
+    
+    
+    [self.modalPageViewController setViewControllers:[NSArray arrayWithObject:[storyboard instantiateViewControllerWithIdentifier:@"SpiroModalChildViewControllerScene1"]]
+                                           direction:UIPageViewControllerNavigationDirectionForward
+                                            animated:YES
+                                          completion:nil];
+    
+    
+    
+    [self addChildViewController:self.modalPageViewController];
+    [self.view addSubview:self.modalPageViewController.view];
+    [self.modalPageViewController didMoveToParentViewController:self];
+    
+    
+    
+    
+    
+    
     self.modalDismissInfo = [[NSMutableDictionary alloc] init];
     
     NSInteger modalType = [self.modalData[@"ModalType"] integerValue];
@@ -47,12 +77,44 @@
 }
 
 -(void)returnToPresenter{
-    if([self.delegate respondsToSelector:@selector(modalDismissedWithInfo:)])
+    if([self.modalDelegate respondsToSelector:@selector(modalDismissedWithInfo:)])
     {
         [self.modalDismissInfo setObject:@"Returning from modal!" forKey:@"Notes"];
-        [self.delegate modalDismissedWithInfo:self.modalDismissInfo];
+        [self.modalDelegate modalDismissedWithInfo:self.modalDismissInfo];
     }
 }
+
+
+#pragma mark - DATA SOURCE DELEGATION
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController{
+    return 5;
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController{
+    return 2;
+}
+
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+    
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    return [storyboard instantiateViewControllerWithIdentifier:@"SpiroModalChildViewControllerScene1"];
+}
+
+
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+    
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    return [storyboard instantiateViewControllerWithIdentifier:@"SpiroModalChildViewControllerScene2"];
+}
+
+
+//TODO: Delegate functions for modal pages that save data (e.g., notes)
+
 
 
 @end
