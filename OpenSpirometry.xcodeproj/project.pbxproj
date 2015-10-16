@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090359F41BD1773100DFC582 /* SpiroModalPages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */; settings = {ASSET_TAGS = (); }; };
 		09786C881BB8810F006F4315 /* SpiroCoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C871BB8810F006F4315 /* SpiroCoreViewController.m */; settings = {ASSET_TAGS = (); }; };
 		09786C8B1BB8D363006F4315 /* SpiroGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */; settings = {ASSET_TAGS = (); }; };
 		09A6BAA71BAB56B20024360F /* SpiroModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpiroModalPages.storyboard; sourceTree = "<group>"; };
 		09786C861BB8810F006F4315 /* SpiroCoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiroCoreViewController.h; sourceTree = "<group>"; };
 		09786C871BB8810F006F4315 /* SpiroCoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiroCoreViewController.m; sourceTree = "<group>"; };
 		09786C891BB8D363006F4315 /* SpiroGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiroGameViewController.h; sourceTree = "<group>"; };
@@ -104,8 +106,18 @@
 			children = (
 				09A6BAA51BAB56B20024360F /* SpiroModalViewController.h */,
 				09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */,
+				090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */,
 			);
 			name = SpiroModal;
+			sourceTree = "<group>";
+		};
+		090359F51BD1782600DFC582 /* SpiroGame */ = {
+			isa = PBXGroup;
+			children = (
+				09786C891BB8D363006F4315 /* SpiroGameViewController.h */,
+				09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */,
+			);
+			name = SpiroGame;
 			sourceTree = "<group>";
 		};
 		B63612131B1CC38500289665 = {
@@ -132,10 +144,9 @@
 				B636124B1B1CC4C800289665 /* SpiroAnalysisModel */,
 				09786C861BB8810F006F4315 /* SpiroCoreViewController.h */,
 				09786C871BB8810F006F4315 /* SpiroCoreViewController.m */,
-				090359ED1BD03AAB00DFC582 /* SpiroModal */,
-				09786C891BB8D363006F4315 /* SpiroGameViewController.h */,
-				09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */,
 				B63612291B1CC38500289665 /* Main.storyboard */,
+				090359ED1BD03AAB00DFC582 /* SpiroModal */,
+				090359F51BD1782600DFC582 /* SpiroGame */,
 				B636121F1B1CC38500289665 /* Supporting Files */,
 			);
 			path = OpenSpirometry;
@@ -298,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B636122B1B1CC38500289665 /* Main.storyboard in Resources */,
+				090359F41BD1773100DFC582 /* SpiroModalPages.storyboard in Resources */,
 				B644C62A1B619C29002D3484 /* VortexWhistleRed.m4a in Resources */,
 				B63612301B1CC38500289665 /* LaunchScreen.xib in Resources */,
 				B636122D1B1CC38500289665 /* Images.xcassets in Resources */,

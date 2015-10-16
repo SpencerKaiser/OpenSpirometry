@@ -21,7 +21,7 @@
     [super viewDidLoad];
     
     // Grab reference to main storyboard
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"SpiroModalPages" bundle:nil];
     
     // Instantiate page VC as a scrolling with horizontal orientation
     self.modalPageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
@@ -98,7 +98,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"SpiroModalPages" bundle:nil];
     
     return [storyboard instantiateViewControllerWithIdentifier:@"SpiroModalChildViewControllerScene1"];
 }
@@ -107,7 +107,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"SpiroModalPages" bundle:nil];
     
     return [storyboard instantiateViewControllerWithIdentifier:@"SpiroModalChildViewControllerScene2"];
 }

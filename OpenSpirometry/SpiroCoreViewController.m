@@ -31,7 +31,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-#pragma mark Initialization
+#pragma mark - INITIALIZATION
+#pragma mark Effort Analyzer
     //----------EFFORT ANALYZER----------
     self.effortAnalyzer = [[SpirometerEffortAnalyzer alloc] init];
     self.effortAnalyzer.delegate = self;
@@ -42,12 +43,12 @@
     // **for debugging**: this turns on the debug mode for reading the effort from a file (only wav currently supported)
     [self.effortAnalyzer activateDebugAudioModeWithWAVFile:@"VortexWhistleRed"]; // default audio file name
     
-    
+#pragma mark Test Analyzer
     //-----------TEST ANALYZER-----------
     self.testAnalyzer = [[SpirometerTestAnalyzer alloc] init];
     self.spiroTestStatus = [self.testAnalyzer getCurrentSpiroTestState];
     
-    
+#pragma mark Required UI Components
     //----------------UI-----------------
     // Declare self as the presentation context
     self.definesPresentationContext = YES;
@@ -64,7 +65,7 @@
 -(void)modalDismissedWithInfo:(NSDictionary *)modalInfo {
     NSLog(@"Modal Dismissed with message: %@", [modalInfo objectForKey:@"Notes"]);
     
-    //NEED TO SAVE EFFORT/TEST
+    //TODO: NEED TO SAVE EFFORT/TEST
     
 }
 
