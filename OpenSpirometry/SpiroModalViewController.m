@@ -33,7 +33,7 @@
     self.modalPageViewController.dataSource = self;
     
     
-    // Create the array of modal pages
+    // Create the array of modal pages (including action page)
     [self createPageSet];
     
     
@@ -88,6 +88,9 @@
     // Set params for actionViewController and insert into index 0
     actionViewController.pageConfig = configParams;
     [self.pageViewControllers insertObject:actionViewController atIndex:0];
+    
+    
+    [self.pageViewControllers addObject:[self.modalPagesStoryboard instantiateViewControllerWithIdentifier:@"ModalNotePageViewControllerScene"]];
 }
 
 -(void)userActionTaken {
@@ -121,25 +124,35 @@
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController{
-    return 1;
+    return 0;
 }
 
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+    NSInteger idx = [self.pageViewControllers indexOfObject:viewController];
     if (self.pageViewControllers.count == 1) {
         return nil;
+    } else if (idx == 0) {
+        idx = self.pageViewControllers.count - 1;
+        return self.pageViewControllers[idx];
     } else {
-        return self.pageViewControllers[0];
+        idx -= 1;
+        return self.pageViewControllers[idx];
     }
 }
 
 
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+    NSInteger idx = [self.pageViewControllers indexOfObject:viewController];
     if (self.pageViewControllers.count == 1) {
         return nil;
+    } else if (idx == self.pageViewControllers.count - 1) {
+        idx = 0;
+        return self.pageViewControllers[idx];
     } else {
-        return self.pageViewControllers[0];
+        idx += 1;
+        return self.pageViewControllers[idx];
     }
 }
 

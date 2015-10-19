@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Modal Action Page View Controller-->
@@ -94,61 +93,85 @@
             <point key="canvasLocation" x="3169" y="1015"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="s4Q-lw-eRL">
+        <scene sceneID="0i9-H0-WvF">
             <objects>
-                <viewController storyboardIdentifier="SpiroModalChildViewControllerScene2" id="2vh-xA-BDJ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ModalNotePageViewControllerScene" id="HF4-h5-xV7" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="f1R-3F-epq"/>
-                        <viewControllerLayoutGuide type="bottom" id="iQf-VF-wV8"/>
+                        <viewControllerLayoutGuide type="top" id="tvh-d8-tiT"/>
+                        <viewControllerLayoutGuide type="bottom" id="AdE-4I-Mj4"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jlI-y8-1F6">
+                    <view key="view" contentMode="scaleToFill" id="1sh-L2-oPC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUu-Eh-sY6">
-                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLE-3Z-cDm">
+                                <rect key="frame" x="30" y="50" width="540" height="520"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Another Child View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wG-vu-Nj2">
-                                        <rect key="frame" x="47" y="53" width="147" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a Note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xG-ej-rFC">
+                                        <rect key="frame" x="228" y="30" width="85.5" height="20.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make a note of today's events, any circumstances that may have impacted oyour results, or a personal note about today's test." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKd-Ai-iKf">
+                                        <rect key="frame" x="30" y="101" width="480" height="61"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter notes here, then hit the done key to save your note." borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WBo-4a-hrA">
+                                        <rect key="frame" x="30" y="192" width="480" height="298"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.34306422679999998" green="0.86974052619999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="8wG-vu-Nj2" firstAttribute="centerX" secondItem="AUu-Eh-sY6" secondAttribute="centerX" id="BaR-bb-ia3"/>
-                                    <constraint firstItem="8wG-vu-Nj2" firstAttribute="centerY" secondItem="AUu-Eh-sY6" secondAttribute="centerY" id="SCR-TL-VLj"/>
-                                    <constraint firstAttribute="width" constant="240" id="nJ6-rt-qSb"/>
+                                    <constraint firstItem="sKd-Ai-iKf" firstAttribute="top" secondItem="2xG-ej-rFC" secondAttribute="bottom" constant="51" id="419-cC-knp"/>
+                                    <constraint firstItem="sKd-Ai-iKf" firstAttribute="leading" secondItem="BLE-3Z-cDm" secondAttribute="leading" constant="30" id="CtU-yf-8pr"/>
+                                    <constraint firstAttribute="bottom" secondItem="WBo-4a-hrA" secondAttribute="bottom" constant="30" id="DyB-ew-hXO"/>
+                                    <constraint firstItem="2xG-ej-rFC" firstAttribute="top" secondItem="BLE-3Z-cDm" secondAttribute="top" constant="30" id="EtJ-12-tgh"/>
+                                    <constraint firstItem="WBo-4a-hrA" firstAttribute="top" secondItem="sKd-Ai-iKf" secondAttribute="bottom" constant="30" id="FbV-G1-gnv"/>
+                                    <constraint firstAttribute="trailing" secondItem="sKd-Ai-iKf" secondAttribute="trailing" constant="30" id="ac5-ne-E7w"/>
+                                    <constraint firstItem="WBo-4a-hrA" firstAttribute="leading" secondItem="BLE-3Z-cDm" secondAttribute="leading" constant="30" id="eIL-xL-xRT"/>
+                                    <constraint firstAttribute="width" constant="240" id="kLN-l2-4Rg"/>
+                                    <constraint firstItem="2xG-ej-rFC" firstAttribute="centerX" secondItem="BLE-3Z-cDm" secondAttribute="centerX" id="tP5-3Y-d41"/>
+                                    <constraint firstAttribute="trailing" secondItem="WBo-4a-hrA" secondAttribute="trailing" constant="30" id="z41-NT-edr"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="kLN-l2-4Rg"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AUu-Eh-sY6" firstAttribute="centerX" secondItem="jlI-y8-1F6" secondAttribute="centerX" id="9bI-T3-rgW"/>
-                            <constraint firstItem="AUu-Eh-sY6" firstAttribute="leading" secondItem="jlI-y8-1F6" secondAttribute="leadingMargin" constant="160" id="AEW-bs-yEs"/>
-                            <constraint firstItem="AUu-Eh-sY6" firstAttribute="centerY" secondItem="jlI-y8-1F6" secondAttribute="centerY" id="DL1-WB-k8F"/>
-                            <constraint firstItem="AUu-Eh-sY6" firstAttribute="top" secondItem="f1R-3F-epq" secondAttribute="bottom" constant="216" id="M2B-lN-HZe"/>
-                            <constraint firstItem="AUu-Eh-sY6" firstAttribute="centerY" secondItem="jlI-y8-1F6" secondAttribute="centerY" id="Yzv-lQ-sLn"/>
-                            <constraint firstItem="AUu-Eh-sY6" firstAttribute="centerX" secondItem="jlI-y8-1F6" secondAttribute="centerX" id="grE-6C-qOP"/>
-                            <constraint firstItem="AUu-Eh-sY6" firstAttribute="top" secondItem="f1R-3F-epq" secondAttribute="bottom" constant="261" id="hx1-Sb-odN"/>
+                            <constraint firstItem="AdE-4I-Mj4" firstAttribute="top" secondItem="BLE-3Z-cDm" secondAttribute="bottom" constant="30" id="O8d-i7-2nh"/>
+                            <constraint firstItem="BLE-3Z-cDm" firstAttribute="top" secondItem="tvh-d8-tiT" secondAttribute="bottom" constant="216" id="TGI-wz-Mkr"/>
+                            <constraint firstItem="BLE-3Z-cDm" firstAttribute="top" secondItem="tvh-d8-tiT" secondAttribute="bottom" constant="30" id="Wff-pi-6zS"/>
+                            <constraint firstItem="BLE-3Z-cDm" firstAttribute="centerY" secondItem="1sh-L2-oPC" secondAttribute="centerY" id="avg-am-oNk"/>
+                            <constraint firstItem="BLE-3Z-cDm" firstAttribute="centerX" secondItem="1sh-L2-oPC" secondAttribute="centerX" id="bQn-Xz-bBd"/>
+                            <constraint firstItem="BLE-3Z-cDm" firstAttribute="leading" secondItem="1sh-L2-oPC" secondAttribute="leading" constant="30" id="jRv-HK-cHu"/>
+                            <constraint firstAttribute="trailing" secondItem="BLE-3Z-cDm" secondAttribute="trailing" constant="30" id="ovX-Wc-5Hb"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="AEW-bs-yEs"/>
-                                <exclude reference="Yzv-lQ-sLn"/>
-                                <exclude reference="grE-6C-qOP"/>
-                                <exclude reference="hx1-Sb-odN"/>
+                                <exclude reference="bQn-Xz-bBd"/>
+                                <exclude reference="TGI-wz-Mkr"/>
+                                <exclude reference="avg-am-oNk"/>
                             </mask>
                         </variation>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GSO-Jl-xhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fao-7t-1X1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3175" y="1737"/>
+            <point key="canvasLocation" x="3901" y="1062"/>
         </scene>
     </scenes>
 </document>
