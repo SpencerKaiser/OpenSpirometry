@@ -24,7 +24,7 @@
                                         <rect key="frame" x="223" y="30" width="95" height="20.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9N-gv-1we">
@@ -32,7 +32,7 @@
                                         <animations/>
                                         <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Pg-X2-x0x">
@@ -92,10 +92,10 @@
             </objects>
             <point key="canvasLocation" x="3169" y="1015"/>
         </scene>
-        <!--View Controller-->
+        <!--Modal Add Notes View Controller-->
         <scene sceneID="0i9-H0-WvF">
             <objects>
-                <viewController storyboardIdentifier="ModalNotePageViewControllerScene" id="HF4-h5-xV7" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ModalAddNotesViewControllerScene" id="HF4-h5-xV7" customClass="ModalAddNotesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tvh-d8-tiT"/>
                         <viewControllerLayoutGuide type="bottom" id="AdE-4I-Mj4"/>
@@ -107,41 +107,41 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLE-3Z-cDm">
                                 <rect key="frame" x="30" y="50" width="540" height="520"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a Note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xG-ej-rFC">
-                                        <rect key="frame" x="228" y="30" width="85.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="noteLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xG-ej-rFC">
+                                        <rect key="frame" x="233" y="30" width="76" height="20.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKd-Ai-iKf">
-                                        <rect key="frame" x="30" y="101" width="480" height="61"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noteDescription" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKd-Ai-iKf">
+                                        <rect key="frame" x="30" y="80" width="480" height="20.5"/>
                                         <animations/>
-                                        <string key="text">Make a note of today's events, any circumstances that may have impacted oyour results, or a personal note about today's test. When finished, swipe right and tap the continue button.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter notes here, then hit the done key to save your note." borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WBo-4a-hrA">
-                                        <rect key="frame" x="30" y="192" width="480" height="298"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="noteView" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Byq-hd-wWt">
+                                        <rect key="frame" x="30" y="131" width="480" height="359"/>
                                         <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.34306422679999998" green="0.86974052619999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="sKd-Ai-iKf" firstAttribute="top" secondItem="2xG-ej-rFC" secondAttribute="bottom" constant="51" id="419-cC-knp"/>
+                                    <constraint firstItem="Byq-hd-wWt" firstAttribute="top" secondItem="sKd-Ai-iKf" secondAttribute="bottom" constant="30" id="2tQ-FD-Diz"/>
+                                    <constraint firstAttribute="bottom" secondItem="Byq-hd-wWt" secondAttribute="bottom" constant="30" id="2xX-xr-1Gj"/>
+                                    <constraint firstItem="sKd-Ai-iKf" firstAttribute="top" secondItem="2xG-ej-rFC" secondAttribute="bottom" constant="30" id="419-cC-knp"/>
                                     <constraint firstItem="sKd-Ai-iKf" firstAttribute="leading" secondItem="BLE-3Z-cDm" secondAttribute="leading" constant="30" id="CtU-yf-8pr"/>
-                                    <constraint firstAttribute="bottom" secondItem="WBo-4a-hrA" secondAttribute="bottom" constant="30" id="DyB-ew-hXO"/>
                                     <constraint firstItem="2xG-ej-rFC" firstAttribute="top" secondItem="BLE-3Z-cDm" secondAttribute="top" constant="30" id="EtJ-12-tgh"/>
-                                    <constraint firstItem="WBo-4a-hrA" firstAttribute="top" secondItem="sKd-Ai-iKf" secondAttribute="bottom" constant="30" id="FbV-G1-gnv"/>
                                     <constraint firstAttribute="trailing" secondItem="sKd-Ai-iKf" secondAttribute="trailing" constant="30" id="ac5-ne-E7w"/>
-                                    <constraint firstItem="WBo-4a-hrA" firstAttribute="leading" secondItem="BLE-3Z-cDm" secondAttribute="leading" constant="30" id="eIL-xL-xRT"/>
+                                    <constraint firstAttribute="trailing" secondItem="Byq-hd-wWt" secondAttribute="trailing" constant="30" id="eKC-9Y-iLY"/>
                                     <constraint firstAttribute="width" constant="240" id="kLN-l2-4Rg"/>
                                     <constraint firstItem="2xG-ej-rFC" firstAttribute="centerX" secondItem="BLE-3Z-cDm" secondAttribute="centerX" id="tP5-3Y-d41"/>
-                                    <constraint firstAttribute="trailing" secondItem="WBo-4a-hrA" secondAttribute="trailing" constant="30" id="z41-NT-edr"/>
+                                    <constraint firstItem="Byq-hd-wWt" firstAttribute="leading" secondItem="BLE-3Z-cDm" secondAttribute="leading" constant="30" id="z2L-sW-NDW"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -163,12 +163,17 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="bQn-Xz-bBd"/>
                                 <exclude reference="TGI-wz-Mkr"/>
                                 <exclude reference="avg-am-oNk"/>
+                                <exclude reference="bQn-Xz-bBd"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="noteDescription" destination="sKd-Ai-iKf" id="HKT-ge-sMK"/>
+                        <outlet property="noteLabel" destination="2xG-ej-rFC" id="qMR-Cu-2GW"/>
+                        <outlet property="noteView" destination="Byq-hd-wWt" id="UBk-Db-BPw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fao-7t-1X1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,6 +11,7 @@
 		09786C881BB8810F006F4315 /* SpiroCoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C871BB8810F006F4315 /* SpiroCoreViewController.m */; settings = {ASSET_TAGS = (); }; };
 		09786C8B1BB8D363006F4315 /* SpiroGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */; settings = {ASSET_TAGS = (); }; };
 		09A6BAA71BAB56B20024360F /* SpiroModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */; settings = {ASSET_TAGS = (); }; };
+		09F6BA521BD54CD100668F27 /* ModalAddNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F6BA511BD54CD100668F27 /* ModalAddNotesViewController.m */; settings = {ASSET_TAGS = (); }; };
 		09F933EA1BA752B80041FFB2 /* SpirometerTestAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F933E91BA752B80041FFB2 /* SpirometerTestAnalyzer.m */; };
 		09FB9E081BD428F4005C8507 /* ModalActionPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9E071BD428F4005C8507 /* ModalActionPageViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B63612221B1CC38500289665 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B63612211B1CC38500289665 /* main.m */; };
@@ -49,6 +50,8 @@
 		09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiroGameViewController.m; sourceTree = "<group>"; };
 		09A6BAA51BAB56B20024360F /* SpiroModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiroModalViewController.h; sourceTree = "<group>"; };
 		09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiroModalViewController.m; sourceTree = "<group>"; };
+		09F6BA501BD54CD100668F27 /* ModalAddNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalAddNotesViewController.h; sourceTree = "<group>"; };
+		09F6BA511BD54CD100668F27 /* ModalAddNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalAddNotesViewController.m; sourceTree = "<group>"; };
 		09F933E81BA7529B0041FFB2 /* SpirometerTestAnalyzer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpirometerTestAnalyzer.h; sourceTree = "<group>"; };
 		09F933E91BA752B80041FFB2 /* SpirometerTestAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpirometerTestAnalyzer.m; sourceTree = "<group>"; };
 		09FB9E061BD428F4005C8507 /* ModalActionPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalActionPageViewController.h; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 				090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */,
 				09FB9E061BD428F4005C8507 /* ModalActionPageViewController.h */,
 				09FB9E071BD428F4005C8507 /* ModalActionPageViewController.m */,
+				09F6BA501BD54CD100668F27 /* ModalAddNotesViewController.h */,
+				09F6BA511BD54CD100668F27 /* ModalAddNotesViewController.m */,
 			);
 			name = ModalPages;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 				B63612611B1F556800289665 /* PeakFinder.m in Sources */,
 				09786C8B1BB8D363006F4315 /* SpiroGameViewController.m in Sources */,
 				B636125B1B1DFFB000289665 /* BufferedOverlapQueue.m in Sources */,
+				09F6BA521BD54CD100668F27 /* ModalAddNotesViewController.m in Sources */,
 				B63612551B1CEB3C00289665 /* SpirometerEffortAnalyzer.m in Sources */,
 				09FB9E081BD428F4005C8507 /* ModalActionPageViewController.m in Sources */,
 				B6C3FF511B751243000D1B93 /* CubicSpline.m in Sources */,
