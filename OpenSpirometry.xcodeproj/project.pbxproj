@@ -107,10 +107,9 @@
 		090359ED1BD03AAB00DFC582 /* SpiroModal */ = {
 			isa = PBXGroup;
 			children = (
-				09FB9DFF1BD42236005C8507 /* PageViewControllers */,
+				09FB9DFF1BD42236005C8507 /* ModalPages */,
 				09A6BAA51BAB56B20024360F /* SpiroModalViewController.h */,
 				09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */,
-				090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */,
 			);
 			name = SpiroModal;
 			sourceTree = "<group>";
@@ -124,13 +123,14 @@
 			name = SpiroGame;
 			sourceTree = "<group>";
 		};
-		09FB9DFF1BD42236005C8507 /* PageViewControllers */ = {
+		09FB9DFF1BD42236005C8507 /* ModalPages */ = {
 			isa = PBXGroup;
 			children = (
+				090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */,
 				09FB9E061BD428F4005C8507 /* ModalActionPageViewController.h */,
 				09FB9E071BD428F4005C8507 /* ModalActionPageViewController.m */,
 			);
-			name = PageViewControllers;
+			name = ModalPages;
 			sourceTree = "<group>";
 		};
 		B63612131B1CC38500289665 = {
