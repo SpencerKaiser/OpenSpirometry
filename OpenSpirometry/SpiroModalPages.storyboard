@@ -6,11 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Modal Action Page View Controller-->
         <scene sceneID="bsW-VL-0bn">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dmu-vy-eDO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="SpiroModalChildViewControllerScene1" id="Dbq-rZ-KoY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ModalActionPageViewControllerScene" id="Dbq-rZ-KoY" customClass="ModalActionPageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p1a-Mp-F88"/>
                         <viewControllerLayoutGuide type="bottom" id="zEX-DI-Em4"/>
@@ -20,41 +19,83 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ry-pC-y7c">
-                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <rect key="frame" x="30" y="50" width="540" height="520"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Child View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufT-fg-eOq">
-                                        <rect key="frame" x="79" y="54" width="81" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufT-fg-eOq">
+                                        <rect key="frame" x="223" y="30" width="95" height="20.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9N-gv-1we">
+                                        <rect key="frame" x="30" y="218.5" width="480" height="81.5"/>
+                                        <animations/>
+                                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Pg-X2-x0x">
+                                        <rect key="frame" x="223" y="460" width="94" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="Action Button"/>
+                                        <connections>
+                                            <action selector="actionButtonPressed:" destination="Dbq-rZ-KoY" eventType="touchUpInside" id="nTu-Og-dKw"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.34306422679999998" green="0.86974052619999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="ufT-fg-eOq" firstAttribute="centerX" secondItem="3ry-pC-y7c" secondAttribute="centerX" id="2N9-Ad-pGk"/>
-                                    <constraint firstItem="ufT-fg-eOq" firstAttribute="centerY" secondItem="3ry-pC-y7c" secondAttribute="centerY" id="5ge-59-t8S"/>
+                                    <constraint firstItem="Z9N-gv-1we" firstAttribute="leading" secondItem="3ry-pC-y7c" secondAttribute="leading" constant="30" id="BNl-k4-5fM"/>
+                                    <constraint firstItem="Z9N-gv-1we" firstAttribute="centerY" secondItem="3ry-pC-y7c" secondAttribute="centerY" id="KZR-hf-3za"/>
+                                    <constraint firstItem="ufT-fg-eOq" firstAttribute="top" secondItem="3ry-pC-y7c" secondAttribute="top" constant="30" id="Ll9-ZZ-BT4"/>
                                     <constraint firstAttribute="width" constant="240" id="WIk-CG-Hif"/>
+                                    <constraint firstItem="7Pg-X2-x0x" firstAttribute="centerX" secondItem="3ry-pC-y7c" secondAttribute="centerX" id="c0M-jh-pRk"/>
+                                    <constraint firstAttribute="trailing" secondItem="Z9N-gv-1we" secondAttribute="trailing" constant="30" id="ejp-CF-ws2"/>
+                                    <constraint firstAttribute="bottom" secondItem="7Pg-X2-x0x" secondAttribute="bottom" constant="30" id="fNO-NV-3tm"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="WIk-CG-Hif"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zEX-DI-Em4" firstAttribute="top" secondItem="3ry-pC-y7c" secondAttribute="bottom" constant="30" id="0LI-lY-Ht1"/>
                             <constraint firstItem="3ry-pC-y7c" firstAttribute="centerX" secondItem="toz-6b-fxT" secondAttribute="centerX" id="CVs-yS-jTB"/>
                             <constraint firstItem="3ry-pC-y7c" firstAttribute="top" secondItem="p1a-Mp-F88" secondAttribute="bottom" constant="216" id="PrY-fc-Rwl"/>
+                            <constraint firstItem="3ry-pC-y7c" firstAttribute="leading" secondItem="toz-6b-fxT" secondAttribute="leading" constant="30" id="dQx-kp-oTN"/>
+                            <constraint firstItem="3ry-pC-y7c" firstAttribute="top" secondItem="p1a-Mp-F88" secondAttribute="bottom" constant="30" id="iWW-u1-uW3"/>
                             <constraint firstItem="3ry-pC-y7c" firstAttribute="centerY" secondItem="toz-6b-fxT" secondAttribute="centerY" id="tIl-G7-Xl2"/>
+                            <constraint firstAttribute="trailing" secondItem="3ry-pC-y7c" secondAttribute="trailing" constant="30" id="zSN-Bk-kSp"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="CVs-yS-jTB"/>
+                                <exclude reference="PrY-fc-Rwl"/>
+                                <exclude reference="tIl-G7-Xl2"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="actionButton" destination="7Pg-X2-x0x" id="S9S-yM-Zn3"/>
+                        <outlet property="actionDescription" destination="Z9N-gv-1we" id="Cfd-cy-kuZ"/>
+                        <outlet property="actionLabel" destination="ufT-fg-eOq" id="ph9-jp-6eG"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dmu-vy-eDO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3169" y="1015"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="s4Q-lw-eRL">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GSO-Jl-xhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SpiroModalChildViewControllerScene2" id="2vh-xA-BDJ" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f1R-3F-epq"/>
@@ -97,14 +138,15 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="grE-6C-qOP"/>
                                 <exclude reference="AEW-bs-yEs"/>
-                                <exclude reference="hx1-Sb-odN"/>
                                 <exclude reference="Yzv-lQ-sLn"/>
+                                <exclude reference="grE-6C-qOP"/>
+                                <exclude reference="hx1-Sb-odN"/>
                             </mask>
                         </variation>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GSO-Jl-xhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3175" y="1737"/>
         </scene>

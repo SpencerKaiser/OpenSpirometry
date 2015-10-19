@@ -12,6 +12,7 @@
 		09786C8B1BB8D363006F4315 /* SpiroGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */; settings = {ASSET_TAGS = (); }; };
 		09A6BAA71BAB56B20024360F /* SpiroModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */; settings = {ASSET_TAGS = (); }; };
 		09F933EA1BA752B80041FFB2 /* SpirometerTestAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F933E91BA752B80041FFB2 /* SpirometerTestAnalyzer.m */; };
+		09FB9E081BD428F4005C8507 /* ModalActionPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9E071BD428F4005C8507 /* ModalActionPageViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B63612221B1CC38500289665 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B63612211B1CC38500289665 /* main.m */; };
 		B63612251B1CC38500289665 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B63612241B1CC38500289665 /* AppDelegate.m */; };
 		B636122B1B1CC38500289665 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B63612291B1CC38500289665 /* Main.storyboard */; };
@@ -50,6 +51,8 @@
 		09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiroModalViewController.m; sourceTree = "<group>"; };
 		09F933E81BA7529B0041FFB2 /* SpirometerTestAnalyzer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpirometerTestAnalyzer.h; sourceTree = "<group>"; };
 		09F933E91BA752B80041FFB2 /* SpirometerTestAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpirometerTestAnalyzer.m; sourceTree = "<group>"; };
+		09FB9E061BD428F4005C8507 /* ModalActionPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalActionPageViewController.h; sourceTree = "<group>"; };
+		09FB9E071BD428F4005C8507 /* ModalActionPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalActionPageViewController.m; sourceTree = "<group>"; };
 		B636121C1B1CC38500289665 /* OpenSpirometry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenSpirometry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63612201B1CC38500289665 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B63612211B1CC38500289665 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 		090359ED1BD03AAB00DFC582 /* SpiroModal */ = {
 			isa = PBXGroup;
 			children = (
+				09FB9DFF1BD42236005C8507 /* PageViewControllers */,
 				09A6BAA51BAB56B20024360F /* SpiroModalViewController.h */,
 				09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */,
 				090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */,
@@ -118,6 +122,15 @@
 				09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */,
 			);
 			name = SpiroGame;
+			sourceTree = "<group>";
+		};
+		09FB9DFF1BD42236005C8507 /* PageViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				09FB9E061BD428F4005C8507 /* ModalActionPageViewController.h */,
+				09FB9E071BD428F4005C8507 /* ModalActionPageViewController.m */,
+			);
+			name = PageViewControllers;
 			sourceTree = "<group>";
 		};
 		B63612131B1CC38500289665 = {
@@ -337,6 +350,7 @@
 				09786C8B1BB8D363006F4315 /* SpiroGameViewController.m in Sources */,
 				B636125B1B1DFFB000289665 /* BufferedOverlapQueue.m in Sources */,
 				B63612551B1CEB3C00289665 /* SpirometerEffortAnalyzer.m in Sources */,
+				09FB9E081BD428F4005C8507 /* ModalActionPageViewController.m in Sources */,
 				B6C3FF511B751243000D1B93 /* CubicSpline.m in Sources */,
 				B63612521B1CC70E00289665 /* FFTHelper.m in Sources */,
 				09F933EA1BA752B80041FFB2 /* SpirometerTestAnalyzer.m in Sources */,

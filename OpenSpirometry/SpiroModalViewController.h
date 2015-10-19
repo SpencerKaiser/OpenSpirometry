@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ModalActionPageViewController.h"
 
 //SpiroModalType - Used to determine the purpose of the modal
 typedef enum {
@@ -22,10 +23,11 @@ typedef enum {
 @end
 
 
-@interface SpiroModalViewController : UIViewController<UIPageViewControllerDataSource>
-
+@interface SpiroModalViewController : UIViewController<UIPageViewControllerDataSource,ModalActionPageViewController>
 @property (nonatomic, assign) id<SpiroModalViewController> modalDelegate;
 @property (weak, nonatomic) NSMutableDictionary* modalData;    //Data passed into modal
+// QUESTION: WHY IS ^ STILL RETAINED, THERE ARE NO STRONG REFERENCES TO IT
+
 @property (strong, nonatomic) UIPageViewController* modalPageViewController;
 
 @end
