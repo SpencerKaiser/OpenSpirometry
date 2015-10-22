@@ -31,5 +31,12 @@
     self.noteView.text = self.pageConfig[@"Placeholder"];
 }
 
+-(void)dealloc{
+    NSLog(@"Did dealloc notes view");
+}
+
+//TODO: Add functionality to move modal up when keyboar is active
+//TODO: Add functionality to hide the keyboard when tapping outside
+//TODO: Add functionality to hide the keyboard when tapping the 'done' key
 
 @end

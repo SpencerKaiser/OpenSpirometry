@@ -12,7 +12,7 @@
 
 @interface SpiroModalViewController()
 @property (strong, nonatomic) NSMutableDictionary* modalDismissInfo;
-@property (strong, nonatomic) UIStoryboard* modalPagesStoryboard;
+//@property (strong, nonatomic) UIStoryboard* modalPagesStoryboard;
 @property (strong, nonatomic) NSMutableArray* pageViewControllers;
 
 @end
@@ -32,7 +32,11 @@
             navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                           options:nil];
     self.modalPageViewController.dataSource = self;
-    
+    self.modalPageViewController.delegate = self;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     // Create the array of modal pages (including action page)
     [self createPageSet];
@@ -57,10 +61,10 @@
     self.pageViewControllers = [[NSMutableArray alloc] init];
     
     // Grab reference to the storyboard containing modal pages
-    self.modalPagesStoryboard = [UIStoryboard storyboardWithName:@"SpiroModalPages" bundle:nil];
+    UIStoryboard* modalPagesStoryboard = [UIStoryboard storyboardWithName:@"SpiroModalPages" bundle:nil];
     
     // Instantiate the actionViewController, which is the first item in the array
-    ModalActionPageViewController* actionViewController = [self.modalPagesStoryboard instantiateViewControllerWithIdentifier:@"ModalActionPageViewControllerScene"];
+    ModalActionPageViewController* actionViewController = [modalPagesStoryboard instantiateViewControllerWithIdentifier:@"ModalActionPageViewControllerScene"];
     actionViewController.actionPageDelegate = self;
     
     // Instantiate dictionary to hold actionViewController parameters
@@ -89,7 +93,7 @@
             notePageConfigParams[@"Placeholder"] = @"Enter your note here, then hit the done key on the keyboard save your note.";
             
             // Create notes page and add to pageViewControllers array
-            ModalAddNotesViewController* notePage = [self.modalPagesStoryboard instantiateViewControllerWithIdentifier:@"ModalAddNotesViewControllerScene"];
+            ModalAddNotesViewController* notePage = [modalPagesStoryboard instantiateViewControllerWithIdentifier:@"ModalAddNotesViewControllerScene"];
             notePage.pageConfig = notePageConfigParams;
             [self.pageViewControllers addObject:notePage];
             
@@ -127,6 +131,10 @@
         // Create modal dismiss info object
         self.modalDismissInfo = [[NSMutableDictionary alloc] init];
         
+        //TODO: Grab notes from ModalAddNotesVC
+        
+        //After grabbing all relevant data
+        self.pageViewControllers = nil;
         
         [self.modalDismissInfo setObject:@"Returning from modal!" forKey:@"Notes"];
         [self.modalDelegate modalDismissedWithInfo:self.modalDismissInfo];

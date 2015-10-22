@@ -15,7 +15,7 @@
 @end
 
 @interface ModalActionPageViewController : UIViewController
-@property (nonatomic, assign) id<ModalActionPageViewController> actionPageDelegate;
+@property (nonatomic, weak) id<ModalActionPageViewController> actionPageDelegate;
 @property (strong, nonatomic) NSMutableDictionary* pageConfig;    // Configuration data passed into page on instantiation
 @property (strong, nonatomic) NSMutableDictionary* pageData;      // Data object used to store page data, which will be retrieved by the modal
 @end

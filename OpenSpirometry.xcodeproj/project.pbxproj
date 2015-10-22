@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		090359F41BD1773100DFC582 /* SpiroModalPages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */; settings = {ASSET_TAGS = (); }; };
-		09786C881BB8810F006F4315 /* SpiroCoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C871BB8810F006F4315 /* SpiroCoreViewController.m */; settings = {ASSET_TAGS = (); }; };
-		09786C8B1BB8D363006F4315 /* SpiroGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */; settings = {ASSET_TAGS = (); }; };
-		09A6BAA71BAB56B20024360F /* SpiroModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */; settings = {ASSET_TAGS = (); }; };
-		09F6BA521BD54CD100668F27 /* ModalAddNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F6BA511BD54CD100668F27 /* ModalAddNotesViewController.m */; settings = {ASSET_TAGS = (); }; };
+		090359F41BD1773100DFC582 /* SpiroModalPages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */; };
+		09786C881BB8810F006F4315 /* SpiroCoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C871BB8810F006F4315 /* SpiroCoreViewController.m */; };
+		09786C8B1BB8D363006F4315 /* SpiroGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */; };
+		09A6BAA71BAB56B20024360F /* SpiroModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */; };
+		09F6BA521BD54CD100668F27 /* ModalAddNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F6BA511BD54CD100668F27 /* ModalAddNotesViewController.m */; };
 		09F933EA1BA752B80041FFB2 /* SpirometerTestAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F933E91BA752B80041FFB2 /* SpirometerTestAnalyzer.m */; };
-		09FB9E081BD428F4005C8507 /* ModalActionPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9E071BD428F4005C8507 /* ModalActionPageViewController.m */; settings = {ASSET_TAGS = (); }; };
+		09FB9E081BD428F4005C8507 /* ModalActionPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9E071BD428F4005C8507 /* ModalActionPageViewController.m */; };
 		B63612221B1CC38500289665 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B63612211B1CC38500289665 /* main.m */; };
 		B63612251B1CC38500289665 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B63612241B1CC38500289665 /* AppDelegate.m */; };
 		B636122B1B1CC38500289665 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B63612291B1CC38500289665 /* Main.storyboard */; };
@@ -493,6 +493,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = OpenSpirometry/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SMU.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -505,6 +506,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = OpenSpirometry/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SMU.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

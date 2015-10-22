@@ -23,11 +23,9 @@ typedef enum {
 @end
 
 
-@interface SpiroModalViewController : UIViewController<UIPageViewControllerDataSource,ModalActionPageViewController>
-@property (nonatomic, assign) id<SpiroModalViewController> modalDelegate;
-@property (weak, nonatomic) NSMutableDictionary* modalData;    //Data passed into modal
-// QUESTION: WHY IS ^ STILL RETAINED, THERE ARE NO STRONG REFERENCES TO IT
-
+@interface SpiroModalViewController : UIViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate,ModalActionPageViewController>
+@property (nonatomic, weak) id<SpiroModalViewController> modalDelegate;
+@property (strong, nonatomic) NSMutableDictionary* modalData;    //Data passed into modal
 @property (strong, nonatomic) UIPageViewController* modalPageViewController;
 
 @end
