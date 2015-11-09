@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ModalActionPageViewController.h"
+#import "ModalUserDataViewController.h"
 
 //SpiroModalType - Used to determine the purpose of the modal
 typedef enum {
@@ -23,7 +24,7 @@ typedef enum {
 @end
 
 
-@interface SpiroModalViewController : UIViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate,ModalActionPageViewController>
+@interface SpiroModalViewController : UIViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate,ModalActionPageViewController,ModalUserDataViewController>
 @property (nonatomic, weak) id<SpiroModalViewController> modalDelegate;
 @property (strong, nonatomic) NSMutableDictionary* modalData;    //Data passed into modal
 @property (strong, nonatomic) UIPageViewController* modalPageViewController;

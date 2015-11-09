@@ -14,4 +14,5 @@
 @interface SpiroCoreViewController : UIViewController <SpirometerEffortDelegate, SpiroModalViewController>
 -(void)prepareForGameStart;
 -(void)gameHasEnded;
+-(void)presentIntroModal;
 @end

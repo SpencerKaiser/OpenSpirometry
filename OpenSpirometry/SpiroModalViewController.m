@@ -9,6 +9,7 @@
 #import "SpiroModalViewController.h"
 #import "ModalActionPageViewController.h"
 #import "ModalAddNotesViewController.h"
+#import "ModalUserDataViewController.h"
 
 @interface SpiroModalViewController()
 @property (strong, nonatomic) NSMutableDictionary* modalDismissInfo;
@@ -33,6 +34,7 @@
                           options:nil];
     self.modalPageViewController.dataSource = self;
     self.modalPageViewController.delegate = self;
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -75,7 +77,12 @@
     switch (modalType) {
         case SpiroIntroModal:
         {
-//            self.statusLabel.text = @"SpiroIntroModal";
+            // Create notes page and add to pageViewControllers array
+            ModalUserDataViewController* userDataViewController = [modalPagesStoryboard instantiateViewControllerWithIdentifier:@"ModalUserDataViewControllerScene"];
+            userDataViewController.userDataPageDelegate = self;
+            
+            [self.pageViewControllers addObject:userDataViewController];
+            
             break;
         }
         case SpiroEffortResultsModal:
@@ -110,11 +117,24 @@
     }
     
     // Set params for actionViewController and insert into index 0
-    actionViewController.pageConfig = actionPageConfigParams;
-    [self.pageViewControllers insertObject:actionViewController atIndex:0];
+    if (actionPageConfigParams.count > 1) {
+        actionViewController.pageConfig = actionPageConfigParams;
+        [self.pageViewControllers insertObject:actionViewController atIndex:0];
+    }
+    
+    if (self.pageViewControllers.count == 0) {
+        [NSException raise:@"No Pages Found" format:@"UIPageViewController was given no pages."];
+    }
+
 }
 
 -(void)userActionTaken {
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self returnToPresenter];
+    }];
+}
+
+-(void)userDataSubmitted {
     [self dismissViewControllerAnimated:YES completion:^{
         [self returnToPresenter];
     }];
@@ -145,7 +165,12 @@
 #pragma mark - DATA SOURCE DELEGATION
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController{
-    return self.pageViewControllers.count;
+    if (self.pageViewControllers.count == 1) {
+        return 0;   // Hide page dots if only one page is shown
+    }
+    else {
+        return self.pageViewControllers.count;
+    }
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController{

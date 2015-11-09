@@ -66,8 +66,24 @@
 -(void)modalDismissedWithInfo:(NSDictionary *)modalInfo {
     NSLog(@"Modal Dismissed with message: %@", [modalInfo objectForKey:@"Notes"]);
     
-    //TODO: NEED TO SAVE EFFORT/TEST
+    [self modalDismissed];
     
+    //TODO: NEED TO SAVE EFFORT/TEST
+}
+
+// modalDismissed - OPTIONAL: post-effort modal was dismissed
+-(void)modalDismissed {
+    
+}
+
+
+-(void)presentIntroModal {
+    NSMutableDictionary* modalData = [[NSMutableDictionary alloc] init];
+    modalData[@"ModalType"] = @(SpiroIntroModal);
+    
+    self.spiroTestTransitionModal.modalData = modalData;
+    
+    [self presentViewController:self.spiroTestTransitionModal animated:true completion:nil];
 }
 
 
@@ -95,7 +111,6 @@
     
     NSMutableDictionary* modalData = [[NSMutableDictionary alloc] init];
     modalData[@"ModalType"] = @(SpiroEffortResultsModal);
-    //[modalData setObject:[NSNumber numberWithInt:SpiroEffortResultsModal] forKey:@"ModalType"];
     NSLog(@"%@", [NSNumber numberWithInt:SpiroEffortResultsModal]);
     [modalData setObject:self.latestEffortResults forKey:@"EffortData"];
 
