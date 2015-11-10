@@ -225,7 +225,7 @@
                                             <action selector="actionButtonPressed:" destination="kAg-8f-YEu" eventType="touchUpInside" id="rAw-WM-0jn"/>
                                         </connections>
                                     </button>
-                                    <pickerView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yi5-TF-wfo">
+                                    <pickerView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yi5-TF-wfo">
                                         <rect key="frame" x="30" y="134" width="480" height="135"/>
                                         <animations/>
                                         <variation key="widthClass=compact" ambiguous="YES">
@@ -236,13 +236,13 @@
                                         <rect key="frame" x="224" y="114" width="91" height="20.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="-30" y="-50" width="91" height="20.5"/>
                                         </variation>
                                     </label>
-                                    <pickerView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tr4-ys-MsL">
+                                    <pickerView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tr4-ys-MsL">
                                         <rect key="frame" x="30" y="300" width="480" height="135"/>
                                         <animations/>
                                         <variation key="widthClass=compact" ambiguous="YES">
@@ -253,7 +253,7 @@
                                         <rect key="frame" x="200" y="279" width="139" height="20.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="-30" y="-50" width="139" height="20.5"/>
@@ -266,7 +266,6 @@
                                     <constraint firstItem="tr4-ys-MsL" firstAttribute="leading" secondItem="Yi5-TF-wfo" secondAttribute="trailing" constant="44" id="3PZ-WC-BEs"/>
                                     <constraint firstItem="vgb-ru-lWF" firstAttribute="top" secondItem="Y4g-Te-WnN" secondAttribute="bottom" constant="15" id="5Ar-w9-L6a"/>
                                     <constraint firstItem="Y4g-Te-WnN" firstAttribute="centerX" secondItem="eUa-EZ-uOF" secondAttribute="centerX" id="5PH-09-mnu"/>
-                                    <constraint firstItem="ZGU-Mv-yJK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vgb-ru-lWF" secondAttribute="bottom" constant="10" id="A2B-pz-nhG"/>
                                     <constraint firstItem="XPw-6E-ui5" firstAttribute="centerX" secondItem="eUa-EZ-uOF" secondAttribute="centerX" id="DOo-6g-Ds3"/>
                                     <constraint firstItem="rd4-Xa-C2a" firstAttribute="top" secondItem="vgb-ru-lWF" secondAttribute="bottom" constant="15" id="ETf-XT-gpk"/>
                                     <constraint firstAttribute="bottom" secondItem="XPw-6E-ui5" secondAttribute="bottom" constant="30" id="EzZ-tc-IfA">
@@ -296,7 +295,7 @@
                                     </constraint>
                                     <constraint firstItem="vgb-ru-lWF" firstAttribute="centerX" secondItem="eUa-EZ-uOF" secondAttribute="centerX" id="dkE-C8-nFk"/>
                                     <constraint firstAttribute="bottom" secondItem="XPw-6E-ui5" secondAttribute="bottom" constant="30" id="eeT-em-5IH"/>
-                                    <constraint firstItem="XPw-6E-ui5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tr4-ys-MsL" secondAttribute="bottom" constant="25" id="f6r-rl-Tts"/>
+                                    <constraint firstItem="XPw-6E-ui5" firstAttribute="top" secondItem="tr4-ys-MsL" secondAttribute="bottom" constant="25" id="f6r-rl-Tts"/>
                                     <constraint firstItem="Yi5-TF-wfo" firstAttribute="leading" secondItem="eUa-EZ-uOF" secondAttribute="leading" constant="30" id="g0z-xG-T2C"/>
                                     <constraint firstItem="ZGU-Mv-yJK" firstAttribute="centerX" secondItem="eUa-EZ-uOF" secondAttribute="centerX" id="g3R-sL-AdY"/>
                                     <constraint firstItem="tr4-ys-MsL" firstAttribute="width" secondItem="Yi5-TF-wfo" secondAttribute="width" id="hxA-W5-oo7"/>
@@ -332,7 +331,6 @@
                                         <exclude reference="PsT-3u-iTO"/>
                                         <exclude reference="cTV-m9-M02"/>
                                         <exclude reference="dkE-C8-nFk"/>
-                                        <exclude reference="A2B-pz-nhG"/>
                                         <exclude reference="Z7w-bS-QSs"/>
                                         <exclude reference="g3R-sL-AdY"/>
                                         <exclude reference="kn2-1a-bnJ"/>
@@ -392,7 +390,6 @@
                                         <include reference="jZQ-K1-AXf"/>
                                         <include reference="5Ar-w9-L6a"/>
                                         <include reference="cTV-m9-M02"/>
-                                        <include reference="A2B-pz-nhG"/>
                                         <include reference="g3R-sL-AdY"/>
                                         <include reference="KdC-LA-NIv"/>
                                         <include reference="MYM-TG-tJU"/>

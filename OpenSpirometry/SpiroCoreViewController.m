@@ -17,8 +17,14 @@
 @property (strong, nonatomic) SpirometerEffortAnalyzer* effortAnalyzer;
 @property (strong, nonatomic) SpirometerTestAnalyzer* testAnalyzer;
 @property (strong, nonatomic) NSDictionary* latestEffortResults;
+
+@property (strong, nonatomic) NSString* userDataFilePath;
+@property (strong, nonatomic) NSMutableArray* userDataFile;
+@property (strong, nonatomic) NSMutableDictionary* currentTest;
+
 @property (nonatomic, assign) SpiroTestState spiroTestStatus;
 @property (nonatomic, assign) SpiroModalType modalType;
+
 
 // UI ELEMENTS
 @property (strong, nonatomic) SpiroModalViewController* spiroTestTransitionModal;
@@ -68,10 +74,23 @@
 -(void)modalDismissedWithInfo:(NSDictionary *)modalInfo {
     switch (self.modalType) {
         case SpiroIntroModal:
-            NSLog(@"ID : %@", modalInfo[@"ID"]);
+        {
+            NSString* userID = modalInfo[@"ID"];
+            NSLog(@"ID : %@", userID);
             NSLog(@"Mouthpiece : %@", modalInfo[@"Mouthpiece"]);
             NSLog(@"Downstream Tube : %@", modalInfo[@"Downstream Tube"]);
+            
+            [self getUserDataJSON:modalInfo];   // Retrieve existing user data file or create one if none exists
+            [self writeUserDataToMemory];       // Store new user data file with test data (whistle config)
+            
             break;
+        }
+        case SpiroEffortResultsModal:
+        {
+            [self.currentTest[@"Efforts"] addObject:self.latestEffortResults];
+            [self writeUserDataToMemory];
+            break;
+        }
         default:
             NSLog(@"Modal Dismissed...");
             break;
@@ -82,6 +101,8 @@
     //TODO: NEED TO SAVE EFFORT/TEST
     //TODO: Write user data to UIDocuments file
 }
+
+
 
 // Optional method which can be implemented by subclasses to
 -(void)modalDismissed {
@@ -108,6 +129,47 @@
     self.spiroTestTransitionModal.modalData = modalData;
     
     [self presentViewController:self.spiroTestTransitionModal animated:true completion:nil];
+}
+
+# pragma mark - PERSISTENT USER DATA STORAGE
+
+-(void)getUserDataJSON:(NSDictionary*)userInfo {
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* documents = [paths firstObject];
+    self.userDataFilePath = [NSString stringWithFormat:@"%@/%@.json", documents, userInfo[@"ID"]];
+    NSLog(@"File Path: %@", self.userDataFilePath);
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:self.userDataFilePath]) {
+        // File for user exists...
+        // Read raw data into NSData object
+        NSData* rawUserData = [[NSData alloc] initWithContentsOfFile:self.userDataFilePath];
+        // Extract JSON from raw data and store in mutable array
+        self.userDataFile = [NSJSONSerialization JSONObjectWithData:rawUserData options:NSJSONReadingMutableContainers error:nil];
+    } else {
+        // File for user does not exist...
+        // Create mutable array to contain all user file data
+        self.userDataFile = [[NSMutableArray alloc] init];
+    }
+    
+    // Create a new test object for the user, add config info, add empty array for efforts
+    self.currentTest = [[NSMutableDictionary alloc] init];
+    self.currentTest[@"Downstream Tube"] = userInfo[@"Downstream Tube"];     // Save Downstream Tube info
+    self.currentTest[@"Mouthpiece"] = userInfo[@"Mouthpiece"];               // Save Mouthpiece info
+    self.currentTest[@"Efforts"] = [[NSMutableArray alloc] init];            // Create empty array to hold efforts for this test
+    
+    // Add current test to 'Tests' belonging to the uer
+    [self.userDataFile addObject:self.currentTest];
+    
+    // Wrtie the updated/new file to memory
+    [self writeUserDataToMemory];
+}
+
+-(void)writeUserDataToMemory {
+    // Create JSON encoded file from current user data (which may or may not be complete)
+    NSData* JSONFile = [NSJSONSerialization dataWithJSONObject:self.userDataFile options:0 error:nil];     // Encode updated user data file as JSON
+    
+    // Write updated user data to memory
+    [JSONFile writeToFile:self.userDataFilePath atomically:NO];                        // Write updated file back to memory
 }
 
 
