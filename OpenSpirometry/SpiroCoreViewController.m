@@ -43,6 +43,7 @@
     
     // **for debugging**: this turns on the debug mode for reading the effort from a file (only wav currently supported)
     [self.effortAnalyzer activateDebugAudioModeWithWAVFile:@"VortexWhistleRed"]; // default audio file name
+    [self.effortAnalyzer shouldSaveSeparateEffortsToDocumentDirectory:YES];
     
 #pragma mark Test Analyzer
     //-----------TEST ANALYZER-----------
@@ -214,6 +215,10 @@
     self.latestEffortResults = results;
     
     NSLog(@"[super] didEndEffortWithResults");
+    
+    //------------------------------------------------
+    //TODO: Grab file name from the results dictionary
+    //------------------------------------------------
     
     // Not sure if this should be saved to the property or if this line should just be deleteds
 //    SpiroTestState currentTestState = [self.testAnalyzer getCurrentSpiroTestState];
