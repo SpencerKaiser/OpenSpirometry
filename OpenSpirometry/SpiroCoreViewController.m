@@ -18,6 +18,7 @@
 @property (strong, nonatomic) SpirometerTestAnalyzer* testAnalyzer;
 @property (strong, nonatomic) NSDictionary* latestEffortResults;
 @property (nonatomic, assign) SpiroTestState spiroTestStatus;
+@property (nonatomic, assign) SpiroModalType modalType;
 
 // UI ELEMENTS
 @property (strong, nonatomic) SpiroModalViewController* spiroTestTransitionModal;
@@ -61,17 +62,27 @@
 }
 
 
-#pragma mark - UI TRANSITIONS
+#pragma mark - MODAL INTERACTIONS
 
 -(void)modalDismissedWithInfo:(NSDictionary *)modalInfo {
-    NSLog(@"Modal Dismissed with message: %@", [modalInfo objectForKey:@"Notes"]);
+    switch (self.modalType) {
+        case SpiroIntroModal:
+            NSLog(@"ID : %@", modalInfo[@"ID"]);
+            NSLog(@"Mouthpiece : %@", modalInfo[@"Mouthpiece"]);
+            NSLog(@"Downstream Tube : %@", modalInfo[@"Downstream Tube"]);
+            break;
+        default:
+            NSLog(@"Modal Dismissed...");
+            break;
+    }
     
     [self modalDismissed];
     
     //TODO: NEED TO SAVE EFFORT/TEST
+    //TODO: Write user data to UIDocuments file
 }
 
-// modalDismissed - OPTIONAL: post-effort modal was dismissed
+// Optional method which can be implemented by subclasses to
 -(void)modalDismissed {
     
 }
@@ -79,7 +90,19 @@
 
 -(void)presentIntroModal {
     NSMutableDictionary* modalData = [[NSMutableDictionary alloc] init];
-    modalData[@"ModalType"] = @(SpiroIntroModal);
+    self.modalType = SpiroIntroModal;
+    modalData[@"ModalType"] = @(self.modalType);
+    
+    self.spiroTestTransitionModal.modalData = modalData;
+    
+    [self presentViewController:self.spiroTestTransitionModal animated:true completion:nil];
+}
+
+-(void)presentEffortResultsModal {
+    NSMutableDictionary* modalData = [[NSMutableDictionary alloc] init];
+    self.modalType = SpiroEffortResultsModal;
+    modalData[@"ModalType"] = @(self.modalType);
+    [modalData setObject:self.latestEffortResults forKey:@"EffortData"];
     
     self.spiroTestTransitionModal.modalData = modalData;
     
@@ -109,14 +132,7 @@
 -(void)gameHasEnded {
     // DISPLAY RESULTS
     
-    NSMutableDictionary* modalData = [[NSMutableDictionary alloc] init];
-    modalData[@"ModalType"] = @(SpiroEffortResultsModal);
-    NSLog(@"%@", [NSNumber numberWithInt:SpiroEffortResultsModal]);
-    [modalData setObject:self.latestEffortResults forKey:@"EffortData"];
-
-    self.spiroTestTransitionModal.modalData = modalData;
-    
-    [self presentViewController:self.spiroTestTransitionModal animated:true completion:nil];
+    [self presentEffortResultsModal];
 }
 
 

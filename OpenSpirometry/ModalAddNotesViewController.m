@@ -29,14 +29,23 @@
     self.noteLabel.text = self.pageConfig[@"Label"];
     self.noteDescription.text = self.pageConfig[@"Description"];
     self.noteView.text = self.pageConfig[@"Placeholder"];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
 }
 
 -(void)dealloc{
     NSLog(@"Did dealloc notes view");
 }
 
+-(void)dismissKeyboard {
+    [self.noteView resignFirstResponder];
+}
+
 //TODO: Add functionality to move modal up when keyboar is active
-//TODO: Add functionality to hide the keyboard when tapping outside
-//TODO: Add functionality to hide the keyboard when tapping the 'done' key
+//TODO: Add 'done' toolbar above keyboard
 
 @end

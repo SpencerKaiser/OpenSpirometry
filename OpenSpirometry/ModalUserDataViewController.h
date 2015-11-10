@@ -10,7 +10,7 @@
 
 @protocol ModalUserDataViewController <NSObject>
 
--(void)userDataSubmitted;
+-(void)userDataSubmitted:(NSMutableDictionary*)userData;
 
 @end
 

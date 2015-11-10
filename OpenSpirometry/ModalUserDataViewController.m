@@ -34,6 +34,20 @@
     
     self.downstreamTubePicker.delegate = self;
     self.downstreamTubePicker.dataSource = self;
+    
+    self.actionButton.enabled = false;
+    
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    
+    [self.userIDField addTarget:self
+                         action:@selector(userIDFieldChanged:)
+               forControlEvents:UIControlEventEditingChanged];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,11 +56,37 @@
 }
 
 - (IBAction)actionButtonPressed:(id)sender {
-    if([self.userDataPageDelegate respondsToSelector:@selector(userDataSubmitted)])
+    if([self.userDataPageDelegate respondsToSelector:@selector(userDataSubmitted:)])
     {
-        [self.userDataPageDelegate userDataSubmitted];
+        NSMutableDictionary* userData = [[NSMutableDictionary alloc] init];
+        userData[@"ID"] = self.userIDField.text;
+        
+        NSInteger selectedRow = [self.mouthpiecePicker selectedRowInComponent:0];   //Get the selected row of component 0 (only component)
+        userData[@"Mouthpiece"] = [self.mouthpieces objectAtIndex:selectedRow];
+        
+        selectedRow = [self.downstreamTubePicker selectedRowInComponent:0];
+        userData[@"Downstream Tube"] = [self.downstreamTubes objectAtIndex:selectedRow];
+        
+        [self.userDataPageDelegate userDataSubmitted:userData];
     } else {
         [NSException raise:@"Delegate must implement functionality for userDataSubmitted" format:@"This method is required for core functionality."];
+    }
+}
+
+-(void)dismissKeyboard {
+    [self.userIDField resignFirstResponder];
+}
+
+-(void)userIDFieldChanged:(UITextField *)userIDField {
+    // If length is > 1, enable submit button
+    // If length == 3, dismiss keyboard
+    if (self.userIDField.text.length >= 1) {
+        self.actionButton.enabled = true;
+        if (self.userIDField.text.length >= 3) {
+            [self dismissKeyboard];
+        }
+    } else {
+        self.actionButton.enabled = false;
     }
 }
 

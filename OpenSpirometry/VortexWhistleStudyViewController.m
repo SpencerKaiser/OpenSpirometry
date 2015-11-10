@@ -57,17 +57,17 @@
 
 -(void)readyForGameStart{
     self.titleLabel.text = @"Calibration Complete";
-    self.descriptionLabel.text = @"Ready to begin effort; start when ready!";
+    self.descriptionLabel.text = @"Start when ready";
 }
 
 -(void)userBeganTest {
     self.titleLabel.text = @"EXHALE!";
-    self.descriptionLabel.text = @"Keep going!";
+    self.descriptionLabel.text = @"Keep going";
 }
 
 -(void)userNearingCompletion {
     self.titleLabel.text = @"ALMOST THERE!";
-    self.descriptionLabel.text = @"Exhale as long as possible!";
+    self.descriptionLabel.text = @"Exhale as long as possible";
 }
 
 -(void)userFinishedTest {

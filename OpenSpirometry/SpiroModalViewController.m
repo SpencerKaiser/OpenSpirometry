@@ -35,6 +35,8 @@
     self.modalPageViewController.dataSource = self;
     self.modalPageViewController.delegate = self;
     
+    // Create dictionary to hold modal dismiss info
+    self.modalDismissInfo = [[NSMutableDictionary alloc] init];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -134,8 +136,9 @@
     }];
 }
 
--(void)userDataSubmitted {
+-(void)userDataSubmitted:(NSMutableDictionary*)userData {
     [self dismissViewControllerAnimated:YES completion:^{
+        [self.modalDismissInfo addEntriesFromDictionary:userData];
         [self returnToPresenter];
     }];
 }
@@ -147,9 +150,6 @@
         // Check all data objects of the currentPages object and grab any relevant data
         // Use object watches?
         
-        
-        // Create modal dismiss info object
-        self.modalDismissInfo = [[NSMutableDictionary alloc] init];
         
         //TODO: Grab notes from ModalAddNotesVC
         
