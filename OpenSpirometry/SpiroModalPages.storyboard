@@ -267,7 +267,6 @@
                                     <constraint firstItem="vgb-ru-lWF" firstAttribute="top" secondItem="Y4g-Te-WnN" secondAttribute="bottom" constant="15" id="5Ar-w9-L6a"/>
                                     <constraint firstItem="Y4g-Te-WnN" firstAttribute="centerX" secondItem="eUa-EZ-uOF" secondAttribute="centerX" id="5PH-09-mnu"/>
                                     <constraint firstItem="ZGU-Mv-yJK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vgb-ru-lWF" secondAttribute="bottom" constant="10" id="A2B-pz-nhG"/>
-                                    <constraint firstItem="Yi5-TF-wfo" firstAttribute="centerY" secondItem="tr4-ys-MsL" secondAttribute="centerY" id="CrF-ew-1Qg"/>
                                     <constraint firstItem="XPw-6E-ui5" firstAttribute="centerX" secondItem="eUa-EZ-uOF" secondAttribute="centerX" id="DOo-6g-Ds3"/>
                                     <constraint firstItem="rd4-Xa-C2a" firstAttribute="top" secondItem="vgb-ru-lWF" secondAttribute="bottom" constant="15" id="ETf-XT-gpk"/>
                                     <constraint firstAttribute="bottom" secondItem="XPw-6E-ui5" secondAttribute="bottom" constant="30" id="EzZ-tc-IfA">
@@ -317,7 +316,6 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="CrF-ew-1Qg"/>
                                         <exclude reference="I0y-9A-vv6"/>
                                         <exclude reference="JKk-Os-KcX"/>
                                         <exclude reference="JO9-1v-97a"/>
@@ -362,7 +360,6 @@
                                 </variation>
                                 <variation key="heightClass=compact">
                                     <mask key="constraints">
-                                        <include reference="CrF-ew-1Qg"/>
                                         <include reference="XJs-Fo-8kk"/>
                                         <include reference="d2E-24-aMV"/>
                                         <include reference="i8B-Tv-Rrl"/>

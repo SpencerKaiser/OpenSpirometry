@@ -25,7 +25,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.mouthpieces = [NSArray arrayWithObjects:@"Mouthpiece A (Blue)", @"Mouthpiece B (Red)", @"Mouthpiece C (Green)", @"Mouthpiece D (Yellow)", @"Mouthpiece E (Black)", nil];
+    self.mouthpieces = [NSArray arrayWithObjects:
+                        @"Mouthpiece A (Blue)",
+                        @"Mouthpiece B (Red)",
+                        @"Mouthpiece C (Green)",
+                        @"Mouthpiece D (Yellow)",
+                        @"Mouthpiece E (Black)",
+                        nil];
     
     self.downstreamTubes = [NSArray arrayWithObjects:@"Downstream A (Blue)", @"Downstream B (Red)", @"Downstream C (Green)", @"Downstream D (Yellow)", @"Downstream E (Black)", nil];
     
