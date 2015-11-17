@@ -56,6 +56,10 @@
     self.testAnalyzer = [[SpirometerTestAnalyzer alloc] init];
     self.spiroTestStatus = [self.testAnalyzer getCurrentSpiroTestState];
     
+    // ** for vortex whistle testing **
+    // Set test type as fixed duration; test will end after exactly 5 efforts
+    [self.testAnalyzer setSpiroTestType:SpiroTestTypeFixedDuration];
+    
 #pragma mark Required UI Components
     //----------------UI-----------------
     // Declare self as the presentation context
@@ -99,7 +103,6 @@
     [self modalDismissed];
     
     //TODO: NEED TO SAVE EFFORT/TEST
-    //TODO: Write user data to UIDocuments file
 }
 
 
@@ -138,6 +141,8 @@
     NSString* documents = [paths firstObject];
     self.userDataFilePath = [NSString stringWithFormat:@"%@/%@.json", documents, userInfo[@"ID"]];
     NSLog(@"File Path: %@", self.userDataFilePath);
+    
+    //TODO: Create util to convert data to json object
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:self.userDataFilePath]) {
         // File for user exists...
@@ -186,6 +191,8 @@
 // • User should be prompted to be as silent as possible BEFORE calling this function
 // • Callback function calibrationDidFinish will be called when finished
 -(void)prepareForGameStart {
+    
+    // CHECK IF USER IS CURRENTLY USING MICROPHONE (CALL)
     [self startSpiroEffort];
 }
 
@@ -283,8 +290,8 @@
     //------------------------------------------------
     
     // Not sure if this should be saved to the property or if this line should just be deleteds
-//    SpiroTestState currentTestState = [self.testAnalyzer getCurrentSpiroTestState];
-
+    // SpiroTestState currentTestState = [self.testAnalyzer getCurrentSpiroTestState];
+    
     [self userFinishedTest];
     
     // TODO: Implement SpiroState Switch
@@ -293,11 +300,11 @@
 }
 
 -(void)didUpdateFlow:(float)flowInLitersPerSecond andVolume:(float)volumeInLiters {
-//    NSLog(@"[super] didUpdateFlow");
+    //    NSLog(@"[super] didUpdateFlow");
 }
 
 -(void)didUpdateAudioBufferWithMaximum:(float)maxAudioValue {
-//    NSLog(@"[super] didUpdateAudioBufferWithMaximum");
+    //    NSLog(@"[super] didUpdateAudioBufferWithMaximum");
 }
 
 

@@ -91,7 +91,7 @@
         {
             // Create action page configurations
             actionPageConfigParams[@"Label"] = @"Effort Complete";
-            actionPageConfigParams[@"Description"] = @"You completed 1 effort. You still need at least 2 more to complete the test, however, it may take up to 4 additional efforts. When you're ready, hit the continue button below.";
+            actionPageConfigParams[@"Description"] = @"You completed an effort, but you still need more to complete the test. When you're ready, hit the continue button below.";
             actionPageConfigParams[@"Button"] = @"Continue to Next Effort";
             
             

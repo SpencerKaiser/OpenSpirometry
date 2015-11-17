@@ -9,11 +9,12 @@
 #import "SpirometerTestAnalyzer.h"
 #import <Foundation/Foundation.h>
 
-
+#define numEffortsForFixedDurationType 5
 
 @interface SpirometerTestAnalyzer()
 @property (nonatomic, strong) NSMutableDictionary* testData;
 @property (nonatomic, assign) SpiroTestState currentState;
+@property (nonatomic, assign) SpiroTestType testType;
 @end
 
 
@@ -47,6 +48,8 @@
     //This will be done within the init() function, prior to returning a copy of this object to its calling function
     [self createTestDataContainer];
     self.currentState = SpiroTestStateNoEffortsAdded;
+    
+    self.testType = SpiroTestTypeStandard;  //Default test type is set to standard
 }
 
 
@@ -96,6 +99,10 @@
     // This will be the outlet to the other portion of the app which saves the data to core data for future access
 }
 
+-(void)setSpiroTestType:(SpiroTestType)testType{
+    self.testType = testType;
+}
+
 
 #pragma mark - PRIVATE INTERFACE
 -(void)evaluateEfforts {
@@ -103,14 +110,35 @@
     // This function should test to see if the data is satisfactory or if the test should end
     // Once the evaluation is complete, the current state is saved into self.currentState
     
-    //If the results are satisfactory, or if 5 efforts have been added, end the test
-    if (self.testData.count >= 4 || self.testData.count >= 5) {
-        self.currentState = SpiroTestStateTestComplete;
-    }
-    else {
-        self.currentState = SpiroTestStateInsufficient;
-    }
+    // TODO: Split functionality into individual methods
+    // This switch will call functions depending on the valu of testType
     
+    switch (self.testType) {
+        case SpiroTestTypeStandard:
+        {
+            if (self.testData.count >= 4 || self.testData.count >= 5) {
+                self.currentState = SpiroTestStateTestComplete;
+            }
+            else {
+                self.currentState = SpiroTestStateInsufficient;
+            }
+            break;
+        }
+        case SpiroTestTypeFixedDuration:
+        {
+            // Grab reference to current efforts for test (including recently added effort)
+            NSMutableArray* efforts = [self.testData objectForKey:@"efforts"];
+            
+            // Evaluate number of efforts against the defined number needed for a fixed duration test
+            if (efforts.count < numEffortsForFixedDurationType) {
+                self.currentState = SpiroTestStateInsufficient;
+            }
+            else if (efforts.count >= numEffortsForFixedDurationType) {
+                self.currentState = SpiroTestStateTestComplete;
+            }
+            break;
+        }
+    }
 }
 
 -(void)createTestDataContainer {

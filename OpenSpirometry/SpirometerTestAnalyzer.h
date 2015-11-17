@@ -18,6 +18,11 @@ typedef enum {
     SpiroTestStateInsufficient
 } SpiroTestState;
 
+typedef enum {
+    SpiroTestTypeStandard,          // Min of 3 tests, stop once requirements are met OR after 5 tests
+    SpiroTestTypeFixedDuration      // Stop after 5 tests, do not evaluate results
+} SpiroTestType;
+
 @interface SpirometerTestAnalyzer : NSObject
 
 -(SpiroTestState)addEffortResults:(NSDictionary*)effortResults;
@@ -26,5 +31,6 @@ typedef enum {
 -(void)clearAllEfforts;
 -(void)addTestNotes:(NSString*)testNotes;
 -(void)saveToPersistentStore;
+-(void)setSpiroTestType:(SpiroTestType)testType;
 
 @end
