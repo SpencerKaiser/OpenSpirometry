@@ -14,9 +14,6 @@
 		091D17901BFB9C510044D830 /* FFTHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D17881BFB9C510044D830 /* FFTHelper.m */; };
 		091D17911BFB9C510044D830 /* Novocaine.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D178A1BFB9C510044D830 /* Novocaine.m */; };
 		091D17921BFB9C510044D830 /* PeakFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D178C1BFB9C510044D830 /* PeakFinder.m */; };
-		091D179B1BFB9CF80044D830 /* FlowVolumeDataAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D17951BFB9CF80044D830 /* FlowVolumeDataAnalyzer.m */; };
-		091D179C1BFB9CF80044D830 /* SpirometerEffortAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D17981BFB9CF80044D830 /* SpirometerEffortAnalyzer.m */; };
-		091D179D1BFB9CF80044D830 /* SpirometryWhistle.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D179A1BFB9CF80044D830 /* SpirometryWhistle.m */; };
 		09227E291BE81C8900FCE6AD /* VortexWhistleStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09227E281BE81C8900FCE6AD /* VortexWhistleStudyViewController.m */; };
 		09786C881BB8810F006F4315 /* SpiroCoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C871BB8810F006F4315 /* SpiroCoreViewController.m */; };
 		09786C8B1BB8D363006F4315 /* SpiroGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */; };
@@ -58,13 +55,6 @@
 		091D178A1BFB9C510044D830 /* Novocaine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Novocaine.m; path = AudioDSPUtils/Novocaine.m; sourceTree = "<group>"; };
 		091D178B1BFB9C510044D830 /* PeakFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeakFinder.h; path = AudioDSPUtils/PeakFinder.h; sourceTree = "<group>"; };
 		091D178C1BFB9C510044D830 /* PeakFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeakFinder.m; path = AudioDSPUtils/PeakFinder.m; sourceTree = "<group>"; };
-		091D17941BFB9CF80044D830 /* FlowVolumeDataAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlowVolumeDataAnalyzer.h; path = OpenSpirometryCore/FlowVolumeDataAnalyzer.h; sourceTree = "<group>"; };
-		091D17951BFB9CF80044D830 /* FlowVolumeDataAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlowVolumeDataAnalyzer.m; path = OpenSpirometryCore/FlowVolumeDataAnalyzer.m; sourceTree = "<group>"; };
-		091D17961BFB9CF80044D830 /* SpirometerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpirometerConstants.h; path = OpenSpirometryCore/SpirometerConstants.h; sourceTree = "<group>"; };
-		091D17971BFB9CF80044D830 /* SpirometerEffortAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpirometerEffortAnalyzer.h; path = OpenSpirometryCore/SpirometerEffortAnalyzer.h; sourceTree = "<group>"; };
-		091D17981BFB9CF80044D830 /* SpirometerEffortAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpirometerEffortAnalyzer.m; path = OpenSpirometryCore/SpirometerEffortAnalyzer.m; sourceTree = "<group>"; };
-		091D17991BFB9CF80044D830 /* SpirometryWhistle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpirometryWhistle.h; path = OpenSpirometryCore/SpirometryWhistle.h; sourceTree = "<group>"; };
-		091D179A1BFB9CF80044D830 /* SpirometryWhistle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpirometryWhistle.m; path = OpenSpirometryCore/SpirometryWhistle.m; sourceTree = "<group>"; };
 		09227E271BE81C8900FCE6AD /* VortexWhistleStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VortexWhistleStudyViewController.h; sourceTree = "<group>"; };
 		09227E281BE81C8900FCE6AD /* VortexWhistleStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VortexWhistleStudyViewController.m; sourceTree = "<group>"; };
 		09786C861BB8810F006F4315 /* SpiroCoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiroCoreViewController.h; sourceTree = "<group>"; };
@@ -149,20 +139,6 @@
 				091D178C1BFB9C510044D830 /* PeakFinder.m */,
 			);
 			name = AudioDSPUtils;
-			sourceTree = "<group>";
-		};
-		091D17931BFB9CC30044D830 /* OpenSpirometryCore */ = {
-			isa = PBXGroup;
-			children = (
-				091D17941BFB9CF80044D830 /* FlowVolumeDataAnalyzer.h */,
-				091D17951BFB9CF80044D830 /* FlowVolumeDataAnalyzer.m */,
-				091D17961BFB9CF80044D830 /* SpirometerConstants.h */,
-				091D17971BFB9CF80044D830 /* SpirometerEffortAnalyzer.h */,
-				091D17981BFB9CF80044D830 /* SpirometerEffortAnalyzer.m */,
-				091D17991BFB9CF80044D830 /* SpirometryWhistle.h */,
-				091D179A1BFB9CF80044D830 /* SpirometryWhistle.m */,
-			);
-			name = OpenSpirometryCore;
 			sourceTree = "<group>";
 		};
 		09FB9DFF1BD42236005C8507 /* ModalPages */ = {
@@ -257,7 +233,6 @@
 		B63612621B1FF93D00289665 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				091D17931BFB9CC30044D830 /* OpenSpirometryCore */,
 				091D17801BFB9C420044D830 /* AudioDSPUtils */,
 			);
 			name = Dependencies;
@@ -369,13 +344,11 @@
 				09786C881BB8810F006F4315 /* SpiroCoreViewController.m in Sources */,
 				09786C8B1BB8D363006F4315 /* SpiroGameViewController.m in Sources */,
 				09F6BA521BD54CD100668F27 /* ModalAddNotesViewController.m in Sources */,
-				091D179B1BFB9CF80044D830 /* FlowVolumeDataAnalyzer.m in Sources */,
 				09BD47B21BE8AB63000CF238 /* ModalUserDataViewController.m in Sources */,
 				091D17921BFB9C510044D830 /* PeakFinder.m in Sources */,
 				09FB9E081BD428F4005C8507 /* ModalActionPageViewController.m in Sources */,
 				09227E291BE81C8900FCE6AD /* VortexWhistleStudyViewController.m in Sources */,
 				09F933EA1BA752B80041FFB2 /* SpirometerTestAnalyzer.m in Sources */,
-				091D179C1BFB9CF80044D830 /* SpirometerEffortAnalyzer.m in Sources */,
 				091D17911BFB9C510044D830 /* Novocaine.m in Sources */,
 				091D178D1BFB9C510044D830 /* BufferedOverlapQueue.m in Sources */,
 				09A6BAA71BAB56B20024360F /* SpiroModalViewController.m in Sources */,
@@ -383,7 +356,6 @@
 				091D178F1BFB9C510044D830 /* DataBufferBlock.m in Sources */,
 				091D178E1BFB9C510044D830 /* CubicSpline.m in Sources */,
 				091D17901BFB9C510044D830 /* FFTHelper.m in Sources */,
-				091D179D1BFB9CF80044D830 /* SpirometryWhistle.m in Sources */,
 				B63612221B1CC38500289665 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
