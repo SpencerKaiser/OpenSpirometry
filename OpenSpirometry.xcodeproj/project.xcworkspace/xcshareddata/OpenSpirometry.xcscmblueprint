@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1B67554B564034854E05F23C825F6F74D9D36905",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "6276745F5C115DD36DD70410807058522B45943E" : 0,
+    "FB0C9B5BDAD20F6850F5A473142595ABD1744F9B" : 0,
+    "1B67554B564034854E05F23C825F6F74D9D36905" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "209747C3-2F63-4C36-9CBE-C72C5135396C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "6276745F5C115DD36DD70410807058522B45943E" : "OpenSpirometry\/OpenSpirometry\/AudioDSPUtils\/",
+    "FB0C9B5BDAD20F6850F5A473142595ABD1744F9B" : "OpenSpirometry\/OpenSpirometry\/OpenSpirometryCore\/",
+    "1B67554B564034854E05F23C825F6F74D9D36905" : "OpenSpirometry"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "OpenSpirometry",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "OpenSpirometry.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SpencerKaiser\/OpenSpirometry.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1B67554B564034854E05F23C825F6F74D9D36905"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SMU-Ubicomp-Lab\/AudioDSPUtils.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6276745F5C115DD36DD70410807058522B45943E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SMU-Ubicomp-Lab\/OpenSpirometryCore.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FB0C9B5BDAD20F6850F5A473142595ABD1744F9B"
+    }
+  ]
+}
