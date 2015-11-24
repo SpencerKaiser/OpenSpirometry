@@ -60,6 +60,9 @@
     //----------------UI-----------------
     // Declare self as the presentation context
     self.definesPresentationContext = YES;
+}
+
+-(void)createModal {
     // Instantiate and configure SpiroModalViewController (no scene on storyboard)
     self.spiroTestTransitionModal = [[SpiroModalViewController alloc] init];
     self.spiroTestTransitionModal.modalPresentationStyle = UIModalPresentationOverCurrentContext;
@@ -67,11 +70,9 @@
     self.spiroTestTransitionModal.modalDelegate = self;
 }
 
-
 #pragma mark - MODAL INTERACTIONS
 
 -(void)modalDismissedWithInfo:(NSDictionary *)modalInfo {
-//    SpiroTestState testState;
     switch (self.modalType) {
         case SpiroIntroModal:
         {
@@ -103,11 +104,15 @@
             break;
     }
     
+    // Free Modal Memory
+    self.spiroTestTransitionModal = nil;
+    
+    
     // Notify game that modal has been closed
     [self modalDismissed];
     
     if ([self.testAnalyzer getCurrentSpiroTestState] == SpiroTestStateTestComplete) {
-        [self presentCompletionModal];
+        [self presentModalOfType:SpiroCompletionModal];
     }
 
 }
@@ -119,36 +124,61 @@
 
 }
 
-
--(void)presentIntroModal {
+-(void)presentModalOfType:(SpiroModalType) modalType {
+    [self createModal];
     NSMutableDictionary* modalData = [[NSMutableDictionary alloc] init];
-    self.modalType = SpiroIntroModal;
-    modalData[@"ModalType"] = @(self.modalType);
+    
+    switch (modalType) {
+        case SpiroIntroModal:
+            self.modalType = SpiroIntroModal;
+            modalData[@"ModalType"] = @(self.modalType);
+            break;
+        case SpiroEffortResultsModal:
+            self.modalType = SpiroEffortResultsModal;
+            modalData[@"ModalType"] = @(self.modalType);
+            [modalData setObject:self.latestEffortResults forKey:@"EffortData"];
+            break;
+        case SpiroCompletionModal:
+            modalData[@"ModalType"] = @(SpiroCompletionModal);
+            break;
+        default:
+            break;
+    }
     
     self.spiroTestTransitionModal.modalData = modalData;
-    
     [self presentViewController:self.spiroTestTransitionModal animated:true completion:nil];
 }
 
--(void)presentEffortResultsModal {
-    NSMutableDictionary* modalData = [[NSMutableDictionary alloc] init];
-    self.modalType = SpiroEffortResultsModal;
-    modalData[@"ModalType"] = @(self.modalType);
-    [modalData setObject:self.latestEffortResults forKey:@"EffortData"];
-    
-    self.spiroTestTransitionModal.modalData = modalData;
-    
-    [self presentViewController:self.spiroTestTransitionModal animated:true completion:nil];
-}
 
--(void)presentCompletionModal {
-    NSMutableDictionary* modalData = [[NSMutableDictionary alloc] init];
-    modalData[@"ModalType"] = @(SpiroCompletionModal);
-    
-    self.spiroTestTransitionModal.modalData = modalData;
-    
-    [self presentViewController:self.spiroTestTransitionModal animated:true completion:nil];
-}
+//-(void)presentIntroModal {
+//    NSMutableDictionary* modalData = [[NSMutableDictionary alloc] init];
+//    self.modalType = SpiroIntroModal;
+//    modalData[@"ModalType"] = @(self.modalType);
+//    
+//    self.spiroTestTransitionModal.modalData = modalData;
+//    
+//    [self presentViewController:self.spiroTestTransitionModal animated:true completion:nil];
+//}
+//
+//-(void)presentEffortResultsModal {
+//    NSMutableDictionary* modalData = [[NSMutableDictionary alloc] init];
+//    self.modalType = SpiroEffortResultsModal;
+//    modalData[@"ModalType"] = @(self.modalType);
+//    [modalData setObject:self.latestEffortResults forKey:@"EffortData"];
+//    
+//    self.spiroTestTransitionModal.modalData = modalData;
+//    
+//    [self presentViewController:self.spiroTestTransitionModal animated:true completion:nil];
+//}
+//
+//-(void)presentCompletionModal {
+//    NSMutableDictionary* modalData = [[NSMutableDictionary alloc] init];
+//    modalData[@"ModalType"] = @(SpiroCompletionModal);
+//    
+//    self.spiroTestTransitionModal.modalData = modalData;
+//    
+//    [self presentViewController:self.spiroTestTransitionModal animated:true completion:nil];
+//}
 
 
 #pragma mark - GAMING API
@@ -173,9 +203,7 @@
 // • After displaying results, the process will continue or the test will end
 -(void)gameHasEnded {
 
-    
-    
-    [self presentEffortResultsModal];
+    [self presentModalOfType:SpiroEffortResultsModal];
 }
 
 

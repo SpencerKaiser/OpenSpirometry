@@ -67,10 +67,6 @@
     // Grab reference to the storyboard containing modal pages
     UIStoryboard* modalPagesStoryboard = [UIStoryboard storyboardWithName:@"SpiroModalPages" bundle:nil];
     
-    // Instantiate the actionViewController, which is the first item in the array
-    ModalActionPageViewController* actionViewController = [modalPagesStoryboard instantiateViewControllerWithIdentifier:@"ModalActionPageViewControllerScene"];
-    actionViewController.actionPageDelegate = self;
-    
     // Instantiate dictionary to hold actionViewController parameters
     NSMutableDictionary* actionPageConfigParams = [[NSMutableDictionary alloc] init];
     
@@ -127,6 +123,11 @@
     
     // Set params for actionViewController and insert into index 0
     if (actionPageConfigParams.count > 1) {
+        // Instantiate the actionViewController, which is the first item in the array
+        ModalActionPageViewController* actionViewController = [modalPagesStoryboard instantiateViewControllerWithIdentifier:@"ModalActionPageViewControllerScene"];
+        
+        // Only set delegate of the actionPage if it will be used
+        actionViewController.actionPageDelegate = self;
         actionViewController.pageConfig = actionPageConfigParams;
         [self.pageViewControllers insertObject:actionViewController atIndex:0];
     }
@@ -161,7 +162,11 @@
         //TODO: Grab notes from ModalAddNotesVC
         
         //After grabbing all relevant data
-        self.pageViewControllers = nil;
+//        self.pageViewControllers = nil;
+        
+//        [self.modalPageViewController removeFromParentViewController];
+//        self.modalPageViewController = nil;
+        
         
         [self.modalDismissInfo setObject:@"Returning from modal!" forKey:@"Notes"];
         [self.modalDelegate modalDismissedWithInfo:self.modalDismissInfo];

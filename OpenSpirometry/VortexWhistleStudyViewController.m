@@ -35,7 +35,7 @@
     
     // Wait for a brief period after view appears to make the app opening smoother
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [super presentIntroModal];
+        [super presentModalOfType:SpiroIntroModal];
     });
 }
 
