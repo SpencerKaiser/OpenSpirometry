@@ -40,4 +40,8 @@
     }
 }
 
+-(void)dealloc{
+    NSLog(@"Did dealloc action page view");
+}
+
 @end

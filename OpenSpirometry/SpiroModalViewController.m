@@ -112,6 +112,13 @@
         {
             //actionPageConfigParams[@"Description"] = @"Make a note of today's events, any circumstances that may have impacted your results, or a personal note about today's test. When finished, swipe right and tap the continue button.";
         }
+        case SpiroCompletionModal:
+        {
+            actionPageConfigParams[@"Label"] = @"Test Complete";
+            actionPageConfigParams[@"Description"] = @"All tests have been completed. Press the button below to conclude the test.";
+            actionPageConfigParams[@"Button"] = @"Conclude Test";
+            break;
+        }
         default:
         {
             break;

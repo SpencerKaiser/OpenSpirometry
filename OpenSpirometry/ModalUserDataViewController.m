@@ -96,6 +96,10 @@
     }
 }
 
+-(void)dealloc{
+    NSLog(@"Did dealloc user data page view");
+}
+
 
 #pragma mark - Picker Delegate Functions
 

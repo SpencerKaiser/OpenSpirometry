@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Eric Larson. All rights reserved.
 //
 
-//TODO: REMOVE DELEGATION
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
@@ -20,17 +18,17 @@ typedef enum {
 
 typedef enum {
     SpiroTestTypeStandard,          // Min of 3 tests, stop once requirements are met OR after 5 tests
-    SpiroTestTypeFixedDuration      // Stop after 5 tests, do not evaluate results
+    SpiroTestTypeFixedDuration      // Stop after fixed number of tests, do not analyze results
 } SpiroTestType;
 
 @interface SpirometerTestAnalyzer : NSObject
+-(SpiroTestState)getCurrentSpiroTestState;
+-(void)setSpiroTestType:(SpiroTestType)testType;
+-(void)clearAllEfforts;
 
 -(SpiroTestState)addEffortResults:(NSDictionary*)effortResults;
--(SpiroTestState)addEffortResults:(NSDictionary*)effortResults withNote:(NSString*)effortNote;
--(SpiroTestState)getCurrentSpiroTestState;
--(void)clearAllEfforts;
--(void)addTestNotes:(NSString*)testNotes;
--(void)saveToPersistentStore;
--(void)setSpiroTestType:(SpiroTestType)testType;
 
+-(void)addUserIdentifier:(NSString*)userIdentifier;
+-(void)addFieldsToTestData:(NSDictionary*)additionalFields;
+-(void)addMetadataToUserData:(NSDictionary*)additionalFields;
 @end

@@ -23,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // Set text of action button to start test
+    // UI VARIABLE MODIFICATION
     [self.actionButton setTitle:@"Begin Effort" forState:UIControlStateNormal];
     self.titleLabel.text = @"Ready for Calibration";
     self.descriptionLabel.text = @"Press the 'Begin Effort' button below.";
@@ -32,14 +32,11 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    // Wait for a brief period after view appears to make the app opening smoother
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [super presentIntroModal];
     });
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)modalDismissed {

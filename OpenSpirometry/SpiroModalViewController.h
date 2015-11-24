@@ -14,7 +14,8 @@
 typedef enum {
     SpiroIntroModal,
     SpiroEffortResultsModal,
-    SpiroTestResultsModal
+    SpiroTestResultsModal,
+    SpiroCompletionModal
 } SpiroModalType;
 
 @protocol SpiroModalViewController <NSObject>

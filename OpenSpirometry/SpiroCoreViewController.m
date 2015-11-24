@@ -18,10 +18,6 @@
 @property (strong, nonatomic) SpirometerTestAnalyzer* testAnalyzer;
 @property (strong, nonatomic) NSDictionary* latestEffortResults;
 
-@property (strong, nonatomic) NSString* userDataFilePath;
-@property (strong, nonatomic) NSMutableArray* userDataFile;
-@property (strong, nonatomic) NSMutableDictionary* currentTest;
-
 @property (nonatomic, assign) SpiroTestState spiroTestStatus;
 @property (nonatomic, assign) SpiroModalType modalType;
 
@@ -69,13 +65,13 @@
     self.spiroTestTransitionModal.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     self.spiroTestTransitionModal.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     self.spiroTestTransitionModal.modalDelegate = self;
-    
 }
 
 
 #pragma mark - MODAL INTERACTIONS
 
 -(void)modalDismissedWithInfo:(NSDictionary *)modalInfo {
+//    SpiroTestState testState;
     switch (self.modalType) {
         case SpiroIntroModal:
         {
@@ -84,15 +80,22 @@
             NSLog(@"Mouthpiece : %@", modalInfo[@"Mouthpiece"]);
             NSLog(@"Downstream Tube : %@", modalInfo[@"Downstream Tube"]);
             
-            [self getUserDataJSON:modalInfo];   // Retrieve existing user data file or create one if none exists
-            [self writeUserDataToMemory];       // Store new user data file with test data (whistle config)
+            [self.testAnalyzer addUserIdentifier:userID];
+            
+            NSMutableDictionary* testInfo = [[NSMutableDictionary alloc] init];
+            testInfo[@"Mouthpiece"] = modalInfo[@"Mouthpiece"];
+            testInfo[@"Downstream Tube"] = modalInfo[@"Downstream Tube"];
+            
+            [self.testAnalyzer addFieldsToTestData:testInfo];
             
             break;
         }
         case SpiroEffortResultsModal:
         {
-            [self.currentTest[@"Efforts"] addObject:self.latestEffortResults];
-            [self writeUserDataToMemory];
+            // TODO: Add notes from results modal
+            
+            // After retrieving notes, add effort to testAnalyzer
+            [self.testAnalyzer addEffortResults:self.latestEffortResults];
             break;
         }
         default:
@@ -100,16 +103,20 @@
             break;
     }
     
+    // Notify game that modal has been closed
     [self modalDismissed];
     
-    //TODO: NEED TO SAVE EFFORT/TEST
+    if ([self.testAnalyzer getCurrentSpiroTestState] == SpiroTestStateTestComplete) {
+        [self presentCompletionModal];
+    }
+
 }
 
 
 
 // Optional method which can be implemented by subclasses to
 -(void)modalDismissed {
-    
+
 }
 
 
@@ -134,49 +141,14 @@
     [self presentViewController:self.spiroTestTransitionModal animated:true completion:nil];
 }
 
-# pragma mark - PERSISTENT USER DATA STORAGE
-
--(void)getUserDataJSON:(NSDictionary*)userInfo {
-    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* documents = [paths firstObject];
-    self.userDataFilePath = [NSString stringWithFormat:@"%@/%@.json", documents, userInfo[@"ID"]];
-    NSLog(@"File Path: %@", self.userDataFilePath);
+-(void)presentCompletionModal {
+    NSMutableDictionary* modalData = [[NSMutableDictionary alloc] init];
+    modalData[@"ModalType"] = @(SpiroCompletionModal);
     
-    //TODO: Create util to convert data to json object
+    self.spiroTestTransitionModal.modalData = modalData;
     
-    if ([[NSFileManager defaultManager] fileExistsAtPath:self.userDataFilePath]) {
-        // File for user exists...
-        // Read raw data into NSData object
-        NSData* rawUserData = [[NSData alloc] initWithContentsOfFile:self.userDataFilePath];
-        // Extract JSON from raw data and store in mutable array
-        self.userDataFile = [NSJSONSerialization JSONObjectWithData:rawUserData options:NSJSONReadingMutableContainers error:nil];
-    } else {
-        // File for user does not exist...
-        // Create mutable array to contain all user file data
-        self.userDataFile = [[NSMutableArray alloc] init];
-    }
-    
-    // Create a new test object for the user, add config info, add empty array for efforts
-    self.currentTest = [[NSMutableDictionary alloc] init];
-    self.currentTest[@"Downstream Tube"] = userInfo[@"Downstream Tube"];     // Save Downstream Tube info
-    self.currentTest[@"Mouthpiece"] = userInfo[@"Mouthpiece"];               // Save Mouthpiece info
-    self.currentTest[@"Efforts"] = [[NSMutableArray alloc] init];            // Create empty array to hold efforts for this test
-    
-    // Add current test to 'Tests' belonging to the uer
-    [self.userDataFile addObject:self.currentTest];
-    
-    // Wrtie the updated/new file to memory
-    [self writeUserDataToMemory];
+    [self presentViewController:self.spiroTestTransitionModal animated:true completion:nil];
 }
-
--(void)writeUserDataToMemory {
-    // Create JSON encoded file from current user data (which may or may not be complete)
-    NSData* JSONFile = [NSJSONSerialization dataWithJSONObject:self.userDataFile options:0 error:nil];     // Encode updated user data file as JSON
-    
-    // Write updated user data to memory
-    [JSONFile writeToFile:self.userDataFilePath atomically:NO];                        // Write updated file back to memory
-}
-
 
 
 #pragma mark - GAMING API
@@ -200,7 +172,8 @@
 // • Calling this function will begin the process of display results to the user
 // • After displaying results, the process will continue or the test will end
 -(void)gameHasEnded {
-    // DISPLAY RESULTS
+
+    
     
     [self presentEffortResultsModal];
 }
@@ -235,6 +208,7 @@
 // start or should halt if in progress
 -(void)errorOccured: (NSString*) error {
     [NSException raise:@"No custom implementation for errorOccured" format:@"Function must be implemented within subclass. Error Message Encountered: %@", error];
+    //TODO: Create functionality to handle effort errors
 }
 
 // wasLastGame - OPTIONAL: Current game will be last game of test
@@ -285,14 +259,11 @@
     
     NSLog(@"[super] didEndEffortWithResults");
     
-    //------------------------------------------------
-    //TODO: Grab file name from the results dictionary
-    //------------------------------------------------
     
-    // Not sure if this should be saved to the property or if this line should just be deleteds
-    // SpiroTestState currentTestState = [self.testAnalyzer getCurrentSpiroTestState];
-    
+    // Notify game that user has finished
+    // Game will then respond with gameHasEnded notification
     [self userFinishedTest];
+    
     
     // TODO: Implement SpiroState Switch
     // If this test was the last test, call [self wasLastGame] to indicate test is complete
@@ -312,18 +283,18 @@
 // The following functions must NOT be be overwritten.
 
 -(void)startSpiroEffort {
-    NSLog(@"[super] startSpiroEffort \n\t-> SpiroEffortAnalyzer:beginListeningForEffort");
+//    NSLog(@"[super] startSpiroEffort \n\t-> SpiroEffortAnalyzer:beginListeningForEffort");
     [self.effortAnalyzer beginListeningForEffort];
 }
 
 -(void)saveSpiroEffort:(NSDictionary*)results {
-    NSLog(@"[super] saveSpiroEffort \n\t-> SpiroTestAnalyzer:addEffortResults");
+//    NSLog(@"[super] saveSpiroEffort \n\t-> SpiroTestAnalyzer:addEffortResults");
     self.spiroTestStatus = [self.testAnalyzer addEffortResults:results];
 }
 
 -(void)saveSpiroEffort:(NSDictionary*)results withNote:(NSString*)note {
-    NSLog(@"[super] saveSpiroEffort withNote \n\t-> SpiroEffortAnalyzer:addEffortResults withNote");
-    self.spiroTestStatus = [self.testAnalyzer addEffortResults:results withNote:note];
+//    NSLog(@"[super] saveSpiroEffort withNote \n\t-> SpiroEffortAnalyzer:addEffortResults withNote");
+//    self.spiroTestStatus = [self.testAnalyzer addEffortResults:results withNote:note];
 }
 
 -(void)saveSpiroTestData {
