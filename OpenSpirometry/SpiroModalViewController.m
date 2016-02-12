@@ -139,6 +139,10 @@
 }
 
 -(void)userActionTaken {
+    // Check for isModalTimed && check if time remaining
+    // If yes... move modal page to the timer
+    // Else dismiss modal
+    
     [self dismissViewControllerAnimated:YES completion:^{
         [self returnToPresenter];
     }];

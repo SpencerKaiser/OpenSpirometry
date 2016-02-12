@@ -17,11 +17,14 @@
 		091D17A81BFBA1090044D830 /* FlowVolumeDataAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D17A21BFBA1090044D830 /* FlowVolumeDataAnalyzer.m */; };
 		091D17A91BFBA1090044D830 /* SpirometerEffortAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D17A51BFBA1090044D830 /* SpirometerEffortAnalyzer.m */; };
 		091D17AA1BFBA1090044D830 /* SpirometryWhistle.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D17A71BFBA1090044D830 /* SpirometryWhistle.m */; };
+		091E85BA1C0E80E300F0B1AF /* ModalTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 091E85B91C0E80E300F0B1AF /* ModalTimerViewController.m */; };
+		091E85C01C0E85FE00F0B1AF /* SpiroNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 091E85BF1C0E85FE00F0B1AF /* SpiroNavigationViewController.m */; };
 		09227E291BE81C8900FCE6AD /* VortexWhistleStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09227E281BE81C8900FCE6AD /* VortexWhistleStudyViewController.m */; };
 		09786C881BB8810F006F4315 /* SpiroCoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C871BB8810F006F4315 /* SpiroCoreViewController.m */; };
 		09786C8B1BB8D363006F4315 /* SpiroGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */; };
 		09A6BAA71BAB56B20024360F /* SpiroModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */; };
 		09BD47B21BE8AB63000CF238 /* ModalUserDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BD47B11BE8AB63000CF238 /* ModalUserDataViewController.m */; };
+		09E819621C6E50AE0048B165 /* ExperimenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E819611C6E50AE0048B165 /* ExperimenterViewController.m */; };
 		09F6BA521BD54CD100668F27 /* ModalAddNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F6BA511BD54CD100668F27 /* ModalAddNotesViewController.m */; };
 		09F933EA1BA752B80041FFB2 /* SpirometerTestAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F933E91BA752B80041FFB2 /* SpirometerTestAnalyzer.m */; };
 		09FB9E081BD428F4005C8507 /* ModalActionPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9E071BD428F4005C8507 /* ModalActionPageViewController.m */; };
@@ -65,6 +68,10 @@
 		091D17A51BFBA1090044D830 /* SpirometerEffortAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpirometerEffortAnalyzer.m; path = OpenSpirometryCore/SpirometerEffortAnalyzer.m; sourceTree = "<group>"; };
 		091D17A61BFBA1090044D830 /* SpirometryWhistle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpirometryWhistle.h; path = OpenSpirometryCore/SpirometryWhistle.h; sourceTree = "<group>"; };
 		091D17A71BFBA1090044D830 /* SpirometryWhistle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpirometryWhistle.m; path = OpenSpirometryCore/SpirometryWhistle.m; sourceTree = "<group>"; };
+		091E85B81C0E80E300F0B1AF /* ModalTimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalTimerViewController.h; sourceTree = "<group>"; };
+		091E85B91C0E80E300F0B1AF /* ModalTimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalTimerViewController.m; sourceTree = "<group>"; };
+		091E85BE1C0E85FE00F0B1AF /* SpiroNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiroNavigationViewController.h; sourceTree = "<group>"; };
+		091E85BF1C0E85FE00F0B1AF /* SpiroNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiroNavigationViewController.m; sourceTree = "<group>"; };
 		09227E271BE81C8900FCE6AD /* VortexWhistleStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VortexWhistleStudyViewController.h; sourceTree = "<group>"; };
 		09227E281BE81C8900FCE6AD /* VortexWhistleStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VortexWhistleStudyViewController.m; sourceTree = "<group>"; };
 		09786C861BB8810F006F4315 /* SpiroCoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiroCoreViewController.h; sourceTree = "<group>"; };
@@ -75,6 +82,8 @@
 		09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiroModalViewController.m; sourceTree = "<group>"; };
 		09BD47B01BE8AB63000CF238 /* ModalUserDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalUserDataViewController.h; sourceTree = "<group>"; };
 		09BD47B11BE8AB63000CF238 /* ModalUserDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalUserDataViewController.m; sourceTree = "<group>"; };
+		09E819601C6E50AE0048B165 /* ExperimenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperimenterViewController.h; sourceTree = "<group>"; };
+		09E819611C6E50AE0048B165 /* ExperimenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExperimenterViewController.m; sourceTree = "<group>"; };
 		09F6BA501BD54CD100668F27 /* ModalAddNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalAddNotesViewController.h; sourceTree = "<group>"; };
 		09F6BA511BD54CD100668F27 /* ModalAddNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalAddNotesViewController.m; sourceTree = "<group>"; };
 		09F933E81BA7529B0041FFB2 /* SpirometerTestAnalyzer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpirometerTestAnalyzer.h; sourceTree = "<group>"; };
@@ -175,6 +184,8 @@
 				09F6BA511BD54CD100668F27 /* ModalAddNotesViewController.m */,
 				09BD47B01BE8AB63000CF238 /* ModalUserDataViewController.h */,
 				09BD47B11BE8AB63000CF238 /* ModalUserDataViewController.m */,
+				091E85B81C0E80E300F0B1AF /* ModalTimerViewController.h */,
+				091E85B91C0E80E300F0B1AF /* ModalTimerViewController.m */,
 			);
 			name = ModalPages;
 			sourceTree = "<group>";
@@ -205,10 +216,14 @@
 				09786C871BB8810F006F4315 /* SpiroCoreViewController.m */,
 				09227E271BE81C8900FCE6AD /* VortexWhistleStudyViewController.h */,
 				09227E281BE81C8900FCE6AD /* VortexWhistleStudyViewController.m */,
+				091E85BE1C0E85FE00F0B1AF /* SpiroNavigationViewController.h */,
+				091E85BF1C0E85FE00F0B1AF /* SpiroNavigationViewController.m */,
 				B63612291B1CC38500289665 /* Main.storyboard */,
 				090359ED1BD03AAB00DFC582 /* SpiroModal */,
 				090359F51BD1782600DFC582 /* SpiroGame */,
 				B636121F1B1CC38500289665 /* Supporting Files */,
+				09E819601C6E50AE0048B165 /* ExperimenterViewController.h */,
+				09E819611C6E50AE0048B165 /* ExperimenterViewController.m */,
 			);
 			path = OpenSpirometry;
 			sourceTree = "<group>";
@@ -368,6 +383,8 @@
 			files = (
 				09786C881BB8810F006F4315 /* SpiroCoreViewController.m in Sources */,
 				09786C8B1BB8D363006F4315 /* SpiroGameViewController.m in Sources */,
+				09E819621C6E50AE0048B165 /* ExperimenterViewController.m in Sources */,
+				091E85C01C0E85FE00F0B1AF /* SpiroNavigationViewController.m in Sources */,
 				09F6BA521BD54CD100668F27 /* ModalAddNotesViewController.m in Sources */,
 				091D17A81BFBA1090044D830 /* FlowVolumeDataAnalyzer.m in Sources */,
 				09BD47B21BE8AB63000CF238 /* ModalUserDataViewController.m in Sources */,
@@ -384,6 +401,7 @@
 				091D178E1BFB9C510044D830 /* CubicSpline.m in Sources */,
 				091D17901BFB9C510044D830 /* FFTHelper.m in Sources */,
 				091D17AA1BFBA1090044D830 /* SpirometryWhistle.m in Sources */,
+				091E85BA1C0E80E300F0B1AF /* ModalTimerViewController.m in Sources */,
 				B63612221B1CC38500289665 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,6 +21,8 @@
 @property (nonatomic, assign) SpiroTestState spiroTestStatus;
 @property (nonatomic, assign) SpiroModalType modalType;
 
+@property (nonatomic, assign) BOOL testDidConclude;
+
 
 // UI ELEMENTS
 @property (strong, nonatomic) SpiroModalViewController* spiroTestTransitionModal;
@@ -44,7 +46,7 @@
     // most likely this has a maximum update rate of about 100 FPS
     
     // **for debugging**: this turns on the debug mode for reading the effort from a file (only wav currently supported)
-    [self.effortAnalyzer activateDebugAudioModeWithWAVFile:@"VortexWhistleRed"]; // default audio file name
+//    [self.effortAnalyzer activateDebugAudioModeWithWAVFile:@"VortexWhistleRed"]; // default audio file name
     [self.effortAnalyzer shouldSaveSeparateEffortsToDocumentDirectory:YES];
     
 #pragma mark Test Analyzer
@@ -60,6 +62,7 @@
     //----------------UI-----------------
     // Declare self as the presentation context
     self.definesPresentationContext = YES;
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 -(void)createModal {
@@ -99,6 +102,10 @@
             [self.testAnalyzer addEffortResults:self.latestEffortResults];
             break;
         }
+        case SpiroCompletionModal:
+            NSLog(@"%@",self.navigationController.viewControllers);
+            self.testDidConclude = true;
+            break;
         default:
             NSLog(@"Modal Dismissed...");
             break;
@@ -111,8 +118,14 @@
     // Notify game that modal has been closed
     [self modalDismissed];
     
-    if ([self.testAnalyzer getCurrentSpiroTestState] == SpiroTestStateTestComplete) {
+    if ([self.testAnalyzer getCurrentSpiroTestState] == SpiroTestStateTestComplete && !self.testDidConclude) {
         [self presentModalOfType:SpiroCompletionModal];
+    }
+    if (self.testDidConclude){
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+//        UINavigationController* test = self.navigationController;
+//        [self.navigationController popToRootViewControllerAnimated:YES];
     }
 
 }
@@ -139,6 +152,7 @@
             [modalData setObject:self.latestEffortResults forKey:@"EffortData"];
             break;
         case SpiroCompletionModal:
+            self.modalType = SpiroCompletionModal;
             modalData[@"ModalType"] = @(SpiroCompletionModal);
             break;
         default:
