@@ -26,8 +26,8 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9N-gv-1we">
-                                        <rect key="frame" x="30" y="219" width="480" height="81"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9N-gv-1we">
+                                        <rect key="frame" x="30" y="219" width="480" height="82"/>
                                         <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -114,8 +114,8 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="noteView" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Byq-hd-wWt">
-                                        <rect key="frame" x="30" y="131" width="480" height="359"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="noteView" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Byq-hd-wWt">
+                                        <rect key="frame" x="30" y="132" width="480" height="358"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -193,8 +193,8 @@
                                             <rect key="frame" x="-30" y="-50" width="121.5" height="20.5"/>
                                         </variation>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User ID" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vgb-ru-lWF">
-                                        <rect key="frame" x="236" y="64" width="69" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User ID" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vgb-ru-lWF">
+                                        <rect key="frame" x="236" y="65" width="69" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                         <variation key="widthClass=compact" ambiguous="YES">
@@ -212,14 +212,14 @@
                                             <action selector="actionButtonPressed:" destination="kAg-8f-YEu" eventType="touchUpInside" id="rAw-WM-0jn"/>
                                         </connections>
                                     </button>
-                                    <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yi5-TF-wfo">
-                                        <rect key="frame" x="110" y="133" width="320" height="144"/>
+                                    <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Yi5-TF-wfo">
+                                        <rect key="frame" x="110" y="134" width="320" height="143"/>
                                         <variation key="widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="-30" y="-50" width="320" height="216"/>
                                         </variation>
                                     </pickerView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Mouthpiece" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGU-Mv-yJK">
-                                        <rect key="frame" x="224" y="113" width="91" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mouthpiece" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGU-Mv-yJK">
+                                        <rect key="frame" x="224" y="114" width="91" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -227,8 +227,8 @@
                                             <rect key="frame" x="-30" y="-50" width="91" height="20.5"/>
                                         </variation>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Downstream Tube" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rd4-Xa-C2a">
-                                        <rect key="frame" x="200" y="286" width="139" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downstream Tube" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rd4-Xa-C2a">
+                                        <rect key="frame" x="200" y="287" width="139" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -236,8 +236,8 @@
                                             <rect key="frame" x="-30" y="-50" width="139" height="20.5"/>
                                         </variation>
                                     </label>
-                                    <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tr4-ys-MsL">
-                                        <rect key="frame" x="110" y="307" width="320" height="143"/>
+                                    <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tr4-ys-MsL">
+                                        <rect key="frame" x="110" y="308" width="320" height="142"/>
                                         <variation key="widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="-30" y="-50" width="320" height="216"/>
                                         </variation>
@@ -435,7 +435,7 @@
         <!--Modal Timer View Controller-->
         <scene sceneID="Pa4-PP-j5o">
             <objects>
-                <viewController id="9yP-r8-oWY" customClass="ModalTimerViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SpiroModalTimer" id="9yP-r8-oWY" customClass="ModalTimerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Ej-j3-hbw"/>
                         <viewControllerLayoutGuide type="bottom" id="aGo-PM-M99"/>
@@ -447,15 +447,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xMs-Ds-Sfe">
                                 <rect key="frame" x="30" y="50" width="540" height="520"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Page Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srU-MP-3KF">
-                                        <rect key="frame" x="223" y="30" width="95" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pog-hi-QrN">
-                                        <rect key="frame" x="30" y="219" width="480" height="81"/>
-                                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srU-MP-3KF">
+                                        <rect key="frame" x="228" y="30" width="85" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -507,6 +500,13 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pog-hi-QrN">
+                                        <rect key="frame" x="30" y="-180" width="480" height="82"/>
+                                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.34306422679999998" green="0.86974052619999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -525,6 +525,8 @@
                                     <constraint firstItem="pog-hi-QrN" firstAttribute="top" secondItem="srU-MP-3KF" secondAttribute="bottom" constant="8" symbolic="YES" id="ZJg-ON-J6F">
                                         <variation key="heightClass=regular-widthClass=compact" constant="30"/>
                                     </constraint>
+                                    <constraint firstItem="pog-hi-QrN" firstAttribute="centerX" secondItem="xMs-Ds-Sfe" secondAttribute="centerX" id="c50-3n-Jkc"/>
+                                    <constraint firstItem="srU-MP-3KF" firstAttribute="top" secondItem="pog-hi-QrN" secondAttribute="bottom" constant="128" id="ieU-Sc-gDY"/>
                                     <constraint firstItem="srU-MP-3KF" firstAttribute="top" secondItem="xMs-Ds-Sfe" secondAttribute="top" constant="30" id="jOu-nv-XVf"/>
                                     <constraint firstItem="DKd-X3-3uD" firstAttribute="top" secondItem="jFB-sL-nUh" secondAttribute="bottom" id="lfY-Lt-nxD"/>
                                     <constraint firstItem="srU-MP-3KF" firstAttribute="centerX" secondItem="xMs-Ds-Sfe" secondAttribute="centerX" id="nUm-4v-RFM"/>

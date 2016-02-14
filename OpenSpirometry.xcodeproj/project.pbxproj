@@ -25,6 +25,7 @@
 		09A6BAA71BAB56B20024360F /* SpiroModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */; };
 		09BD47B21BE8AB63000CF238 /* ModalUserDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BD47B11BE8AB63000CF238 /* ModalUserDataViewController.m */; };
 		09E819621C6E50AE0048B165 /* ExperimenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E819611C6E50AE0048B165 /* ExperimenterViewController.m */; };
+		09E819651C6E91B30048B165 /* OptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E819641C6E91B20048B165 /* OptionsTableViewController.m */; };
 		09F6BA521BD54CD100668F27 /* ModalAddNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F6BA511BD54CD100668F27 /* ModalAddNotesViewController.m */; };
 		09F933EA1BA752B80041FFB2 /* SpirometerTestAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F933E91BA752B80041FFB2 /* SpirometerTestAnalyzer.m */; };
 		09FB9E081BD428F4005C8507 /* ModalActionPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9E071BD428F4005C8507 /* ModalActionPageViewController.m */; };
@@ -84,6 +85,8 @@
 		09BD47B11BE8AB63000CF238 /* ModalUserDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalUserDataViewController.m; sourceTree = "<group>"; };
 		09E819601C6E50AE0048B165 /* ExperimenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperimenterViewController.h; sourceTree = "<group>"; };
 		09E819611C6E50AE0048B165 /* ExperimenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExperimenterViewController.m; sourceTree = "<group>"; };
+		09E819631C6E91B20048B165 /* OptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsTableViewController.h; sourceTree = "<group>"; };
+		09E819641C6E91B20048B165 /* OptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsTableViewController.m; sourceTree = "<group>"; };
 		09F6BA501BD54CD100668F27 /* ModalAddNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalAddNotesViewController.h; sourceTree = "<group>"; };
 		09F6BA511BD54CD100668F27 /* ModalAddNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalAddNotesViewController.m; sourceTree = "<group>"; };
 		09F933E81BA7529B0041FFB2 /* SpirometerTestAnalyzer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpirometerTestAnalyzer.h; sourceTree = "<group>"; };
@@ -218,12 +221,14 @@
 				09227E281BE81C8900FCE6AD /* VortexWhistleStudyViewController.m */,
 				091E85BE1C0E85FE00F0B1AF /* SpiroNavigationViewController.h */,
 				091E85BF1C0E85FE00F0B1AF /* SpiroNavigationViewController.m */,
+				09E819601C6E50AE0048B165 /* ExperimenterViewController.h */,
+				09E819611C6E50AE0048B165 /* ExperimenterViewController.m */,
+				09E819631C6E91B20048B165 /* OptionsTableViewController.h */,
+				09E819641C6E91B20048B165 /* OptionsTableViewController.m */,
 				B63612291B1CC38500289665 /* Main.storyboard */,
 				090359ED1BD03AAB00DFC582 /* SpiroModal */,
 				090359F51BD1782600DFC582 /* SpiroGame */,
 				B636121F1B1CC38500289665 /* Supporting Files */,
-				09E819601C6E50AE0048B165 /* ExperimenterViewController.h */,
-				09E819611C6E50AE0048B165 /* ExperimenterViewController.m */,
 			);
 			path = OpenSpirometry;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 				091D17911BFB9C510044D830 /* Novocaine.m in Sources */,
 				091D178D1BFB9C510044D830 /* BufferedOverlapQueue.m in Sources */,
 				09A6BAA71BAB56B20024360F /* SpiroModalViewController.m in Sources */,
+				09E819651C6E91B30048B165 /* OptionsTableViewController.m in Sources */,
 				B63612251B1CC38500289665 /* AppDelegate.m in Sources */,
 				091D178F1BFB9C510044D830 /* DataBufferBlock.m in Sources */,
 				091D178E1BFB9C510044D830 /* CubicSpline.m in Sources */,

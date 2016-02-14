@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UINavigationController* test = self.navigationController;
+//    UINavigationController* test = self.navigationController;
     self.navigationController.navigationBar.hidden = YES;
 }
 
