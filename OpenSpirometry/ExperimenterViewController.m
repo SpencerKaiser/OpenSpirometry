@@ -149,7 +149,6 @@
 }
 
 - (void)userGroupChanged:(UISegmentedControl *)userGroupSegmentedControl {
-    NSLog(@"User Group Changed");
     if (userGroupSegmentedControl.selectedSegmentIndex == 1) {
         // PARTICIPANT IS IN APP + COACHING GROUP
         self.enableCoachingSwitch.enabled = true;
