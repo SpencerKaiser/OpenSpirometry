@@ -7,7 +7,6 @@
 //
 
 #import "ExperimenterViewController.h"
-#import "OptionsTableViewController.h"
 
 @interface ExperimenterViewController () <UIPopoverPresentationControllerDelegate>
 // UI ELEMENTS
@@ -21,13 +20,15 @@
 
 @property (weak, nonatomic) IBOutlet UIButton*completeButton;
 
-@property (strong, nonatomic) UIViewController* popover;
+@property (strong, nonatomic) OptionsTableViewController* popover;
 @property (weak, nonatomic) UIPopoverPresentationController* popoverController;
 
 // DATA ELEMENTS
+@property (assign, nonatomic) CGFloat popoverWidth, popoverHeight;
 @property (strong, nonatomic) NSString* userID;
-@property (assign, nonatomic) BOOL mouthpieceSelected;
-@property (assign, nonatomic) BOOL downstreamTubeSelected;
+@property (strong, nonatomic) NSString* popoverType;
+@property (strong, nonatomic) NSString* selectedMouthpiece;
+@property (strong, nonatomic) NSString* selectedDownstreamTube;
 @end
 
 @implementation ExperimenterViewController
@@ -36,11 +37,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
-    // DATA INITIALIZATION
-    self.mouthpieceSelected = false;
-    self.downstreamTubeSelected = false;
-
     // UI MODIFICATION
     
     self.completeButton.enabled = false;
@@ -67,17 +63,21 @@
     self.switchLabel.textColor = [UIColor lightGrayColor];
     
     
-    self.popover = [[UITableViewController alloc] init];
-//    self.popover = [[OptionsTableViewController alloc] init];
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.popover = [storyboard instantiateViewControllerWithIdentifier:@"OptionsTableViewControllerScene"];
+    self.popover.delegate = self;
     self.popover.modalPresentationStyle = UIModalPresentationPopover;
     
-
+    self.popoverWidth = self.view.frame.size.width * 0.80;
+    self.popoverHeight = self.view.frame.size.height * 0.30;
+    
+    self.popover.preferredContentSize = CGSizeMake(self.popoverWidth, self.popoverHeight);
 }
 
 - (void)dismissKeyboard {
     [self.userIDField resignFirstResponder];
-    [self checkRequiredFields];
     self.userID = self.userIDField.text;
+    [self checkRequiredFields];
 }
 
 - (void)userIDFieldChanged:(UITextField *)userIDField {
@@ -107,37 +107,62 @@
 
 
 - (void)checkRequiredFields {
-    if (self.userID && self.mouthpieceSelected && self.downstreamTubeSelected) {
+    if (self.userID && self.selectedMouthpiece && self.selectedDownstreamTube) {
         self.completeButton.enabled = true;
     }
 }
 
 - (IBAction)mouthpieceButtonTapped:(id)sender {
-    self.popoverController = [self.popover popoverPresentationController];
-    self.popoverController.permittedArrowDirections = UIPopoverArrowDirectionDown;
-    self.popoverController.delegate = self;
-    self.popoverController.sourceView = self.view;
-    
-    CGFloat xPos, yPos;
-    xPos = self.mouthpieceButton.frame.origin.x + 0.5*self.mouthpieceButton.frame.size.width;
-    yPos = self.mouthpieceButton.frame.origin.y + self.mouthpieceButton.frame.size.height - 25.0;
-    
-    self.popoverController.sourceRect = CGRectMake(xPos, yPos, 3.0, 3.0);
-    [self presentViewController:self.popover animated:YES completion:nil];
+    [self setPopoverTypeAndPresent:@"Mouthpiece"];
 }
 
 - (IBAction)downstreamButtonTapped:(id)sender {
+    [self setPopoverTypeAndPresent:@"Downstream"];
+}
+
+- (void)setPopoverTypeAndPresent:(NSString*)type {
+    self.popoverType = type;
+    [self.popover setOptionType:self.popoverType];
+    
     self.popoverController = [self.popover popoverPresentationController];
     self.popoverController.permittedArrowDirections = UIPopoverArrowDirectionDown;
     self.popoverController.delegate = self;
     self.popoverController.sourceView = self.view;
     
-    CGFloat xPos, yPos;
-    xPos = self.downstreamButton.frame.origin.x + 0.5*self.downstreamButton.frame.size.width;
-    yPos = self.downstreamButton.frame.origin.y + self.downstreamButton.frame.size.height - 25.0;
+//    NSLog(@"View Weidth: %f, Height: %f", self.view.frame.size.width, self.view.frame.size.height);
+//    NSLog(@"Button X: %f, Y: %f", self.downstreamButton.frame.origin.x, self.downstreamButton.frame.origin.y);
     
-    self.popoverController.sourceRect = CGRectMake(xPos, yPos, 3.0, 3.0);
+    CGFloat xPos, yPos;
+    
+    if ([self.popoverType isEqualToString:@"Mouthpiece"]) {
+        xPos = self.mouthpieceButton.frame.origin.x + (0.5 * self.mouthpieceButton.frame.size.width) - (0.5 * self.popoverWidth);
+        yPos = self.mouthpieceButton.frame.origin.y;
+    } else if ([self.popoverType isEqualToString:@"Downstream"]){
+        xPos = self.downstreamButton.frame.origin.x + (0.5 * self.downstreamButton.frame.size.width) - (0.5 * self.popoverWidth);
+        yPos = self.downstreamButton.frame.origin.y;
+    } else {
+        [NSException raise:@"Invalid Popover Type" format:@"An invalid popover type was used..."];
+    }
+    
+    self.popoverController.sourceRect = CGRectMake(xPos, yPos, self.popoverWidth, self.popoverHeight);
+    
     [self presentViewController:self.popover animated:YES completion:nil];
+}
+
+- (void)optionSelected:(NSString *)selection {
+    if ([self.popoverType isEqual: @"Mouthpiece"] ) {
+        self.selectedMouthpiece = selection;
+        NSLog(@"Mouthpiece Selected: %@", selection);
+        [self.mouthpieceButton setTitle:self.selectedMouthpiece forState:UIControlStateNormal];
+        [self.mouthpieceButton setTitle:self.selectedMouthpiece forState:UIControlStateSelected];
+    } else {
+        self.selectedDownstreamTube = selection;
+        NSLog(@"Downstream Tube Selected: %@", selection);
+        [self.downstreamButton setTitle:self.selectedDownstreamTube forState:UIControlStateNormal];
+        [self.downstreamButton setTitle:self.selectedDownstreamTube forState:UIControlStateSelected];
+    }
+    [self.popover dismissViewControllerAnimated:YES completion:nil];
+    [self checkRequiredFields];
 }
 
 
@@ -155,3 +180,4 @@
 // Before complete button is pressed, check to make sure user is of correct group
 
 @end
+;

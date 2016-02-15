@@ -17,4 +17,5 @@
 @interface OptionsTableViewController : UITableViewController
 @property (weak, nonatomic) NSString* type;
 @property (weak, nonatomic) id<OptionsTableViewController> delegate;
+- (void)setOptionType:(NSString*)type;
 @end

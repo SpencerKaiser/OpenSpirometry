@@ -34,9 +34,9 @@
     [super viewDidAppear:animated];
     
     // Wait for a brief period after view appears to make the app opening smoother
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [super presentModalOfType:SpiroIntroModal];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+//        [super presentModalOfType:SpiroIntroModal];
+//    });
 }
 
 -(void)modalDismissed {

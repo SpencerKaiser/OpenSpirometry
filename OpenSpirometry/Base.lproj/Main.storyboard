@@ -253,43 +253,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xJE-MY-XB8" userLabel="VerticalSpacer">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xJE-MY-XB8" userLabel="VerticalSpacer">
                                 <rect key="frame" x="0.0" y="416" width="600" height="38"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afs-uo-NVy" userLabel="VerticalSpacer">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afs-uo-NVy" userLabel="VerticalSpacer">
                                 <rect key="frame" x="0.0" y="513" width="600" height="37"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1I2-hn-rto" userLabel="VerticalSpacer">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1I2-hn-rto" userLabel="VerticalSpacer">
                                 <rect key="frame" x="0.0" y="88" width="600" height="37"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hVT-Ht-IdZ" userLabel="VerticalSpacer">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hVT-Ht-IdZ" userLabel="VerticalSpacer">
                                 <rect key="frame" x="0.0" y="155" width="600" height="38"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnT-Ad-Vdv" userLabel="VerticalSpacer">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnT-Ad-Vdv" userLabel="VerticalSpacer">
                                 <rect key="frame" x="0.0" y="320" width="600" height="37"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="au3-iT-GQ8" userLabel="VerticalSpacer">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="au3-iT-GQ8" userLabel="VerticalSpacer">
                                 <rect key="frame" x="0.0" y="252" width="600" height="37"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRx-aV-kgy" userLabel="UserIDSpacer">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRx-aV-kgy" userLabel="UserIDSpacer">
                                 <rect key="frame" x="365" y="125" width="235" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SfD-SP-Y0f" userLabel="UserIDSpacer">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SfD-SP-Y0f" userLabel="UserIDSpacer">
                                 <rect key="frame" x="0.0" y="125" width="235" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RBD-Ab-q57" userLabel="CoachingSpacer">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RBD-Ab-q57" userLabel="CoachingSpacer">
                                 <rect key="frame" x="396" y="289" width="204" height="31"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ONK-li-I4D" userLabel="CoachingSpacer">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ONK-li-I4D" userLabel="CoachingSpacer">
                                 <rect key="frame" x="0.0" y="289" width="205" height="31"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -384,7 +384,7 @@
                                     <segue destination="5GW-hh-ARa" kind="show" id="yrQ-xA-QlL"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hod-le-3Ro">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hod-le-3Ro">
                                 <rect key="frame" x="125" y="222" width="350" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Hc8-p6-Itp"/>
@@ -503,10 +503,50 @@
             </objects>
             <point key="canvasLocation" x="-1061" y="1172"/>
         </scene>
-        <!--View Controller-->
+        <!--Options Table View Controller-->
+        <scene sceneID="OCg-rl-wez">
+            <objects>
+                <tableViewController storyboardIdentifier="OptionsTableViewControllerScene" id="jcb-Dx-BK1" customClass="OptionsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="li6-cX-iqq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SpiroOptionCell" textLabel="bkv-Nf-Pyk" style="IBUITableViewCellStyleDefault" id="PDK-WZ-hOz">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PDK-WZ-hOz" id="C3V-7x-aUt">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="SpiroOption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bkv-Nf-Pyk">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="jcb-Dx-BK1" id="pAN-RL-Mlk"/>
+                            <outlet property="delegate" destination="jcb-Dx-BK1" id="EZC-0w-S9a"/>
+                        </connections>
+                    </tableView>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VQo-KQ-gdv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1061" y="1926"/>
+        </scene>
+        <!--Back Gesture View Controller-->
         <scene sceneID="FBz-Rc-PgB">
             <objects>
-                <viewController storyboardIdentifier="UserWelcomeScene" id="5GW-hh-ARa" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserWelcomeScene" id="5GW-hh-ARa" customClass="BackGestureViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K69-mC-dsg"/>
                         <viewControllerLayoutGuide type="bottom" id="qY8-B4-m2r"/>
@@ -543,6 +583,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Tz7-ET-cgP" firstAttribute="centerX" secondItem="TLC-3l-tJu" secondAttribute="centerX" id="7uo-JJ-hGP"/>
                             <constraint firstItem="vwr-6R-Dgt" firstAttribute="top" secondItem="K69-mC-dsg" secondAttribute="bottom" constant="15" id="CdN-zg-BBy"/>

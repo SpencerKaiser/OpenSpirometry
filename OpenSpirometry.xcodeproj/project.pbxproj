@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		090359F41BD1773100DFC582 /* SpiroModalPages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */; };
+		090906ED1C71791700EDCB75 /* BackGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 090906EC1C71791700EDCB75 /* BackGestureViewController.m */; };
 		091D178D1BFB9C510044D830 /* BufferedOverlapQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D17821BFB9C510044D830 /* BufferedOverlapQueue.m */; };
 		091D178E1BFB9C510044D830 /* CubicSpline.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D17841BFB9C510044D830 /* CubicSpline.m */; };
 		091D178F1BFB9C510044D830 /* DataBufferBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D17861BFB9C510044D830 /* DataBufferBlock.m */; };
@@ -50,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpiroModalPages.storyboard; sourceTree = "<group>"; };
+		090906EB1C71791700EDCB75 /* BackGestureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackGestureViewController.h; sourceTree = "<group>"; };
+		090906EC1C71791700EDCB75 /* BackGestureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackGestureViewController.m; sourceTree = "<group>"; };
 		091D17811BFB9C510044D830 /* BufferedOverlapQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BufferedOverlapQueue.h; path = AudioDSPUtils/BufferedOverlapQueue.h; sourceTree = "<group>"; };
 		091D17821BFB9C510044D830 /* BufferedOverlapQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BufferedOverlapQueue.m; path = AudioDSPUtils/BufferedOverlapQueue.m; sourceTree = "<group>"; };
 		091D17831BFB9C510044D830 /* CubicSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CubicSpline.h; path = AudioDSPUtils/CubicSpline.h; sourceTree = "<group>"; };
@@ -226,6 +229,8 @@
 				09E819631C6E91B20048B165 /* OptionsTableViewController.h */,
 				09E819641C6E91B20048B165 /* OptionsTableViewController.m */,
 				B63612291B1CC38500289665 /* Main.storyboard */,
+				090906EB1C71791700EDCB75 /* BackGestureViewController.h */,
+				090906EC1C71791700EDCB75 /* BackGestureViewController.m */,
 				090359ED1BD03AAB00DFC582 /* SpiroModal */,
 				090359F51BD1782600DFC582 /* SpiroGame */,
 				B636121F1B1CC38500289665 /* Supporting Files */,
@@ -391,6 +396,7 @@
 				09E819621C6E50AE0048B165 /* ExperimenterViewController.m in Sources */,
 				091E85C01C0E85FE00F0B1AF /* SpiroNavigationViewController.m in Sources */,
 				09F6BA521BD54CD100668F27 /* ModalAddNotesViewController.m in Sources */,
+				090906ED1C71791700EDCB75 /* BackGestureViewController.m in Sources */,
 				091D17A81BFBA1090044D830 /* FlowVolumeDataAnalyzer.m in Sources */,
 				09BD47B21BE8AB63000CF238 /* ModalUserDataViewController.m in Sources */,
 				091D17921BFB9C510044D830 /* PeakFinder.m in Sources */,

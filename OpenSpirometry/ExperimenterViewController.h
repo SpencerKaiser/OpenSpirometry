@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OptionsTableViewController.h"
 
-@interface ExperimenterViewController : UIViewController
+@interface ExperimenterViewController : UIViewController <OptionsTableViewController>
 
 @end

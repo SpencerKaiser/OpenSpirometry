@@ -1,5 +1,5 @@
 //
-//  optionsTableViewController.m
+//  OptionsTableViewController.m
 //  OpenSpirometry
 //
 //  Created by Spencer Kaiser on 2/12/16.
@@ -17,6 +17,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"Created OptionsTableViewController");
+    
+    [self setOptionType:self.type];
+    
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)setOptionType:(NSString*)type {
+    self.type = type;
     
     if ([self.type isEqual: @"Mouthpiece"]) {
         self.options = [NSArray arrayWithObjects:
@@ -26,7 +40,7 @@
                         @"Mouthpiece D (Yellow)",
                         @"Mouthpiece E (Black)",
                         nil];
-    } else {
+    } else if ([self.type isEqual: @"Downstream"]) {
         self.options = [NSArray arrayWithObjects:
                         @"Downstream A (Blue)",
                         @"Downstream B (Red)",
@@ -34,14 +48,13 @@
                         @"Downstream D (Yellow)",
                         @"Downstream E (Black)",
                         nil];
+    } else {
+        [NSException raise:@"Invalid Popover Type" format:@"An invalid popover type was used..."];
     }
+        
+        
     
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.tableView reloadData];
 }
 
 - (void)selectionMade {
@@ -62,14 +75,17 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString* cellID = @"optionCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
-//    cell.textLabel.text = self.options[indexPath.row];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SpiroOptionCell" forIndexPath:indexPath];
+    cell.textLabel.text = self.options[indexPath.row];
     return cell;
 }
 
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selected = self.options[indexPath.row];
+    [self selectionMade];
+}
 
 /*
 // Override to support conditional editing of the table view.
