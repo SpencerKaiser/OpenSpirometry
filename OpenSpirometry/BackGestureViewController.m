@@ -19,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSLog(@"%@", self.userData);
+//    NSLog(@"%@", self.userData);
     
     UITapGestureRecognizer *tripleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tripleTapHandler:)];
     tripleTap.numberOfTapsRequired = 3;
@@ -42,11 +42,11 @@
         vc.userData = self.userData;
     } else if ([[segue identifier] isEqualToString:@"FinalUserDataHandoff"]) {
         VortexWhistleStudyViewController *vc = [segue destinationViewController];
-//        VortexWhistleStudyViewController.userData = self.userData;
+        vc.userConfigData = self.userData;
     }
     
     // MAKE SURE THIS VC WILL BE DEALLOCATED AFTER THE SEGUE COMPLETES
-//    self.userData = nil;
+    // self.userData = nil;
 }
 
 

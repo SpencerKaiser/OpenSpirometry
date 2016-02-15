@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *actionButton;
-
+@property (assign, nonatomic) BOOL errorOccurred;
 @end
 
 @implementation VortexWhistleStudyViewController
@@ -24,20 +24,24 @@
     // Do any additional setup after loading the view.
     
     // UI VARIABLE MODIFICATION
-    [self.actionButton setTitle:@"Begin Effort" forState:UIControlStateNormal];
+    [self.actionButton setTitle:@"Begin Calibration" forState:UIControlStateNormal];
     self.titleLabel.text = @"Ready for Calibration";
+//    self.helpText.text = @"After beginning calibration, remain as quiet as possible until prompted to begin using the whistle."
     self.descriptionLabel.text = @"Press the 'Begin Effort' button below.";
+    
+    if (self.userConfigData) {
+        NSLog(@"User Config Data: %@", self.userConfigData);
+        [super storeUserConfigData:self.userConfigData];
+        self.userConfigData = nil;      // We no longer need a copy in this subclass
+    } else {
+        [NSException raise:@"User Config Data not found" format:@"User configuration data MUST be passed into this View Controller."];
+    }
     
 }
 
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    // Wait for a brief period after view appears to make the app opening smoother
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-//        [super presentModalOfType:SpiroIntroModal];
-//    });
-}
+//-(void)viewDidAppear:(BOOL)animated {
+//    [super viewDidAppear:animated];
+//}
 
 -(void)modalDismissed {
     self.titleLabel.text = @"Ready for Calibration";
@@ -46,10 +50,16 @@
 }
 
 - (IBAction)actionButtonPressed:(id)sender {
-    [super prepareForGameStart];
-    self.titleLabel.text = @"Calibrating...";
-    self.descriptionLabel.text = @"Stay as quiet as possible for a few more seconds.";
-    self.actionButton.enabled = false;
+    if (self.errorOccurred) {
+        self.titleLabel.text = @"Ready for Calibration";
+        self.descriptionLabel.text = @"Press the 'Begin Effort' button below.";
+        self.errorOccurred = false;
+    } else {
+        [super prepareForGameStart];
+        self.titleLabel.text = @"Calibrating...";
+        self.descriptionLabel.text = @"Stay as quiet as possible for a few more seconds.";
+        self.actionButton.enabled = false;
+    }
 }
 
 -(void)readyForGameStart{
@@ -74,7 +84,13 @@
 }
 
 -(void)errorOccured: (NSString*) error {
+    self.errorOccurred = true;
+    self.titleLabel.text = @"Whoops!";
+    self.descriptionLabel.text = @"An error occurred.\n\nWhen you're ready, hit the continue button below and you'll be able to restart the effort.";
     
+    [self.actionButton setTitle:@"Continue" forState:UIControlStateNormal];
+    [self.actionButton setTitle:@"Continue" forState:UIControlStateSelected];
+    self.actionButton.enabled = true;
 }
 
 

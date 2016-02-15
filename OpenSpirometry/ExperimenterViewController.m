@@ -73,8 +73,35 @@
     self.popoverHeight = self.view.frame.size.height * 0.30;
     
     self.popover.preferredContentSize = CGSizeMake(self.popoverWidth, self.popoverHeight);
+    
+    UITapGestureRecognizer *tripleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tripleTapHandler:)];
+    tripleTap.numberOfTapsRequired = 3;
+    [self.view addGestureRecognizer:tripleTap];
 }
 
+- (void)tripleTapHandler:(UIGestureRecognizer *)gestureRecognizer {
+    [self resetFields];
+}
+
+- (void)resetFields {
+    self.selectedMouthpiece = nil;
+    [self.mouthpieceButton setTitle:@"Select a Mouthpiece" forState:UIControlStateNormal];
+    [self.mouthpieceButton setTitle:@"Select a Mouthpiece" forState:UIControlStateSelected];
+    
+    self.selectedDownstreamTube = nil;
+    [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateNormal];
+    [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateSelected];
+    
+    self.userID = nil;
+    self.userIDField.text = @"";
+    
+    self.userGroupControl.selectedSegmentIndex = 0;
+    
+    self.enableCoachingSwitch.on = false;
+    self.enableCoachingSwitch.enabled = false;
+    
+    self.completeButton.enabled = false;
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -183,7 +210,7 @@
 - (void)optionSelected:(NSString *)selection {
     if ([self.popoverType isEqual: @"Mouthpiece"] ) {
         self.selectedMouthpiece = selection;
-        NSLog(@"Mouthpiece Selected: %@", selection);
+//        NSLog(@"Mouthpiece Selected: %@", selection);
         [self.mouthpieceButton setTitle:self.selectedMouthpiece forState:UIControlStateNormal];
         [self.mouthpieceButton setTitle:self.selectedMouthpiece forState:UIControlStateSelected];
         
@@ -201,7 +228,7 @@
         
     } else {
         self.selectedDownstreamTube = selection;
-        NSLog(@"Downstream Tube Selected: %@", selection);
+//        NSLog(@"Downstream Tube Selected: %@", selection);
         [self.downstreamButton setTitle:self.selectedDownstreamTube forState:UIControlStateNormal];
         [self.downstreamButton setTitle:self.selectedDownstreamTube forState:UIControlStateSelected];
     }

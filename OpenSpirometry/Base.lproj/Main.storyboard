@@ -786,10 +786,10 @@
             </objects>
             <point key="canvasLocation" x="-153" y="3452"/>
         </scene>
-        <!--View Controller-->
+        <!--Test Complete View Controller-->
         <scene sceneID="e12-z1-A27">
             <objects>
-                <viewController storyboardIdentifier="TestCompleteScene" id="7qL-yI-6gm" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestCompleteScene" id="7qL-yI-6gm" customClass="TestCompleteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mXO-Vs-fh4"/>
                         <viewControllerLayoutGuide type="bottom" id="8Av-Ka-bHI"/>
@@ -837,18 +837,10 @@
                                 <exclude reference="HN5-aT-HU6"/>
                             </mask>
                         </variation>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="VWf-yI-79t" appends="YES" id="EtF-OZ-s7Y"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Pe9-BM-83V"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27A-MN-6MQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer numberOfTapsRequired="3" id="VWf-yI-79t">
-                    <connections>
-                        <segue destination="whA-Rv-nym" kind="showDetail" action="showViewController:sender:" id="YcG-Lx-2RK"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2193" y="1172"/>
         </scene>

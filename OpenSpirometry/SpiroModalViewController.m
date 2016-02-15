@@ -89,6 +89,7 @@
             actionPageConfigParams[@"Label"] = @"Effort Complete";
             actionPageConfigParams[@"Description"] = @"You completed an effort, but you still need more to complete the test. When you're ready, hit the continue button below.";
             actionPageConfigParams[@"Button"] = @"Continue to Next Effort";
+            actionPageConfigParams[@"Timer"] = @"True";
             
             
             // Create notes page configurations
@@ -124,12 +125,22 @@
     // Set params for actionViewController and insert into index 0
     if (actionPageConfigParams.count > 1) {
         // Instantiate the actionViewController, which is the first item in the array
-        ModalActionPageViewController* actionViewController = [modalPagesStoryboard instantiateViewControllerWithIdentifier:@"ModalActionPageViewControllerScene"];
-        
-        // Only set delegate of the actionPage if it will be used
-        actionViewController.actionPageDelegate = self;
-        actionViewController.pageConfig = actionPageConfigParams;
-        [self.pageViewControllers insertObject:actionViewController atIndex:0];
+        if (actionPageConfigParams[@"Timer"]) {
+            ModalTimerPageViewController* timerModalViewController = [modalPagesStoryboard instantiateViewControllerWithIdentifier:@"ModalActionPageWithTimerScene"];
+            
+            // Only set delegate of the actionPage if it will be used
+            timerModalViewController.modalTimerPageDelegate = self;
+            timerModalViewController.pageConfig = actionPageConfigParams;
+            [self.pageViewControllers insertObject:timerModalViewController atIndex:0];
+        } else {
+            ModalActionPageViewController* actionViewController = [modalPagesStoryboard instantiateViewControllerWithIdentifier:@"ModalActionPageViewControllerScene"];
+            
+            // Only set delegate of the actionPage if it will be used
+            actionViewController.actionPageDelegate = self;
+            actionViewController.pageConfig = actionPageConfigParams;
+            [self.pageViewControllers insertObject:actionViewController atIndex:0];
+        }
+
     }
     
     if (self.pageViewControllers.count == 0) {

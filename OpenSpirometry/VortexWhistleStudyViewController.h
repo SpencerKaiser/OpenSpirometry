@@ -9,5 +9,5 @@
 #import "SpiroCoreViewController.h"
 
 @interface VortexWhistleStudyViewController : SpiroCoreViewController
-
+@property (strong, nonatomic) NSMutableDictionary* userConfigData;
 @end

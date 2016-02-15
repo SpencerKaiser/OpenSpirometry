@@ -12,7 +12,8 @@
 #import "SpiroModalViewController.h"
 
 @interface SpiroCoreViewController : UIViewController <SpirometerEffortDelegate, SpiroModalViewController>
--(void)prepareForGameStart;
--(void)gameHasEnded;
--(void)presentModalOfType:(SpiroModalType)modalType;
+- (void)storeUserConfigData:(NSMutableDictionary*)userConfigData;
+- (void)prepareForGameStart;
+- (void)gameHasEnded;
+- (void)presentModalOfType:(SpiroModalType)modalType;
 @end

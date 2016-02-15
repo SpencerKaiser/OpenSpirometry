@@ -11,6 +11,8 @@
 #import "SpirometerTestAnalyzer.h"
 #import "SpiroModalViewController.h"
 
+#import "TestCompleteViewController.h"
+
 
 @interface SpiroCoreViewController ()
 // DATA ELEMENTS
@@ -46,7 +48,7 @@
     // most likely this has a maximum update rate of about 100 FPS
     
     // **for debugging**: this turns on the debug mode for reading the effort from a file (only wav currently supported)
-//    [self.effortAnalyzer activateDebugAudioModeWithWAVFile:@"VortexWhistleRed"]; // default audio file name
+    [self.effortAnalyzer activateDebugAudioModeWithWAVFile:@"VortexWhistleRed"]; // default audio file name
     [self.effortAnalyzer shouldSaveSeparateEffortsToDocumentDirectory:YES];
     
 #pragma mark Test Analyzer
@@ -77,23 +79,23 @@
 
 -(void)modalDismissedWithInfo:(NSDictionary *)modalInfo {
     switch (self.modalType) {
-        case SpiroIntroModal:
-        {
-            NSString* userID = modalInfo[@"ID"];
-            NSLog(@"ID : %@", userID);
-            NSLog(@"Mouthpiece : %@", modalInfo[@"Mouthpiece"]);
-            NSLog(@"Downstream Tube : %@", modalInfo[@"Downstream Tube"]);
-            
-            [self.testAnalyzer addUserIdentifier:userID];
-            
-            NSMutableDictionary* testInfo = [[NSMutableDictionary alloc] init];
-            testInfo[@"Mouthpiece"] = modalInfo[@"Mouthpiece"];
-            testInfo[@"Downstream Tube"] = modalInfo[@"Downstream Tube"];
-            
-            [self.testAnalyzer addFieldsToTestData:testInfo];
-            
-            break;
-        }
+            //        case SpiroIntroModal:
+            //        {
+            //            NSString* userID = modalInfo[@"ID"];
+            //            NSLog(@"ID : %@", userID);
+            //            NSLog(@"Mouthpiece : %@", modalInfo[@"Mouthpiece"]);
+            //            NSLog(@"Downstream Tube : %@", modalInfo[@"Downstream Tube"]);
+            //
+            //            [self.testAnalyzer addUserIdentifier:userID];
+            //
+            //            NSMutableDictionary* testInfo = [[NSMutableDictionary alloc] init];
+            //            testInfo[@"Mouthpiece"] = modalInfo[@"Mouthpiece"];
+            //            testInfo[@"Downstream Tube"] = modalInfo[@"Downstream Tube"];
+            //
+            //            [self.testAnalyzer addFieldsToTestData:testInfo];
+            //
+            //            break;
+            //        }
         case SpiroEffortResultsModal:
         {
             // TODO: Add notes from results modal
@@ -122,19 +124,28 @@
         [self presentModalOfType:SpiroCompletionModal];
     }
     if (self.testDidConclude){
-        [self dismissViewControllerAnimated:YES completion:nil];
+        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
-//        UINavigationController* test = self.navigationController;
-//        [self.navigationController popToRootViewControllerAnimated:YES];
+        TestCompleteViewController* testCompleteVC = [storyboard instantiateViewControllerWithIdentifier:@"TestCompleteScene"];
+        [self presentViewController:testCompleteVC animated:YES completion:nil];
     }
-
+    
 }
 
+- (void)storeUserConfigData:(NSMutableDictionary*)userConfigData {
+    NSString* userID = userConfigData[@"UserID"];
+    [self.testAnalyzer addUserIdentifier:userID];
+    NSLog(@"ID : %@", userID);
+    
+    [userConfigData removeObjectForKey:@"UserID"];
+    
+    [self.testAnalyzer addFieldsToTestData:userConfigData];
+}
 
 
 // Optional method which can be implemented by subclasses to
 -(void)modalDismissed {
-
+    
 }
 
 -(void)presentModalOfType:(SpiroModalType) modalType {
@@ -168,9 +179,9 @@
 //    NSMutableDictionary* modalData = [[NSMutableDictionary alloc] init];
 //    self.modalType = SpiroIntroModal;
 //    modalData[@"ModalType"] = @(self.modalType);
-//    
+//
 //    self.spiroTestTransitionModal.modalData = modalData;
-//    
+//
 //    [self presentViewController:self.spiroTestTransitionModal animated:true completion:nil];
 //}
 //
@@ -179,18 +190,18 @@
 //    self.modalType = SpiroEffortResultsModal;
 //    modalData[@"ModalType"] = @(self.modalType);
 //    [modalData setObject:self.latestEffortResults forKey:@"EffortData"];
-//    
+//
 //    self.spiroTestTransitionModal.modalData = modalData;
-//    
+//
 //    [self presentViewController:self.spiroTestTransitionModal animated:true completion:nil];
 //}
 //
 //-(void)presentCompletionModal {
 //    NSMutableDictionary* modalData = [[NSMutableDictionary alloc] init];
 //    modalData[@"ModalType"] = @(SpiroCompletionModal);
-//    
+//
 //    self.spiroTestTransitionModal.modalData = modalData;
-//    
+//
 //    [self presentViewController:self.spiroTestTransitionModal animated:true completion:nil];
 //}
 
@@ -216,8 +227,12 @@
 // • Calling this function will begin the process of display results to the user
 // • After displaying results, the process will continue or the test will end
 -(void)gameHasEnded {
-
-    [self presentModalOfType:SpiroEffortResultsModal];
+    
+    if ([self.testAnalyzer getCurrentSpiroTestState] == SpiroTestStateTestComplete) {
+        [self presentModalOfType:SpiroCompletionModal];
+    } else {
+        [self presentModalOfType:SpiroEffortResultsModal];
+    }
 }
 
 
@@ -325,18 +340,18 @@
 // The following functions must NOT be be overwritten.
 
 -(void)startSpiroEffort {
-//    NSLog(@"[super] startSpiroEffort \n\t-> SpiroEffortAnalyzer:beginListeningForEffort");
+    //    NSLog(@"[super] startSpiroEffort \n\t-> SpiroEffortAnalyzer:beginListeningForEffort");
     [self.effortAnalyzer beginListeningForEffort];
 }
 
 -(void)saveSpiroEffort:(NSDictionary*)results {
-//    NSLog(@"[super] saveSpiroEffort \n\t-> SpiroTestAnalyzer:addEffortResults");
+    //    NSLog(@"[super] saveSpiroEffort \n\t-> SpiroTestAnalyzer:addEffortResults");
     self.spiroTestStatus = [self.testAnalyzer addEffortResults:results];
 }
 
 -(void)saveSpiroEffort:(NSDictionary*)results withNote:(NSString*)note {
-//    NSLog(@"[super] saveSpiroEffort withNote \n\t-> SpiroEffortAnalyzer:addEffortResults withNote");
-//    self.spiroTestStatus = [self.testAnalyzer addEffortResults:results withNote:note];
+    //    NSLog(@"[super] saveSpiroEffort withNote \n\t-> SpiroEffortAnalyzer:addEffortResults withNote");
+    //    self.spiroTestStatus = [self.testAnalyzer addEffortResults:results withNote:note];
 }
 
 -(void)saveSpiroTestData {

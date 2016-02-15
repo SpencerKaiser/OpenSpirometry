@@ -9,7 +9,7 @@
 #import "SpirometerTestAnalyzer.h"
 #import <Foundation/Foundation.h>
 
-#define numEffortsForFixedDurationType 4
+#define numEffortsForFixedDurationType 1
 #define TimeStamp [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000]
 
 @interface SpirometerTestAnalyzer()
