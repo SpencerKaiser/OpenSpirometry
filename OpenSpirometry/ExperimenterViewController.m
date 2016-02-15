@@ -91,6 +91,7 @@
     self.selectedDownstreamTube = nil;
     [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateNormal];
     [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateSelected];
+    self.downstreamButton.enabled = true;
     
     self.userID = nil;
     self.userIDField.text = @"";
