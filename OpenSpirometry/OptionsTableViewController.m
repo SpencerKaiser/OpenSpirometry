@@ -39,6 +39,7 @@
                         @"Mouthpiece C (Green)",
                         @"Mouthpiece D (Yellow)",
                         @"Mouthpiece E (Black)",
+                        @"DigiDoc Whistle",
                         nil];
     } else if ([self.type isEqual: @"Downstream"]) {
         self.options = [NSArray arrayWithObjects:

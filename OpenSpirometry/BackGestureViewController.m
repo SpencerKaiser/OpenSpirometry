@@ -7,6 +7,7 @@
 //
 
 #import "BackGestureViewController.h"
+#import "VortexWhistleStudyViewController.h"
 
 @interface BackGestureViewController ()
 
@@ -18,6 +19,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    NSLog(@"%@", self.userData);
+    
     UITapGestureRecognizer *tripleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tripleTapHandler:)];
     tripleTap.numberOfTapsRequired = 3;
     [self.view addGestureRecognizer:tripleTap];
@@ -28,15 +31,27 @@
 }
 
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"PropogateUserData"]) {
+        // Get reference to the destination view controller
+        BackGestureViewController *vc = [segue destinationViewController];
+        
+        // Pass any objects to the view controller here, like...
+        vc.userData = self.userData;
+    } else if ([[segue identifier] isEqualToString:@"FinalUserDataHandoff"]) {
+        VortexWhistleStudyViewController *vc = [segue destinationViewController];
+//        VortexWhistleStudyViewController.userData = self.userData;
+    }
+    
+    // MAKE SURE THIS VC WILL BE DEALLOCATED AFTER THE SEGUE COMPLETES
+//    self.userData = nil;
 }
-*/
+
+
+-(void)dealloc{
+    NSLog(@"Did dealloc Gesture VC");
+}
 
 @end

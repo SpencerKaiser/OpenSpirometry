@@ -381,7 +381,7 @@
                                 <rect key="frame" x="227" y="550" width="147" height="30"/>
                                 <state key="normal" title="Complete User Setup"/>
                                 <connections>
-                                    <segue destination="5GW-hh-ARa" kind="show" id="yrQ-xA-QlL"/>
+                                    <segue destination="5GW-hh-ARa" kind="show" identifier="PropogateUserData" id="yrQ-xA-QlL"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hod-le-3Ro">
@@ -568,8 +568,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kmv-Il-LSr">
-                                <rect key="frame" x="38" y="270" width="524" height="61"/>
-                                <string key="text">When you are ready to start the test, tap the "Get Started" button at the bottom. If you have any questions or concerns about the study, please ask the experimenter now.</string>
+                                <rect key="frame" x="32" y="249" width="536" height="102"/>
+                                <string key="text">When you are ready to start the test, tap the "Get Started" button at the bottom of the screen.  If you have any questions or concerns about the study, please ask the experimenter now.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -578,7 +578,7 @@
                                 <rect key="frame" x="260" y="550" width="80" height="30"/>
                                 <state key="normal" title="Get Started"/>
                                 <connections>
-                                    <segue destination="QWU-HV-TJC" kind="show" id="XEy-lF-dbQ"/>
+                                    <segue destination="QWU-HV-TJC" kind="show" identifier="PropogateUserData" id="XEy-lF-dbQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -610,10 +610,10 @@
             </objects>
             <point key="canvasLocation" x="-271" y="1172"/>
         </scene>
-        <!--View Controller-->
+        <!--Back Gesture View Controller-->
         <scene sceneID="3rP-Ac-PlP">
             <objects>
-                <viewController storyboardIdentifier="BeginTestScene" id="QWU-HV-TJC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BeginTestScene" id="QWU-HV-TJC" customClass="BackGestureViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="n24-Wt-mj7"/>
                         <viewControllerLayoutGuide type="bottom" id="PD2-9S-OcF"/>
@@ -624,7 +624,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="B3c-7U-XE8">
                                 <rect key="frame" x="39" y="239" width="523" height="122"/>
-                                <mutableString key="text">When you are ready and seated properly, tap the "Start the Test" button at the bottom of the screen.  The following screen will walk you through the steps necessary to complete several efforts. After enough data has been collected, you will be shown a completion scren with additional instructions.</mutableString>
+                                <mutableString key="text">When you are ready and seated properly, tap the "Start the Test" button at the bottom of the screen.  The following screen will walk you through the steps necessary to complete several efforts. After enough data has been collected, you will be shown a completion screen with additional instructions.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -645,7 +645,7 @@
                                 <rect key="frame" x="253" y="550" width="94" height="30"/>
                                 <state key="normal" title="Start the Test"/>
                                 <connections>
-                                    <segue destination="VAu-B6-mx8" kind="presentation" id="mYJ-Kk-BWV"/>
+                                    <segue destination="VAu-B6-mx8" kind="presentation" identifier="FinalUserDataHandoff" id="mYJ-Kk-BWV"/>
                                 </connections>
                             </button>
                         </subviews>

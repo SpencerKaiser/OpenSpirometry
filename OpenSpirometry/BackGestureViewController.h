@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface BackGestureViewController : UIViewController
-
+@property (strong, nonatomic) NSMutableDictionary* userData;        //Need to make sure this isn't retained by this VC (will this VC dealloc???)
 @end

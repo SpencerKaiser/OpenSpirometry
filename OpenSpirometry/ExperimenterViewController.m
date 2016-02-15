@@ -7,6 +7,7 @@
 //
 
 #import "ExperimenterViewController.h"
+#import "BackGestureViewController.h"
 
 @interface ExperimenterViewController () <UIPopoverPresentationControllerDelegate>
 // UI ELEMENTS
@@ -74,6 +75,34 @@
     self.popover.preferredContentSize = CGSizeMake(self.popoverWidth, self.popoverHeight);
 }
 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"PropogateUserData"])
+    {
+        // Get reference to the destination view controller
+        BackGestureViewController *vc = [segue destinationViewController];
+        
+        // Pass any objects to the view controller here, like...
+        NSMutableDictionary* userConfigData = [[NSMutableDictionary alloc] init];
+        userConfigData[@"UserID"] = self.userID;
+        userConfigData[@"UserGroup"] = [self.userGroupControl titleForSegmentAtIndex:self.userGroupControl.selectedSegmentIndex];
+        userConfigData[@"Mouthpiece"] = self.selectedMouthpiece;
+        
+        if (self.selectedDownstreamTube) {
+            userConfigData[@"DownstreamTube"] = self.selectedDownstreamTube;
+        }
+        
+        if (self.enableCoachingSwitch.on) {
+            userConfigData[@"Coaching"] = @"True";
+        }
+        
+        vc.userData = userConfigData;       // Pass user data to destination VC
+    }
+}
+
+
 - (void)dismissKeyboard {
     [self.userIDField resignFirstResponder];
     self.userID = self.userIDField.text;
@@ -107,8 +136,10 @@
 
 
 - (void)checkRequiredFields {
-    if (self.userID && self.selectedMouthpiece && self.selectedDownstreamTube) {
+    if (self.userID.length > 0 && ([self.selectedMouthpiece isEqual:@"DigiDoc Whistle"] || (self.selectedMouthpiece && self.selectedDownstreamTube))) {
         self.completeButton.enabled = true;
+    } else {
+        self.completeButton.enabled = false;
     }
 }
 
@@ -129,8 +160,8 @@
     self.popoverController.delegate = self;
     self.popoverController.sourceView = self.view;
     
-//    NSLog(@"View Weidth: %f, Height: %f", self.view.frame.size.width, self.view.frame.size.height);
-//    NSLog(@"Button X: %f, Y: %f", self.downstreamButton.frame.origin.x, self.downstreamButton.frame.origin.y);
+    //    NSLog(@"View Weidth: %f, Height: %f", self.view.frame.size.width, self.view.frame.size.height);
+    //    NSLog(@"Button X: %f, Y: %f", self.downstreamButton.frame.origin.x, self.downstreamButton.frame.origin.y);
     
     CGFloat xPos, yPos;
     
@@ -155,6 +186,19 @@
         NSLog(@"Mouthpiece Selected: %@", selection);
         [self.mouthpieceButton setTitle:self.selectedMouthpiece forState:UIControlStateNormal];
         [self.mouthpieceButton setTitle:self.selectedMouthpiece forState:UIControlStateSelected];
+        
+        if ([self.selectedMouthpiece isEqualToString:@"DigiDoc Whistle"]) {
+            self.selectedDownstreamTube = nil;
+            [self.downstreamButton setTitle:@"None" forState:UIControlStateNormal];
+            [self.downstreamButton setTitle:@"None" forState:UIControlStateSelected];
+            self.downstreamButton.enabled = false;
+        } else {
+            [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateNormal];
+            [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateSelected];
+            
+            self.downstreamButton.enabled = true;
+        }
+        
     } else {
         self.selectedDownstreamTube = selection;
         NSLog(@"Downstream Tube Selected: %@", selection);
@@ -167,7 +211,6 @@
 
 
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
-    
     return UIModalPresentationNone;
 }
 
