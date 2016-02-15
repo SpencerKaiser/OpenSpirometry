@@ -70,6 +70,11 @@
     return self.currentState;
 }
 
+- (SpiroTestState)overwritePreviousEffortResults:(NSDictionary*)effortResults {
+    [self.testData[@"Efforts"] removeLastObject];
+    return [self addEffortResults:effortResults];
+}
+
 
 -(SpiroTestState)getCurrentSpiroTestState {
     return self.currentState;

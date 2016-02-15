@@ -27,6 +27,7 @@ typedef enum {
 -(void)clearAllEfforts;
 
 -(SpiroTestState)addEffortResults:(NSDictionary*)effortResults;
+- (SpiroTestState)overwritePreviousEffortResults:(NSDictionary*)effortResults;
 
 -(void)addUserIdentifier:(NSString*)userIdentifier;
 -(void)addFieldsToTestData:(NSDictionary*)additionalFields;
