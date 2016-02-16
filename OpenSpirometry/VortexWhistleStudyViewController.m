@@ -86,7 +86,7 @@
 -(void)errorOccured: (NSString*) error {
     self.errorOccurred = true;
     self.titleLabel.text = @"Whoops!";
-    self.descriptionLabel.text = @"An error occurred.\n\nWhen you're ready, hit the continue button below and you'll be able to restart the effort.";
+    self.descriptionLabel.text = @"Something went wrong.\n\nWhen you're ready to continue, hit the button below and you'll be able to restart the effort.";
     
     [self.actionButton setTitle:@"Continue" forState:UIControlStateNormal];
     [self.actionButton setTitle:@"Continue" forState:UIControlStateSelected];
