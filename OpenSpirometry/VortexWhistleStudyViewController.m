@@ -93,5 +93,9 @@
     self.actionButton.enabled = true;
 }
 
+-(void)dealloc{
+    NSLog(@"Did dealloc VortexWhistleStudy VC");
+}
+
 
 @end

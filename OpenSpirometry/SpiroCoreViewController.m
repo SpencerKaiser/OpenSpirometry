@@ -363,4 +363,8 @@
     NSLog(@"[super] saveTest");
 }
 
+-(void)dealloc{
+    NSLog(@"Did dealloc SpiroCore VC");
+}
+
 @end
