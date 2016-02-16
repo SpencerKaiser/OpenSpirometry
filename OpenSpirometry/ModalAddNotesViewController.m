@@ -8,7 +8,7 @@
 
 #import "ModalAddNotesViewController.h"
 
-@interface ModalAddNotesViewController ()
+@interface ModalAddNotesViewController () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *noteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noteDescription;
@@ -45,12 +45,18 @@
     
     [self.view addGestureRecognizer:tap];
     [self registerForKeyboardNotifications];
+    
+    self.noteView.delegate = self;
+    
+    //TODO: Add 'done' toolbar above keyboard
 }
 
--(void)dealloc{
-    NSLog(@"Did dealloc notes view");
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    if (!self.placeholderTextCleared) {
+        self.noteView.text = @"";
+        self.placeholderTextCleared = true;
+    }
 }
-
 
 // Adopted from Apple's Keyboard Handling suggestions (https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/KeyboardManagement/KeyboardManagement.html)
 - (void)registerForKeyboardNotifications
@@ -67,11 +73,6 @@
 
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
-    if (!self.placeholderTextCleared) {
-        self.noteView.text = @"";
-        self.placeholderTextCleared = true;
-    }
-    
     NSDictionary* info = [aNotification userInfo];
     self.keyboardHeight = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size.height;
     [UIView animateWithDuration:0.3f animations:^{
@@ -83,6 +84,10 @@
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
     [self shiftViewDown];
+    
+    if (self.placeholderTextCleared) {
+        self.notes = self.noteView.text;
+    }
 }
 
 -(void)shiftViewUp {
@@ -109,18 +114,13 @@
 
 
 -(void)dismissKeyboard {
-    if (self.placeholderTextCleared) {
-        self.notes = self.noteView.text;
-    }
     [self.noteView resignFirstResponder];
 }
 
 
 
-
-
-
-//TODO: Add functionality to move modal up when keyboar is active
-//TODO: Add 'done' toolbar above keyboard
+-(void)dealloc{
+    NSLog(@"Did dealloc notes view");
+}
 
 @end
