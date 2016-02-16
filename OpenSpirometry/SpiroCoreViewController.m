@@ -96,19 +96,23 @@
             //
             //            break;
             //        }
-        case SpiroEffortResultsModal:
-        {
-            // TODO: Add notes from results modal
-            BOOL notes = false;
-            if (notes) {
-                [self.testAnalyzer overwritePreviousEffortResults:self.latestEffortResults];
-            }
-            break;
-        }
         case SpiroCompletionModal:
             NSLog(@"%@",self.navigationController.viewControllers);
             self.testDidConclude = true;
+            // Continue with the following instructions:
+            if (modalInfo[@"TestNotes"]) {
+                [self.testAnalyzer addTestNotes:modalInfo[@"TestNotes"]];
+            }
+        case SpiroEffortResultsModal:
+        {
+            if (modalInfo[@"EffortNotes"]) {
+                NSMutableDictionary* effortResultsWithNotes = [NSMutableDictionary dictionaryWithDictionary:self.latestEffortResults];
+                
+                effortResultsWithNotes[@"Notes"] = modalInfo[@"EffortNotes"];
+                [self.testAnalyzer overwritePreviousEffortResults:effortResultsWithNotes];
+            }
             break;
+        }
         default:
             NSLog(@"Modal Dismissed...");
             break;

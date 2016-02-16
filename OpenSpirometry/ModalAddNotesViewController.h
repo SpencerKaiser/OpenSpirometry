@@ -11,4 +11,6 @@
 @interface ModalAddNotesViewController : UIViewController
 @property (strong, nonatomic) NSMutableDictionary* pageConfig;    // Configuration data passed into page on instantiation
 @property (strong, nonatomic) NSMutableDictionary* pageData;      // Data object used to store page data, which will be retrieved by the modal
+@property (strong, nonatomic) NSString* notes;
+@property (strong, nonatomic) NSString* type;
 @end

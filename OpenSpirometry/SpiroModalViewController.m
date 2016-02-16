@@ -30,8 +30,8 @@
     
     // Instantiate page VC as a scrolling with horizontal orientation
     self.modalPageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
-            navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
-                          options:nil];
+                                                                   navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+                                                                                 options:nil];
     self.modalPageViewController.dataSource = self;
     self.modalPageViewController.delegate = self;
     
@@ -94,6 +94,7 @@
             
             // Create notes page configurations
             NSMutableDictionary* notePageConfigParams = [[NSMutableDictionary alloc] init];
+            notePageConfigParams[@"Type"] = @"Effort";
             notePageConfigParams[@"Label"] = @"Add a Note to your Effort";
             notePageConfigParams[@"Description"] = @"Make a note about this effort. You can add info about the validity of the effort, any issues you experienced during the effort, or a note to yourself about this effort.\n\nWhen you're finished, swipe right and tap continue to proceed to the next effort.";
             notePageConfigParams[@"Placeholder"] = @"Enter your note here, then hit the done key on the keyboard save your note.";
@@ -114,6 +115,35 @@
             actionPageConfigParams[@"Label"] = @"Test Complete";
             actionPageConfigParams[@"Description"] = @"All tests have been completed. Press the button below to conclude the test.";
             actionPageConfigParams[@"Button"] = @"Conclude Test";
+            
+
+            
+            // Create EFFORT notes page configurations
+            NSMutableDictionary* effortNotePageConfigParams = [[NSMutableDictionary alloc] init];
+            effortNotePageConfigParams[@"Type"] = @"Effort";
+            effortNotePageConfigParams[@"Label"] = @"Add a Note to your Effort";
+            effortNotePageConfigParams[@"Description"] = @"Make a note about this effort. You can add info about the validity of the effort, any issues you experienced during the effort, or a note to yourself about this effort.\n\nWhen you're finished, swipe right to add a note about your test.";
+            effortNotePageConfigParams[@"Placeholder"] = @"Enter your note here, then hit the done key on the keyboard save your note.";
+            
+            // Create notes page and add to pageViewControllers array
+            ModalAddNotesViewController* effortNotePage = [modalPagesStoryboard instantiateViewControllerWithIdentifier:@"ModalAddNotesViewControllerScene"];
+            effortNotePage.pageConfig = effortNotePageConfigParams;
+            [self.pageViewControllers addObject:effortNotePage];
+            
+            
+            
+            // Create TEST notes page configurations
+            NSMutableDictionary* testNotePageConfigParams = [[NSMutableDictionary alloc] init];
+            testNotePageConfigParams[@"Type"] = @"Test";
+            testNotePageConfigParams[@"Label"] = @"Add a Note to your Test";
+            testNotePageConfigParams[@"Description"] = @"Make a note about this test. You can add info about the validity of the efforts, any issues you experienced during the efforts, or a note to yourself about this test.\n\nWhen you're finished, swipe right and follow instructions to conclude the test.";
+            testNotePageConfigParams[@"Placeholder"] = @"Enter your note here, then hit the done key on the keyboard save your note.";
+            
+            // Create notes page and add to pageViewControllers array
+            ModalAddNotesViewController* testNotePage = [modalPagesStoryboard instantiateViewControllerWithIdentifier:@"ModalAddNotesViewControllerScene"];
+            testNotePage.pageConfig = testNotePageConfigParams;
+            [self.pageViewControllers addObject:testNotePage];
+        
             break;
         }
         default:
@@ -140,20 +170,16 @@
             actionViewController.pageConfig = actionPageConfigParams;
             [self.pageViewControllers insertObject:actionViewController atIndex:0];
         }
-
+        
     }
     
     if (self.pageViewControllers.count == 0) {
         [NSException raise:@"No Pages Found" format:@"UIPageViewController was given no pages."];
     }
-
+    
 }
 
 -(void)userActionTaken {
-    // Check for isModalTimed && check if time remaining
-    // If yes... move modal page to the timer
-    // Else dismiss modal
-    
     [self dismissViewControllerAnimated:YES completion:^{
         [self returnToPresenter];
     }];
@@ -170,20 +196,19 @@
 -(void)returnToPresenter{
     if([self.modalDelegate respondsToSelector:@selector(modalDismissedWithInfo:)])
     {
-        // Check all data objects of the currentPages object and grab any relevant data
-        // Use object watches?
+        for (int i = 0; i < self.pageViewControllers.count; i++) {
+            if ([[self.pageViewControllers objectAtIndex:i] isKindOfClass:[ModalAddNotesViewController class]]) {
+                ModalAddNotesViewController* notesVC = [self.pageViewControllers objectAtIndex:i];
+                if (notesVC.notes.length > 0) {
+                    if ([notesVC.type isEqualToString:@"Effort"]) {
+                        [self.modalDismissInfo setObject:notesVC.notes forKey:@"EffortNotes"];
+                    } else if ([notesVC.type isEqualToString:@"Test"]) {
+                        [self.modalDismissInfo setObject:notesVC.notes forKey:@"TestNotes"];
+                    }
+                }
+            }
+        }
         
-        
-        //TODO: Grab notes from ModalAddNotesVC
-        
-        //After grabbing all relevant data
-//        self.pageViewControllers = nil;
-        
-//        [self.modalPageViewController removeFromParentViewController];
-//        self.modalPageViewController = nil;
-        
-        
-        [self.modalDismissInfo setObject:@"Returning from modal!" forKey:@"Notes"];
         [self.modalDelegate modalDismissedWithInfo:self.modalDismissInfo];
     }
 }

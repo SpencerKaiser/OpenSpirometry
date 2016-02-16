@@ -28,6 +28,12 @@
         [NSException raise:@"No Page Configurations Found" format:@"The pageConfig dictionary must be instantiated prior to presenting this view"];
     }
     
+    if (self.pageConfig[@"Type"] ) {
+        self.type = self.pageConfig[@"Type"];
+    } else {
+        self.type = @"Effort";
+    }
+    
     // Set UI elements according to config data
     self.noteLabel.text = self.pageConfig[@"Label"];
     self.noteDescription.text = self.pageConfig[@"Description"];
@@ -103,6 +109,9 @@
 
 
 -(void)dismissKeyboard {
+    if (self.placeholderTextCleared) {
+        self.notes = self.noteView.text;
+    }
     [self.noteView resignFirstResponder];
 }
 

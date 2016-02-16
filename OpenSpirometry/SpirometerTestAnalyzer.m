@@ -75,6 +75,9 @@
     return [self addEffortResults:effortResults];
 }
 
+- (void)addTestNotes:(NSString*)notes {
+    self.testData[@"Notes"] = notes;
+}
 
 -(SpiroTestState)getCurrentSpiroTestState {
     return self.currentState;

@@ -22,14 +22,16 @@ typedef enum {
 } SpiroTestType;
 
 @interface SpirometerTestAnalyzer : NSObject
--(SpiroTestState)getCurrentSpiroTestState;
--(void)setSpiroTestType:(SpiroTestType)testType;
--(void)clearAllEfforts;
+- (SpiroTestState)getCurrentSpiroTestState;
+- (void)setSpiroTestType:(SpiroTestType)testType;
+- (void)clearAllEfforts;
 
--(SpiroTestState)addEffortResults:(NSDictionary*)effortResults;
+- (SpiroTestState)addEffortResults:(NSDictionary*)effortResults;
 - (SpiroTestState)overwritePreviousEffortResults:(NSDictionary*)effortResults;
+- (void)addTestNotes:(NSString*)notes;
 
--(void)addUserIdentifier:(NSString*)userIdentifier;
--(void)addFieldsToTestData:(NSDictionary*)additionalFields;
--(void)addMetadataToUserData:(NSDictionary*)additionalFields;
+
+- (void)addUserIdentifier:(NSString*)userIdentifier;
+- (void)addFieldsToTestData:(NSDictionary*)additionalFields;
+- (void)addMetadataToUserData:(NSDictionary*)additionalFields;
 @end
