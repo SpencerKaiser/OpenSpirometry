@@ -21,6 +21,11 @@
     UITapGestureRecognizer *tripleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tripleTapHandler:)];
     tripleTap.numberOfTapsRequired = 3;
     [self.view addGestureRecognizer:tripleTap];
+    
+    UISwipeGestureRecognizer* backSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(backSwipeHandler:)];
+    backSwipe.direction = UISwipeGestureRecognizerDirectionDown;
+    backSwipe.numberOfTouchesRequired = 2;
+    [self.view addGestureRecognizer:backSwipe];
 }
 
 - (void)tripleTapHandler:(UIGestureRecognizer *)gestureRecognizer {
@@ -34,4 +39,9 @@
     
     [presentingVC dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)backSwipeHandler:(UISwipeGestureRecognizer *)swipeRecognizer {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end
