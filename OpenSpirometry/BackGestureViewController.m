@@ -50,7 +50,7 @@
 }
 
 
--(void)dealloc{
+- (void)dealloc{
     NSLog(@"Did dealloc Gesture VC");
 }
 
