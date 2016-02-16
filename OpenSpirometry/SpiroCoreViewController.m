@@ -97,7 +97,6 @@
             //            break;
             //        }
         case SpiroCompletionModal:
-            NSLog(@"%@",self.navigationController.viewControllers);
             self.testDidConclude = true;
             // Continue with the following instructions:
             if (modalInfo[@"TestNotes"]) {
@@ -125,9 +124,9 @@
     // Notify game that modal has been closed
     [self modalDismissed];
     
-    if ([self.testAnalyzer getCurrentSpiroTestState] == SpiroTestStateTestComplete && !self.testDidConclude) {
-        [self presentModalOfType:SpiroCompletionModal];
-    }
+//    if ([self.testAnalyzer getCurrentSpiroTestState] == SpiroTestStateTestComplete && !self.testDidConclude) {
+//        [self presentModalOfType:SpiroCompletionModal];
+//    }
     if (self.testDidConclude){
         UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
