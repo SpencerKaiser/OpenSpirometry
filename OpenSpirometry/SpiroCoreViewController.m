@@ -99,9 +99,10 @@
         case SpiroEffortResultsModal:
         {
             // TODO: Add notes from results modal
-            
-            // After retrieving notes, add effort to testAnalyzer
-            [self.testAnalyzer addEffortResults:self.latestEffortResults];
+            BOOL notes = false;
+            if (notes) {
+                [self.testAnalyzer overwritePreviousEffortResults:self.latestEffortResults];
+            }
             break;
         }
         case SpiroCompletionModal:
@@ -228,8 +229,8 @@
 // • Calling this function will begin the process of display results to the user
 // • After displaying results, the process will continue or the test will end
 -(void)gameHasEnded {
-    
-    if ([self.testAnalyzer getCurrentSpiroTestState] == SpiroTestStateTestComplete) {
+    SpiroTestState testState = [self.testAnalyzer addEffortResults:self.latestEffortResults];
+    if (testState == SpiroTestStateTestComplete) {
         [self presentModalOfType:SpiroCompletionModal];
     } else {
         [self presentModalOfType:SpiroEffortResultsModal];
