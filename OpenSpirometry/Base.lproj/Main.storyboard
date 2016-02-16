@@ -523,7 +523,7 @@
                                             <rect key="frame" x="15" y="0.0" width="120" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -626,7 +626,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="B3c-7U-XE8">
                                 <rect key="frame" x="39" y="239" width="523" height="122"/>
-                                <mutableString key="text">When you are ready and seated properly, tap the "Start the Test" button at the bottom of the screen.  The following screen will walk you through the steps necessary to complete several efforts. After enough data has been collected, you will be shown a completion screen with additional instructions.</mutableString>
+                                <string key="text">When you are ready and seated properly, tap the "Start the Test" button at the bottom of the screen.  The following screen will walk you through the steps necessary to complete several efforts. After enough data has been collected, you will be shown a completion screen with additional instructions.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
