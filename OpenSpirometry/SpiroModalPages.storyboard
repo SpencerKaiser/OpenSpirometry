@@ -449,13 +449,13 @@
                                 <rect key="frame" x="30" y="50" width="540" height="520"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkq-hJ-Fyr">
-                                        <rect key="frame" x="222" y="15" width="95" height="30"/>
+                                        <rect key="frame" x="222" y="15" width="95" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="07P-tT-qvN">
-                                        <rect key="frame" x="30" y="115" width="480" height="82"/>
+                                        <rect key="frame" x="30" y="101" width="480" height="82"/>
                                         <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -472,24 +472,24 @@
                                         </connections>
                                     </button>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VSJ-aG-ZNG">
-                                        <rect key="frame" x="8" y="420" width="524" height="54"/>
+                                        <rect key="frame" x="8" y="409" width="524" height="65"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tHI-bz-H5k">
-                                        <rect key="frame" x="8" y="205" width="524" height="55"/>
+                                        <rect key="frame" x="8" y="183" width="524" height="66"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0P-0W-ZhN">
-                                        <rect key="frame" x="8" y="53" width="524" height="54"/>
+                                        <rect key="frame" x="8" y="36" width="524" height="65"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jN4-JV-QTA">
-                                        <rect key="frame" x="190" y="268" width="161" height="144"/>
+                                        <rect key="frame" x="190" y="257" width="161" height="144"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="144" id="2xF-uk-L1M"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="120"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -502,9 +502,9 @@
                                     <constraint firstItem="VSJ-aG-ZNG" firstAttribute="top" secondItem="jN4-JV-QTA" secondAttribute="bottom" constant="8" id="AAi-mn-Rd7"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="VSJ-aG-ZNG" secondAttribute="trailing" id="NFh-Aj-ltn"/>
                                     <constraint firstAttribute="bottom" secondItem="Jgx-yH-BQd" secondAttribute="bottom" constant="8" id="Nkz-Qn-DSA"/>
-                                    <constraint firstItem="tHI-bz-H5k" firstAttribute="top" secondItem="07P-tT-qvN" secondAttribute="bottom" constant="8" id="P6k-M5-yQh"/>
+                                    <constraint firstItem="tHI-bz-H5k" firstAttribute="top" secondItem="07P-tT-qvN" secondAttribute="bottom" id="P6k-M5-yQh"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="tHI-bz-H5k" secondAttribute="trailing" id="RoG-mM-r4m"/>
-                                    <constraint firstItem="07P-tT-qvN" firstAttribute="top" secondItem="Y0P-0W-ZhN" secondAttribute="bottom" constant="8" id="SfO-P9-bqb"/>
+                                    <constraint firstItem="07P-tT-qvN" firstAttribute="top" secondItem="Y0P-0W-ZhN" secondAttribute="bottom" id="SfO-P9-bqb"/>
                                     <constraint firstItem="07P-tT-qvN" firstAttribute="centerY" secondItem="ZYa-If-jTb" secondAttribute="centerY" constant="-104" id="UEV-U9-sk7"/>
                                     <constraint firstItem="07P-tT-qvN" firstAttribute="leading" secondItem="ZYa-If-jTb" secondAttribute="leading" constant="30" id="bAb-LK-rTz"/>
                                     <constraint firstItem="Jgx-yH-BQd" firstAttribute="centerX" secondItem="ZYa-If-jTb" secondAttribute="centerX" id="eal-uM-7qh"/>
@@ -517,11 +517,12 @@
                                     <constraint firstItem="Y0P-0W-ZhN" firstAttribute="height" secondItem="tHI-bz-H5k" secondAttribute="height" id="wda-Ix-1ac"/>
                                     <constraint firstItem="fkq-hJ-Fyr" firstAttribute="centerX" secondItem="ZYa-If-jTb" secondAttribute="centerX" id="y7I-yW-JtO"/>
                                     <constraint firstItem="Y0P-0W-ZhN" firstAttribute="height" secondItem="VSJ-aG-ZNG" secondAttribute="height" id="yJ7-wW-PJL"/>
-                                    <constraint firstItem="Y0P-0W-ZhN" firstAttribute="top" secondItem="fkq-hJ-Fyr" secondAttribute="bottom" constant="8" id="yJM-wk-eEc"/>
+                                    <constraint firstItem="Y0P-0W-ZhN" firstAttribute="top" secondItem="fkq-hJ-Fyr" secondAttribute="bottom" id="yJM-wk-eEc"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="far-55-jG6"/>
+                                        <exclude reference="UEV-U9-sk7"/>
                                     </mask>
                                 </variation>
                             </view>
