@@ -568,8 +568,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kmv-Il-LSr">
-                                <rect key="frame" x="32" y="249" width="536" height="102"/>
-                                <string key="text">When you are ready to start the test, tap the "Get Started" button at the bottom of the screen.  If you have any questions or concerns about the study, please ask the experimenter now.</string>
+                                <rect key="frame" x="32" y="239" width="536" height="122"/>
+                                <string key="text">If you have any questions or concerns about the study, please ask the experimenter now.  When you're ready to get started, tap the button at the bottom of the screen. </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
