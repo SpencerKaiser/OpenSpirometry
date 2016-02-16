@@ -20,7 +20,7 @@
 
 
 @implementation SpiroModalViewController
--(void)viewDidLoad {
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     // Prevent modal creation without data
@@ -39,7 +39,7 @@
     self.modalDismissInfo = [[NSMutableDictionary alloc] init];
 }
 
--(void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     // Create the array of modal pages (including action page)
@@ -59,7 +59,7 @@
     [self.modalPageViewController didMoveToParentViewController:self];
 }
 
--(void) createPageSet {
+- (void)createPageSet {
     
     // Instantiate array to contain page view controllers
     self.pageViewControllers = [[NSMutableArray alloc] init];
@@ -87,7 +87,7 @@
         {
             // Create action page configurations
             actionPageConfigParams[@"Label"] = @"Effort Complete";
-            actionPageConfigParams[@"Description"] = @"You completed an effort, but you still need more to complete the test. When you're ready, hit the continue button below.";
+            actionPageConfigParams[@"Description"] = @"You completed an effort, but you still need more to complete the test.\n\nBefore starting the next effort, you'll need to take a moment to rest. Relax and breathe normally until the timer below expires. When the timer does expire, tap the button at the bottom of the screen to continue.";
             actionPageConfigParams[@"Button"] = @"Continue to Next Effort";
             actionPageConfigParams[@"Timer"] = @"True";
             
@@ -179,13 +179,15 @@
     
 }
 
--(void)userActionTaken {
+
+- (void)userActionTaken {
     [self dismissViewControllerAnimated:YES completion:^{
         [self returnToPresenter];
     }];
 }
 
--(void)userDataSubmitted:(NSMutableDictionary*)userData {
+
+- (void)userDataSubmitted:(NSMutableDictionary*)userData {
     [self dismissViewControllerAnimated:YES completion:^{
         [self.modalDismissInfo addEntriesFromDictionary:userData];
         [self returnToPresenter];
@@ -193,7 +195,7 @@
 }
 
 
--(void)returnToPresenter{
+- (void)returnToPresenter{
     if([self.modalDelegate respondsToSelector:@selector(modalDismissedWithInfo:)])
     {
         for (int i = 0; i < self.pageViewControllers.count; i++) {
@@ -214,6 +216,7 @@
 }
 
 
+
 #pragma mark - DATA SOURCE DELEGATION
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController{
@@ -225,9 +228,11 @@
     }
 }
 
+
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController{
     return 0;
 }
+
 
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
@@ -257,10 +262,5 @@
         return self.pageViewControllers[idx];
     }
 }
-
-
-//TODO: Delegate functions for modal pages that save data (e.g., notes)
-
-
 
 @end
