@@ -77,6 +77,7 @@
 
 - (void)addTestNotes:(NSString*)notes {
     self.testData[@"Notes"] = notes;
+    [self writeUserDataToMemory];
 }
 
 -(SpiroTestState)getCurrentSpiroTestState {
