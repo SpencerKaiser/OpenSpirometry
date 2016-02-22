@@ -65,7 +65,18 @@
     // Declare self as the presentation context
     self.definesPresentationContext = YES;
     self.navigationController.navigationBar.hidden = YES;
+    
+    
+    UISwipeGestureRecognizer* leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftSwipeHandler:)];
+    leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
+    leftSwipe.numberOfTouchesRequired = 2;
+    [self.view addGestureRecognizer:leftSwipe];
 }
+
+- (void)leftSwipeHandler:(UISwipeGestureRecognizer *)gestureRecognizer {
+    [self.effortAnalyzer requestThatCurrentEffortShouldCancel];
+}
+
 
 -(void)createModal {
     // Instantiate and configure SpiroModalViewController (no scene on storyboard)
