@@ -24,7 +24,7 @@
     // Do any additional setup after loading the view.
     
     // UI VARIABLE MODIFICATION
-    [self.actionButton setTitle:@"Begin Calibration" forState:UIControlStateNormal];
+    [self.actionButton setTitle:@"Begin Effort" forState:UIControlStateNormal];
     self.titleLabel.text = @"Ready for Calibration";
 //    self.helpText.text = @"After beginning calibration, remain as quiet as possible until prompted to begin using the whistle."
     self.descriptionLabel.text = @"Press the 'Begin Effort' button below.";
