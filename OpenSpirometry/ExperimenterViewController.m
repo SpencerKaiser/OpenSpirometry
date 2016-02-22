@@ -12,6 +12,8 @@
 @interface ExperimenterViewController () <UIPopoverPresentationControllerDelegate>
 // UI ELEMENTS
 @property (weak, nonatomic) IBOutlet UITextField* userIDField;
+@property (weak, nonatomic) IBOutlet UILabel *userIDHelpLabel;
+
 @property (weak, nonatomic) IBOutlet UISegmentedControl* userGroupControl;
 @property (weak, nonatomic) IBOutlet UILabel* switchLabel;
 @property (weak, nonatomic) IBOutlet UISwitch* enableCoachingSwitch;
@@ -42,6 +44,7 @@
     
     self.completeButton.enabled = false;
     
+    self.userIDHelpLabel.text = @"";
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
@@ -52,6 +55,10 @@
     [self.userIDField addTarget:self
                          action:@selector(userIDFieldChanged:)
                forControlEvents:UIControlEventEditingChanged];
+    
+    [self.userIDField addTarget:self
+                         action:@selector(checkUserIDLength:)
+               forControlEvents:UIControlEventEditingDidEnd];
     
     
     [self.userGroupControl addTarget:self
@@ -77,6 +84,17 @@
     UITapGestureRecognizer *tripleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tripleTapHandler:)];
     tripleTap.numberOfTapsRequired = 3;
     [self.view addGestureRecognizer:tripleTap];
+    
+    
+    
+    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+    numberToolbar.barStyle = UIBarStyleDefault;
+    numberToolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissKeyboard)],
+                           nil];
+    [numberToolbar sizeToFit];
+    self.userIDField.inputAccessoryView = numberToolbar;
+    
 }
 
 - (void)tripleTapHandler:(UIGestureRecognizer *)gestureRecognizer {
@@ -133,7 +151,16 @@
 
 - (void)dismissKeyboard {
     [self.userIDField resignFirstResponder];
+}
+
+- (void)checkUserIDLength:(UITextField *)userIDField {
     self.userID = self.userIDField.text;
+    if (self.userID.length < 3) {
+        self.userIDHelpLabel.text = @"User ID MUST be 3 numbers long";
+        self.userIDHelpLabel.textColor = [UIColor redColor];
+    } else {
+        self.userIDHelpLabel.text = @"";
+    }
     [self checkRequiredFields];
 }
 
@@ -163,7 +190,7 @@
 
 
 - (void)checkRequiredFields {
-    if (self.userID.length > 0 && ([self.selectedMouthpiece isEqual:@"DigiDoc Whistle"] || (self.selectedMouthpiece && self.selectedDownstreamTube))) {
+    if (self.userID.length == 3 && ([self.selectedMouthpiece isEqual:@"DigiDoc Whistle"] || (self.selectedMouthpiece && self.selectedDownstreamTube))) {
         self.completeButton.enabled = true;
     } else {
         self.completeButton.enabled = false;
