@@ -76,6 +76,9 @@
 }
 
 - (void)addTestNotes:(NSString*)notes {
+    if (self.testData[@"Notes"]) {
+        notes = [NSString stringWithFormat:@"[%@] Appended: %@", self.testData[@"Notes"], notes];
+    }
     self.testData[@"Notes"] = notes;
     [self writeUserDataToMemory];
 }
