@@ -7,6 +7,8 @@
 //
 
 #import "ModalAddNotesViewController.h"
+#define toolbarHeight 50
+#define toolbarOffset -40
 
 @interface ModalAddNotesViewController () <UITextViewDelegate>
 
@@ -48,13 +50,30 @@
     
     self.noteView.delegate = self;
     
-    //TODO: Add 'done' toolbar above keyboard
+    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, toolbarHeight)];
+    numberToolbar.barStyle = UIBarStyleDefault;
+    numberToolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissKeyboard)],
+                           nil];
+    [numberToolbar sizeToFit];
+    self.noteView.inputAccessoryView = numberToolbar;
+    
 }
 
+
+// NOTE: This may introduce a race condition if the height of the keyboard isn't set by [self keyboardWasShown]
 - (void)textViewDidBeginEditing:(UITextView *)textView {
+    [self shiftViewUp];
     if (!self.placeholderTextCleared) {
         self.noteView.text = @"";
         self.placeholderTextCleared = true;
+    }
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    [self shiftViewDown];
+    if (self.placeholderTextCleared) {
+        self.notes = self.noteView.text;
     }
 }
 
@@ -64,49 +83,34 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWasShown:)
                                                  name:UIKeyboardWillShowNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillBeHidden:)
-                                                 name:UIKeyboardWillHideNotification object:nil];
-    
 }
 
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
     NSDictionary* info = [aNotification userInfo];
     self.keyboardHeight = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size.height;
-    [UIView animateWithDuration:0.3f animations:^{
-        [self shiftViewUp];
-    }];
-    
-}
-
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
-{
-    [self shiftViewDown];
-    
-    if (self.placeholderTextCleared) {
-        self.notes = self.noteView.text;
-    }
 }
 
 -(void)shiftViewUp {
-    
     CGRect viewLocation =  self.view.frame;
-    viewLocation.origin.y -= self.keyboardHeight;
+    //    viewLocation.origin.y -= (self.keyboardHeight + toolbarHeight);
+    viewLocation.origin.y -= self.keyboardHeight + toolbarOffset;
     
-    if (!self.viewWasShifted) {
+    [UIView animateWithDuration:0.3f animations:^{
         [self.view setFrame:viewLocation];
-    }
-
+    }];
+    
     self.viewWasShifted = true;
 }
 
 -(void)shiftViewDown {
     CGRect viewLocation =  self.view.frame;
-    viewLocation.origin.y += self.keyboardHeight;
+    //    viewLocation.origin.y += (self.keyboardHeight + toolbarHeight);
+    viewLocation.origin.y += self.keyboardHeight + toolbarOffset;
     
-    [self.view setFrame:viewLocation];
+    [UIView animateWithDuration:0.3f animations:^{
+        [self.view setFrame:viewLocation];
+    }];
     
     self.viewWasShifted = false;
 }
