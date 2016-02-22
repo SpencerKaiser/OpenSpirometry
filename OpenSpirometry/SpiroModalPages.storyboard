@@ -104,19 +104,19 @@
                                 <rect key="frame" x="30" y="50" width="540" height="520"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noteLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xG-ej-rFC">
-                                        <rect key="frame" x="232" y="30" width="76" height="21"/>
+                                        <rect key="frame" x="232" y="30" width="76" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noteDescription" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKd-Ai-iKf">
-                                        <rect key="frame" x="30" y="81" width="480" height="21"/>
+                                        <rect key="frame" x="30" y="80.5" width="480" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="noteView" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Byq-hd-wWt">
-                                        <rect key="frame" x="30" y="132" width="480" height="358"/>
+                                        <rect key="frame" x="30" y="131" width="480" height="359"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -186,7 +186,7 @@
                                 <rect key="frame" x="30" y="50" width="540" height="520"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter User Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4g-Te-WnN">
-                                        <rect key="frame" x="209" y="30" width="122" height="21"/>
+                                        <rect key="frame" x="209.5" y="30" width="121.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -195,7 +195,7 @@
                                         </variation>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User ID" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vgb-ru-lWF">
-                                        <rect key="frame" x="236" y="65" width="69" height="30"/>
+                                        <rect key="frame" x="236" y="64.5" width="69" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                         <variation key="widthClass=compact" ambiguous="YES">
@@ -214,13 +214,13 @@
                                         </connections>
                                     </button>
                                     <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Yi5-TF-wfo">
-                                        <rect key="frame" x="110" y="134" width="320" height="143"/>
+                                        <rect key="frame" x="110" y="133" width="320" height="143.5"/>
                                         <variation key="widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="-30" y="-50" width="320" height="216"/>
                                         </variation>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mouthpiece" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGU-Mv-yJK">
-                                        <rect key="frame" x="224" y="114" width="91" height="21"/>
+                                        <rect key="frame" x="224" y="113.5" width="91" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -229,7 +229,7 @@
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downstream Tube" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rd4-Xa-C2a">
-                                        <rect key="frame" x="200" y="287" width="139" height="21"/>
+                                        <rect key="frame" x="200" y="286.5" width="139" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -238,7 +238,7 @@
                                         </variation>
                                     </label>
                                     <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tr4-ys-MsL">
-                                        <rect key="frame" x="110" y="308" width="320" height="142"/>
+                                        <rect key="frame" x="110" y="307" width="320" height="143"/>
                                         <variation key="widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="-30" y="-50" width="320" height="216"/>
                                         </variation>
