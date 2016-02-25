@@ -47,8 +47,11 @@
     // the FPS possible on this depends on the audio buffer size and sampling rate, which is different for different phones
     // most likely this has a maximum update rate of about 100 FPS
     
+    // !!!: DEV MODE
     // **for debugging**: this turns on the debug mode for reading the effort from a file (only wav currently supported)
     [self.effortAnalyzer activateDebugAudioModeWithWAVFile:@"VortexWhistleRed"]; // default audio file name
+    // END DEV
+    
     [self.effortAnalyzer shouldSaveSeparateEffortsToDocumentDirectory:YES];
     
 #pragma mark Test Analyzer
@@ -64,9 +67,9 @@
     //----------------UI-----------------
     // Declare self as the presentation context
     self.definesPresentationContext = YES;
-    self.navigationController.navigationBar.hidden = YES;
+//    self.navigationController.navigationBar.hidden = YES;
     
-    
+    // GESTURE TO CANCEL EFFORT BEFORE COMPLETION
     UISwipeGestureRecognizer* leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftSwipeHandler:)];
     leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
     leftSwipe.numberOfTouchesRequired = 2;
@@ -119,6 +122,8 @@
                 NSMutableDictionary* effortResultsWithNotes = [NSMutableDictionary dictionaryWithDictionary:self.latestEffortResults];
                 
                 effortResultsWithNotes[@"Notes"] = modalInfo[@"EffortNotes"];
+                self.latestEffortResults = [NSDictionary dictionaryWithDictionary:effortResultsWithNotes];
+                
                 [self.testAnalyzer overwritePreviousEffortResults:effortResultsWithNotes];
             }
             break;
@@ -151,8 +156,12 @@
     NSString* userID = userConfigData[@"UserID"];
     [self.testAnalyzer addUserIdentifier:userID];
     NSLog(@"ID : %@", userID);
-    
     [userConfigData removeObjectForKey:@"UserID"];
+    
+    NSString* userGroup = userConfigData[@"UserGroup"];
+    [self.testAnalyzer addMetadataToUserData: [NSDictionary dictionaryWithObject:userGroup forKey:@"UserGroup"]];
+    NSLog(@"Group : %@", userGroup);
+    [userConfigData removeObjectForKey:@"UserGroup"];
     
     [self.testAnalyzer addFieldsToTestData:userConfigData];
 }
