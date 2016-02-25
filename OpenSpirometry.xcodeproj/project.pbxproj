@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		090359F41BD1773100DFC582 /* SpiroModalPages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */; };
 		090906ED1C71791700EDCB75 /* BackGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 090906EC1C71791700EDCB75 /* BackGestureViewController.m */; };
+		090B8FD11C7648A000A4480B /* UserDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 090B8FD01C7648A000A4480B /* UserDataHandler.m */; };
 		091D178D1BFB9C510044D830 /* BufferedOverlapQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D17821BFB9C510044D830 /* BufferedOverlapQueue.m */; };
 		091D178E1BFB9C510044D830 /* CubicSpline.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D17841BFB9C510044D830 /* CubicSpline.m */; };
 		091D178F1BFB9C510044D830 /* DataBufferBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D17861BFB9C510044D830 /* DataBufferBlock.m */; };
@@ -54,6 +55,8 @@
 		090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpiroModalPages.storyboard; sourceTree = "<group>"; };
 		090906EB1C71791700EDCB75 /* BackGestureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackGestureViewController.h; sourceTree = "<group>"; };
 		090906EC1C71791700EDCB75 /* BackGestureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackGestureViewController.m; sourceTree = "<group>"; };
+		090B8FCF1C7648A000A4480B /* UserDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataHandler.h; sourceTree = "<group>"; };
+		090B8FD01C7648A000A4480B /* UserDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataHandler.m; sourceTree = "<group>"; };
 		091D17811BFB9C510044D830 /* BufferedOverlapQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BufferedOverlapQueue.h; path = AudioDSPUtils/BufferedOverlapQueue.h; sourceTree = "<group>"; };
 		091D17821BFB9C510044D830 /* BufferedOverlapQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BufferedOverlapQueue.m; path = AudioDSPUtils/BufferedOverlapQueue.m; sourceTree = "<group>"; };
 		091D17831BFB9C510044D830 /* CubicSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CubicSpline.h; path = AudioDSPUtils/CubicSpline.h; sourceTree = "<group>"; };
@@ -280,6 +283,8 @@
 				B63612621B1FF93D00289665 /* Dependencies */,
 				09F933E81BA7529B0041FFB2 /* SpirometerTestAnalyzer.h */,
 				09F933E91BA752B80041FFB2 /* SpirometerTestAnalyzer.m */,
+				090B8FCF1C7648A000A4480B /* UserDataHandler.h */,
+				090B8FD01C7648A000A4480B /* UserDataHandler.m */,
 			);
 			name = SpiroAnalysisModel;
 			sourceTree = "<group>";
@@ -409,6 +414,7 @@
 				09227E291BE81C8900FCE6AD /* VortexWhistleStudyViewController.m in Sources */,
 				09F933EA1BA752B80041FFB2 /* SpirometerTestAnalyzer.m in Sources */,
 				091D17A91BFBA1090044D830 /* SpirometerEffortAnalyzer.m in Sources */,
+				090B8FD11C7648A000A4480B /* UserDataHandler.m in Sources */,
 				091D17911BFB9C510044D830 /* Novocaine.m in Sources */,
 				091D178D1BFB9C510044D830 /* BufferedOverlapQueue.m in Sources */,
 				09A6BAA71BAB56B20024360F /* SpiroModalViewController.m in Sources */,
