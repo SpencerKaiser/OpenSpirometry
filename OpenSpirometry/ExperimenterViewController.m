@@ -101,7 +101,10 @@
                            nil];
     [numberToolbar sizeToFit];
     self.userIDField.inputAccessoryView = numberToolbar;
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self checkUserIDLength:self.userIDField];
 }
 
 #pragma mark - HANDLERS
@@ -177,9 +180,7 @@
     NSString* storedUserGroup = [self.userDataHandler getUserGroupForID:self.userID];
     NSString* selectedUserGroup = [self.userGroupControl titleForSegmentAtIndex:self.userGroupControl.selectedSegmentIndex];
     
-    if ([storedUserGroup isEqualToString:selectedUserGroup]) {
-        [self presentWelcomeVC];
-    } else {
+    if (storedUserGroup && ![storedUserGroup isEqualToString:selectedUserGroup]) {
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"User Group Mismatch"
                                                                        message:[NSString stringWithFormat: @"The selected User Group for User %@ does not match the User Group in the User Data file.\n\nSelected: %@\nStored: %@", self.userID, selectedUserGroup, storedUserGroup]
                                                                 preferredStyle:UIAlertControllerStyleAlert];
@@ -206,6 +207,8 @@
         [alert addAction:cancelAction];
         
         [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        [self presentWelcomeVC];
     }
     
 }
@@ -310,7 +313,7 @@
 
 - (void)checkUserIDLength:(UITextField *)userIDField {
     self.userID = self.userIDField.text;
-    if (self.userID.length < 3) {
+    if (self.userID.length > 0 && self.userID.length < 3) {
         self.userIDHelpLabel.text = @"User ID MUST be 3 numbers long";
         self.userIDHelpLabel.textColor = [UIColor redColor];
     } else if (self.userID.length == 3 && [self.userDataHandler userDataFileExistsForUserID:self.userID]) {
