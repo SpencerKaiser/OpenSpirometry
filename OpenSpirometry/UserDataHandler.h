@@ -16,6 +16,7 @@
 - (NSMutableDictionary *)getUserDataForID:(NSString *)userID;
 - (NSString *)getUserGroupForID:(NSString *)userID;
 - (NSString *)readMetadataForKey:(NSString *)key;
+- (BOOL)userDataFileExistsForUserID:(NSString*)userID;
 
 #pragma mark - WRITE OPERATIONS
 - (void)writeUserDataToMemory:(NSMutableDictionary *)userData;

@@ -10,7 +10,6 @@
 
 @interface UserDataHandler()
 
-//@property (strong, nonatomic) NSMutableDictionary* userDataFile;        // Pointer to all user data
 @property (strong, nonatomic) NSString* userDataFilePath;               // Path to user data file
 
 @end
@@ -29,8 +28,20 @@
 }
 
 - (NSString *)getUserGroupForID:(NSString *)userID {
+    // Save current state of the UserDataHandler
+    NSString* currUserID = self.userID;
+    NSString* currUserDataFilePath = self.userDataFilePath;
     
-    return @"";
+    self.userID = userID;
+    NSMutableDictionary* userData = [self getUserDataForID:userID];
+    
+    NSString* userGroup = userData[@"Metadata"][@"UserGroup"];
+    
+    
+    self.userID = currUserID;
+    self.userDataFilePath = currUserDataFilePath;
+
+    return userGroup;
 }
 
 - (void)writeUserDataToMemory:(NSMutableDictionary *)userData {
@@ -92,6 +103,22 @@
     }
     
     return userData;
+}
+
+
+- (BOOL)userDataFileExistsForUserID:(NSString*)userID {
+    // Get UI Documents Paths
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    // Get path to documents root
+    NSString* documents = [paths firstObject];
+    
+    // Set local path variable
+    NSString* dataFilePath = [NSString stringWithFormat:@"%@/%@.json", documents, userID];
+
+    if ([[NSFileManager defaultManager] fileExistsAtPath:dataFilePath]) {
+        return true;
+    }
+    return false;
 }
 
 

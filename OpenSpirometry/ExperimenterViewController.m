@@ -8,6 +8,7 @@
 
 #import "ExperimenterViewController.h"
 #import "BackGestureViewController.h"
+#import "UserDataHandler.h"
 
 @interface ExperimenterViewController () <UIPopoverPresentationControllerDelegate>
 // UI ELEMENTS
@@ -32,6 +33,8 @@
 @property (strong, nonatomic) NSString* popoverType;
 @property (strong, nonatomic) NSString* selectedMouthpiece;
 @property (strong, nonatomic) NSString* selectedDownstreamTube;
+
+@property (strong, nonatomic) UserDataHandler* userDataHandler;
 @end
 
 @implementation ExperimenterViewController
@@ -39,6 +42,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.userDataHandler = [[UserDataHandler alloc] init];
     
     // UI MODIFICATION
     
@@ -122,33 +127,6 @@
     self.completeButton.enabled = false;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Make sure your segue name in storyboard is the same as this line
-    if ([[segue identifier] isEqualToString:@"PropogateUserData"])
-    {
-        // Get reference to the destination view controller
-        BackGestureViewController *vc = [segue destinationViewController];
-        
-        // Pass any objects to the view controller here, like...
-        NSMutableDictionary* userConfigData = [[NSMutableDictionary alloc] init];
-        userConfigData[@"UserID"] = self.userID;
-        userConfigData[@"UserGroup"] = [self.userGroupControl titleForSegmentAtIndex:self.userGroupControl.selectedSegmentIndex];
-        userConfigData[@"Mouthpiece"] = self.selectedMouthpiece;
-        
-        if (self.selectedDownstreamTube) {
-            userConfigData[@"DownstreamTube"] = self.selectedDownstreamTube;
-        }
-        
-        if (self.enableCoachingSwitch.on) {
-            userConfigData[@"Coaching"] = @"True";
-        }
-        
-        vc.userData = userConfigData;       // Pass user data to destination VC
-    }
-}
-
-
 - (void)dismissKeyboard {
     [self.userIDField resignFirstResponder];
 }
@@ -158,10 +136,24 @@
     if (self.userID.length < 3) {
         self.userIDHelpLabel.text = @"User ID MUST be 3 numbers long";
         self.userIDHelpLabel.textColor = [UIColor redColor];
-    } else {
+    } else if (self.userID.length == 3 && [self.userDataHandler userDataFileExistsForUserID:self.userID]) {
+        self.userIDHelpLabel.text = @"User Data File Found";
+        self.userIDHelpLabel.textColor = [UIColor greenColor];
+        [self selectUserGroup:[self.userDataHandler getUserGroupForID:self.userID]];
+    }
+    else {
         self.userIDHelpLabel.text = @"";
     }
     [self checkRequiredFields];
+}
+
+- (void)selectUserGroup:(NSString*)userGroup {
+    for (int i = 0; i < self.userGroupControl.numberOfSegments; i++) {
+        if ([[self.userGroupControl titleForSegmentAtIndex:i] isEqualToString:userGroup]) {
+            self.userGroupControl.selectedSegmentIndex = i;
+            break;
+        }
+    }
 }
 
 - (void)userIDFieldChanged:(UITextField *)userIDField {
@@ -266,6 +258,65 @@
 
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
     return UIModalPresentationNone;
+}
+
+- (IBAction)completeButtonTapped:(id)sender {
+    NSString* storedUserGroup = [self.userDataHandler getUserGroupForID:self.userID];
+    NSString* selectedUserGroup = [self.userGroupControl titleForSegmentAtIndex:self.userGroupControl.selectedSegmentIndex];
+
+    if ([storedUserGroup isEqualToString:selectedUserGroup]) {
+        [self presentWelcomeVC];
+    } else {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"User Group Mismatch"
+                                                                       message:[NSString stringWithFormat: @"The selected User Group for User %@ does not match the User Group in the User Data file.\n\nSelected: %@\nStored: %@", self.userID, selectedUserGroup, storedUserGroup]
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* overwriteAction = [UIAlertAction actionWithTitle:@"Overwrite User Group"
+                                                                  style:UIAlertActionStyleDestructive
+                                                                handler:^(UIAlertAction * action) {
+                                                                    [self presentWelcomeVC];
+                                                                }];
+        
+        [alert addAction:overwriteAction];
+        
+        UIAlertAction* revertAction = [UIAlertAction actionWithTitle:@"Revert to Stored User Group"
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {
+                                                                  [self selectUserGroup:storedUserGroup];
+                                                              }];
+        [alert addAction:revertAction];
+        
+        
+        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                                style:UIAlertActionStyleCancel
+                                                              handler:^(UIAlertAction * action) {}];
+        [alert addAction:cancelAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    
+}
+
+- (void)presentWelcomeVC {
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    BackGestureViewController* welcomeVC = [storyboard instantiateViewControllerWithIdentifier:@"UserWelcomeScene"];
+    
+    NSMutableDictionary* userConfigData = [[NSMutableDictionary alloc] init];
+    userConfigData[@"UserID"] = self.userID;
+    userConfigData[@"UserGroup"] = [self.userGroupControl titleForSegmentAtIndex:self.userGroupControl.selectedSegmentIndex];
+    userConfigData[@"Mouthpiece"] = self.selectedMouthpiece;
+    
+    if (self.selectedDownstreamTube) {
+        userConfigData[@"DownstreamTube"] = self.selectedDownstreamTube;
+    }
+    
+    if (self.enableCoachingSwitch.on) {
+        userConfigData[@"Coaching"] = @"True";
+    }
+    
+    welcomeVC.userData = userConfigData;       // Pass user data to destination VC
+    
+    [self presentViewController:welcomeVC animated:YES completion:nil];
 }
 
 -(void)dealloc{
