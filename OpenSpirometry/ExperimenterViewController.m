@@ -28,7 +28,8 @@
 @property (weak, nonatomic) UIPopoverPresentationController* popoverController;
 
 // DATA ELEMENTS
-@property (assign, nonatomic) CGFloat popoverWidth, popoverHeight;
+@property (assign, nonatomic) CGFloat popoverWidth;
+@property (assign, nonatomic) CGFloat popoverHeight;
 @property (strong, nonatomic) NSString* userID;
 @property (strong, nonatomic) NSString* popoverType;
 @property (strong, nonatomic) NSString* selectedMouthpiece;
@@ -39,6 +40,7 @@
 
 @implementation ExperimenterViewController
 
+#pragma mark - INSTANTIATION AND ALLOCATION
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -102,58 +104,10 @@
     
 }
 
+#pragma mark - HANDLERS
+
 - (void)tripleTapHandler:(UIGestureRecognizer *)gestureRecognizer {
     [self resetFields];
-}
-
-- (void)resetFields {
-    self.selectedMouthpiece = nil;
-    [self.mouthpieceButton setTitle:@"Select a Mouthpiece" forState:UIControlStateNormal];
-    [self.mouthpieceButton setTitle:@"Select a Mouthpiece" forState:UIControlStateSelected];
-    
-    self.selectedDownstreamTube = nil;
-    [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateNormal];
-    [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateSelected];
-    self.downstreamButton.enabled = true;
-    
-    self.userID = nil;
-    self.userIDField.text = @"";
-    
-    self.userGroupControl.selectedSegmentIndex = 0;
-    
-    self.enableCoachingSwitch.on = false;
-    self.enableCoachingSwitch.enabled = false;
-    
-    self.completeButton.enabled = false;
-}
-
-- (void)dismissKeyboard {
-    [self.userIDField resignFirstResponder];
-}
-
-- (void)checkUserIDLength:(UITextField *)userIDField {
-    self.userID = self.userIDField.text;
-    if (self.userID.length < 3) {
-        self.userIDHelpLabel.text = @"User ID MUST be 3 numbers long";
-        self.userIDHelpLabel.textColor = [UIColor redColor];
-    } else if (self.userID.length == 3 && [self.userDataHandler userDataFileExistsForUserID:self.userID]) {
-        self.userIDHelpLabel.text = @"User Data File Found";
-        self.userIDHelpLabel.textColor = [UIColor greenColor];
-        [self selectUserGroup:[self.userDataHandler getUserGroupForID:self.userID]];
-    }
-    else {
-        self.userIDHelpLabel.text = @"";
-    }
-    [self checkRequiredFields];
-}
-
-- (void)selectUserGroup:(NSString*)userGroup {
-    for (int i = 0; i < self.userGroupControl.numberOfSegments; i++) {
-        if ([[self.userGroupControl titleForSegmentAtIndex:i] isEqualToString:userGroup]) {
-            self.userGroupControl.selectedSegmentIndex = i;
-            break;
-        }
-    }
 }
 
 - (void)userIDFieldChanged:(UITextField *)userIDField {
@@ -180,14 +134,35 @@
     [self checkRequiredFields];
 }
 
-
-- (void)checkRequiredFields {
-    if (self.userID.length == 3 && ([self.selectedMouthpiece isEqual:@"DigiDoc Whistle"] || (self.selectedMouthpiece && self.selectedDownstreamTube))) {
-        self.completeButton.enabled = true;
+- (void)optionSelected:(NSString *)selection {
+    if ([self.popoverType isEqual: @"Mouthpiece"] ) {
+        self.selectedMouthpiece = selection;
+        //        NSLog(@"Mouthpiece Selected: %@", selection);
+        [self.mouthpieceButton setTitle:self.selectedMouthpiece forState:UIControlStateNormal];
+        [self.mouthpieceButton setTitle:self.selectedMouthpiece forState:UIControlStateSelected];
+        
+        if ([self.selectedMouthpiece isEqualToString:@"DigiDoc Whistle"]) {
+            self.selectedDownstreamTube = nil;
+            [self.downstreamButton setTitle:@"None" forState:UIControlStateNormal];
+            [self.downstreamButton setTitle:@"None" forState:UIControlStateSelected];
+            self.downstreamButton.enabled = false;
+        } else {
+            [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateNormal];
+            [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateSelected];
+            
+            self.downstreamButton.enabled = true;
+        }
+        
     } else {
-        self.completeButton.enabled = false;
+        self.selectedDownstreamTube = selection;
+        //        NSLog(@"Downstream Tube Selected: %@", selection);
+        [self.downstreamButton setTitle:self.selectedDownstreamTube forState:UIControlStateNormal];
+        [self.downstreamButton setTitle:self.selectedDownstreamTube forState:UIControlStateSelected];
     }
+    [self.popover dismissViewControllerAnimated:YES completion:nil];
+    [self checkRequiredFields];
 }
+
 
 - (IBAction)mouthpieceButtonTapped:(id)sender {
     [self setPopoverTypeAndPresent:@"Mouthpiece"];
@@ -196,6 +171,84 @@
 - (IBAction)downstreamButtonTapped:(id)sender {
     [self setPopoverTypeAndPresent:@"Downstream"];
 }
+
+
+- (IBAction)completeButtonTapped:(id)sender {
+    NSString* storedUserGroup = [self.userDataHandler getUserGroupForID:self.userID];
+    NSString* selectedUserGroup = [self.userGroupControl titleForSegmentAtIndex:self.userGroupControl.selectedSegmentIndex];
+    
+    if ([storedUserGroup isEqualToString:selectedUserGroup]) {
+        [self presentWelcomeVC];
+    } else {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"User Group Mismatch"
+                                                                       message:[NSString stringWithFormat: @"The selected User Group for User %@ does not match the User Group in the User Data file.\n\nSelected: %@\nStored: %@", self.userID, selectedUserGroup, storedUserGroup]
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* overwriteAction = [UIAlertAction actionWithTitle:@"Overwrite User Group"
+                                                                  style:UIAlertActionStyleDestructive
+                                                                handler:^(UIAlertAction * action) {
+                                                                    [self presentWelcomeVC];
+                                                                }];
+        
+        [alert addAction:overwriteAction];
+        
+        UIAlertAction* revertAction = [UIAlertAction actionWithTitle:@"Revert to Stored User Group"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * action) {
+                                                                 [self selectUserGroup:storedUserGroup];
+                                                             }];
+        [alert addAction:revertAction];
+        
+        
+        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction * action) {}];
+        [alert addAction:cancelAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    
+}
+
+
+#pragma mark - UI MODIFIERS
+
+- (void)resetFields {
+    self.selectedMouthpiece = nil;
+    [self.mouthpieceButton setTitle:@"Select a Mouthpiece" forState:UIControlStateNormal];
+    [self.mouthpieceButton setTitle:@"Select a Mouthpiece" forState:UIControlStateSelected];
+    
+    self.selectedDownstreamTube = nil;
+    [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateNormal];
+    [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateSelected];
+    self.downstreamButton.enabled = true;
+    
+    self.userID = nil;
+    self.userIDField.text = @"";
+    
+    self.userGroupControl.selectedSegmentIndex = 0;
+    
+    self.enableCoachingSwitch.on = false;
+    self.enableCoachingSwitch.enabled = false;
+    
+    self.completeButton.enabled = false;
+}
+
+- (void)selectUserGroup:(NSString*)userGroup {
+    for (int i = 0; i < self.userGroupControl.numberOfSegments; i++) {
+        if ([[self.userGroupControl titleForSegmentAtIndex:i] isEqualToString:userGroup]) {
+            self.userGroupControl.selectedSegmentIndex = i;
+            break;
+        }
+    }
+}
+
+- (void)dismissKeyboard {
+    [self.userIDField resignFirstResponder];
+}
+
+
+#pragma mark - UI COMPONENTS
 
 - (void)setPopoverTypeAndPresent:(NSString*)type {
     self.popoverType = type;
@@ -226,75 +279,9 @@
     [self presentViewController:self.popover animated:YES completion:nil];
 }
 
-- (void)optionSelected:(NSString *)selection {
-    if ([self.popoverType isEqual: @"Mouthpiece"] ) {
-        self.selectedMouthpiece = selection;
-//        NSLog(@"Mouthpiece Selected: %@", selection);
-        [self.mouthpieceButton setTitle:self.selectedMouthpiece forState:UIControlStateNormal];
-        [self.mouthpieceButton setTitle:self.selectedMouthpiece forState:UIControlStateSelected];
-        
-        if ([self.selectedMouthpiece isEqualToString:@"DigiDoc Whistle"]) {
-            self.selectedDownstreamTube = nil;
-            [self.downstreamButton setTitle:@"None" forState:UIControlStateNormal];
-            [self.downstreamButton setTitle:@"None" forState:UIControlStateSelected];
-            self.downstreamButton.enabled = false;
-        } else {
-            [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateNormal];
-            [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateSelected];
-            
-            self.downstreamButton.enabled = true;
-        }
-        
-    } else {
-        self.selectedDownstreamTube = selection;
-//        NSLog(@"Downstream Tube Selected: %@", selection);
-        [self.downstreamButton setTitle:self.selectedDownstreamTube forState:UIControlStateNormal];
-        [self.downstreamButton setTitle:self.selectedDownstreamTube forState:UIControlStateSelected];
-    }
-    [self.popover dismissViewControllerAnimated:YES completion:nil];
-    [self checkRequiredFields];
-}
-
 
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
     return UIModalPresentationNone;
-}
-
-- (IBAction)completeButtonTapped:(id)sender {
-    NSString* storedUserGroup = [self.userDataHandler getUserGroupForID:self.userID];
-    NSString* selectedUserGroup = [self.userGroupControl titleForSegmentAtIndex:self.userGroupControl.selectedSegmentIndex];
-
-    if ([storedUserGroup isEqualToString:selectedUserGroup]) {
-        [self presentWelcomeVC];
-    } else {
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"User Group Mismatch"
-                                                                       message:[NSString stringWithFormat: @"The selected User Group for User %@ does not match the User Group in the User Data file.\n\nSelected: %@\nStored: %@", self.userID, selectedUserGroup, storedUserGroup]
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* overwriteAction = [UIAlertAction actionWithTitle:@"Overwrite User Group"
-                                                                  style:UIAlertActionStyleDestructive
-                                                                handler:^(UIAlertAction * action) {
-                                                                    [self presentWelcomeVC];
-                                                                }];
-        
-        [alert addAction:overwriteAction];
-        
-        UIAlertAction* revertAction = [UIAlertAction actionWithTitle:@"Revert to Stored User Group"
-                                                                style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {
-                                                                  [self selectUserGroup:storedUserGroup];
-                                                              }];
-        [alert addAction:revertAction];
-        
-        
-        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
-                                                                style:UIAlertActionStyleCancel
-                                                              handler:^(UIAlertAction * action) {}];
-        [alert addAction:cancelAction];
-        
-        [self presentViewController:alert animated:YES completion:nil];
-    }
-    
 }
 
 - (void)presentWelcomeVC {
@@ -319,13 +306,38 @@
     [self presentViewController:welcomeVC animated:YES completion:nil];
 }
 
--(void)dealloc{
-    NSLog(@"Did dealloc experimenter config panel");
+#pragma mark - DATA CHECKERS
+
+- (void)checkUserIDLength:(UITextField *)userIDField {
+    self.userID = self.userIDField.text;
+    if (self.userID.length < 3) {
+        self.userIDHelpLabel.text = @"User ID MUST be 3 numbers long";
+        self.userIDHelpLabel.textColor = [UIColor redColor];
+    } else if (self.userID.length == 3 && [self.userDataHandler userDataFileExistsForUserID:self.userID]) {
+        self.userIDHelpLabel.text = @"User Data File Found";
+        self.userIDHelpLabel.textColor = [UIColor greenColor];
+        [self selectUserGroup:[self.userDataHandler getUserGroupForID:self.userID]];
+    }
+    else {
+        self.userIDHelpLabel.text = @"";
+    }
+    [self checkRequiredFields];
+}
+
+- (void)checkRequiredFields {
+    if (self.userID.length == 3 && ([self.selectedMouthpiece isEqual:@"DigiDoc Whistle"] || (self.selectedMouthpiece && self.selectedDownstreamTube))) {
+        self.completeButton.enabled = true;
+    } else {
+        self.completeButton.enabled = false;
+    }
 }
 
 
 
-// Before complete button is pressed, check to make sure user is of correct group
+#pragma mark - DEALLOC
+
+-(void)dealloc{
+    NSLog(@"Did dealloc experimenter config panel");
+}
 
 @end
-;
