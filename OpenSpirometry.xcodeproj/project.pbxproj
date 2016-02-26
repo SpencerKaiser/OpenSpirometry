@@ -186,6 +186,17 @@
 			name = OpenSpirometryCore;
 			sourceTree = "<group>";
 		};
+		0975951B1C7FDC8F004B7340 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				090B8FCF1C7648A000A4480B /* UserDataHandler.h */,
+				090B8FD01C7648A000A4480B /* UserDataHandler.m */,
+				09E819631C6E91B20048B165 /* OptionsTableViewController.h */,
+				09E819641C6E91B20048B165 /* OptionsTableViewController.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		09FB9DFF1BD42236005C8507 /* ModalPages */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				B636124B1B1CC4C800289665 /* SpiroAnalysisModel */,
+				0975951B1C7FDC8F004B7340 /* Utilities */,
 				09786C861BB8810F006F4315 /* SpiroCoreViewController.h */,
 				09786C871BB8810F006F4315 /* SpiroCoreViewController.m */,
 				09227E271BE81C8900FCE6AD /* VortexWhistleStudyViewController.h */,
@@ -232,8 +244,6 @@
 				091E85BF1C0E85FE00F0B1AF /* SpiroNavigationViewController.m */,
 				09E819601C6E50AE0048B165 /* ExperimenterViewController.h */,
 				09E819611C6E50AE0048B165 /* ExperimenterViewController.m */,
-				09E819631C6E91B20048B165 /* OptionsTableViewController.h */,
-				09E819641C6E91B20048B165 /* OptionsTableViewController.m */,
 				090906EB1C71791700EDCB75 /* BackGestureViewController.h */,
 				090906EC1C71791700EDCB75 /* BackGestureViewController.m */,
 				092C2CFE1C7291150074A638 /* TestCompleteViewController.h */,
@@ -283,8 +293,6 @@
 				B63612621B1FF93D00289665 /* Dependencies */,
 				09F933E81BA7529B0041FFB2 /* SpirometerTestAnalyzer.h */,
 				09F933E91BA752B80041FFB2 /* SpirometerTestAnalyzer.m */,
-				090B8FCF1C7648A000A4480B /* UserDataHandler.h */,
-				090B8FD01C7648A000A4480B /* UserDataHandler.m */,
 			);
 			name = SpiroAnalysisModel;
 			sourceTree = "<group>";
