@@ -8,6 +8,8 @@
 
 #import "UserDataHandler.h"
 
+#define BeginningOfUserIDRange 100
+
 @interface UserDataHandler()
 
 @property (strong, nonatomic) NSString* userDataFilePath;               // Path to user data file
@@ -20,10 +22,43 @@
 
 // TODO: Implement functions
 - (NSString *)generateUserID {
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    // Get path to documents root
+    NSString* documents = [paths firstObject];
     
+    // Set local path variable
+//    NSString* dataFilePath = [NSString stringWithFormat:@"%@/%@.json", documents, @"ActiveUserIDs"];
     
-    // USE A JSON FILE WITH AN ARRAY CONTAINING ALL USED USER IDs
+//    NSMutableDictionary* activeUserIDs;
+//    
+//    if ([[NSFileManager defaultManager] fileExistsAtPath:dataFilePath]) {
+//        NSData* rawFileData = [[NSData alloc] initWithContentsOfFile:dataFilePath];
+//        activeUserIDs = [self objectFromJSON:rawFileData];
+//    } else {
+//        activeUserIDs = [[NSMutableDictionary alloc] init];
+//    }
     
+    for (int i = BeginningOfUserIDRange; i <= 999; i++) {
+        NSString* dataFilePath = [NSString stringWithFormat:@"%@/%d.json", documents, i];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:dataFilePath]) {
+            return [NSString stringWithFormat:@"%d", i];
+        }
+        
+        
+//        if (![activeUserIDs objectForKey:[NSString stringWithFormat:@"%d", i]]) {
+//            [activeUserIDs setObject:@"Active" forKey:[NSString stringWithFormat:@"%d", i]];
+            
+            // Create JSON encoded file from current user data (which may or may not be complete)
+//            NSData* JSONFile = [self NSDataFromObject:activeUserIDs];
+            // Write updated user data to memory
+//            [JSONFile writeToFile:dataFilePath atomically:NO];
+        
+//            return [NSString stringWithFormat:@"%d", i];
+//        }
+    }
+    
+    // If this executes, something went wrong... throw error
+    [NSException raise:@"No User IDs Available" format:@"Something went wrong and no user IDs between the BeginningOfUserIDRange and 999 were available for use"];
     return @"";
 }
 

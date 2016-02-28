@@ -213,6 +213,11 @@
     
 }
 
+- (IBAction)generateUserIDButtonTapped:(id)sender {
+    self.userIDField.text = [self.userDataHandler generateUserID];
+}
+
+
 
 #pragma mark - UI MODIFIERS
 
