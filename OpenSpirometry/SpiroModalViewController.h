@@ -26,7 +26,7 @@ typedef enum {
 @end
 
 
-@interface SpiroModalViewController : UIViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate,ModalActionPageViewController,ModalTimerPageViewController,ModalUserDataViewController>
+@interface SpiroModalViewController : UIViewController <UIPageViewControllerDataSource,UIPageViewControllerDelegate,ModalActionPageViewController,ModalTimerPageViewController,ModalUserDataViewController>
 @property (nonatomic, weak) id<SpiroModalViewController> modalDelegate;
 @property (strong, nonatomic) NSMutableDictionary* modalData;    //Data passed into modal
 @property (strong, nonatomic) UIPageViewController* modalPageViewController;
