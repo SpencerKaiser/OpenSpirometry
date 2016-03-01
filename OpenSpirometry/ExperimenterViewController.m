@@ -7,7 +7,7 @@
 //
 
 #import "ExperimenterViewController.h"
-#import "BackGestureViewController.h"
+#import "SpiroDataTransitionViewController.h"
 #import "UserDataHandler.h"
 
 @interface ExperimenterViewController () <UIPopoverPresentationControllerDelegate>
@@ -215,6 +215,7 @@
 
 - (IBAction)generateUserIDButtonTapped:(id)sender {
     self.userIDField.text = [self.userDataHandler generateUserID];
+    [self checkUserIDLength:self.userIDField];
 }
 
 
@@ -294,7 +295,7 @@
 
 - (void)presentWelcomeVC {
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    BackGestureViewController* welcomeVC = [storyboard instantiateViewControllerWithIdentifier:@"UserWelcomeScene"];
+    SpiroDataTransitionViewController* welcomeVC = [storyboard instantiateViewControllerWithIdentifier:@"UserWelcomeScene"];
     
     NSMutableDictionary* userConfigData = [[NSMutableDictionary alloc] init];
     userConfigData[@"UserID"] = self.userID;
@@ -310,6 +311,7 @@
     }
     
     welcomeVC.userData = userConfigData;       // Pass user data to destination VC
+    welcomeVC.type = SpiroTransitionCoachingSplitter;   // Next VC will evaluate whether or not to show coaching
     
     [self presentViewController:welcomeVC animated:YES completion:nil];
 }

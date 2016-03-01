@@ -1,0 +1,188 @@
+//
+//  SpiroCoachingInfoViewController.m
+//  OpenSpirometry
+//
+//  Created by Spencer Kaiser on 2/29/16.
+//  Copyright © 2016 Eric Larson. All rights reserved.
+//
+
+#import "SpiroCoachingInfoViewController.h"
+
+@interface SpiroCoachingInfoViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *infoHeader;
+@property (weak, nonatomic) IBOutlet UILabel *infoBody;
+@property (weak, nonatomic) IBOutlet UIButton *actionButton;
+
+@property (strong, nonatomic) NSMutableArray* coachingInfoText;
+@property (assign, nonatomic) int currentTextGroup;
+@property (assign, nonatomic) int currentTextGroupItem;
+@property (assign, nonatomic) BOOL allInfoShown;
+
+@end
+
+@implementation SpiroCoachingInfoViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.infoBody.text = @"";
+    self.infoHeader.text = @"";
+    
+    self.actionButton.alpha = 0.0;
+    [self.actionButton.layer setBorderWidth:1.0];
+    [self.actionButton.layer setCornerRadius:5.0];
+    [self.actionButton.layer setBorderColor:[self.actionButton.titleLabel.textColor CGColor]];
+    
+//    [self.actionButton addTarget:self action:@selector(buttonHighlighted:) forControlEvents:UIControlEventTouchDown];
+//    [self.actionButton addTarget:self action:@selector(buttonReleased:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.actionButton addTarget:self action:@selector(buttonReleased:) forControlEvents:UIControlEventTouchUpOutside];
+    
+    
+    self.coachingInfoText = [[NSMutableArray alloc] init];
+    [self setCoachingText];
+    
+    self.currentTextGroup = 0;
+    self.currentTextGroupItem = 0;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self beginCoachingInfoDisplay];
+    });
+}
+
+- (void)buttonHighlighted:(UIButton*)button {
+//    self.actionButton.alpha = self.actionButton.titleLabel.alpha;
+}
+
+- (void)buttonReleased:(UIButton*)button {
+//    self.actionButton.alpha = self.actionButton.alpha;
+}
+
+- (void)setCoachingText {
+    // SPIRO INTRO TEXT
+    NSMutableDictionary* spiroIntroGroup = [[NSMutableDictionary alloc] init];
+    spiroIntroGroup[@"Header"] = @"What is Spirometry?";
+    spiroIntroGroup[@"GroupText"] = [[NSMutableArray alloc] init];
+    
+    NSMutableArray* spiroIntroGroupText = spiroIntroGroup[@"GroupText"];
+    [self addText:@"Spirometry (spy-ROM-uh-tree) is a common office test used to assess how well your lungs work by measuring how much air you inhale, how much you exhale and how quickly you exhale." toTextGroup:spiroIntroGroupText];
+    [self addText:@"Spirometry is used to diagnose asthma, chronic obstructive pulmonary disease (COPD) and other conditions that affect breathing." toTextGroup:spiroIntroGroupText];
+    
+    [self.coachingInfoText addObject:spiroIntroGroup];
+    
+
+    // COMMON SPIRO ISSUES GROUP
+    NSMutableDictionary* spiroCommonIssuesGroup = [[NSMutableDictionary alloc] init];
+    spiroCommonIssuesGroup[@"Header"] = @"Common Issues";
+    spiroCommonIssuesGroup[@"GroupText"] = [[NSMutableArray alloc] init];
+    
+    NSMutableArray* spiroCommonIssuesGroupText = spiroCommonIssuesGroup[@"GroupText"];
+    [self addText:@"There are several issues that arise during spirometry efforts that invalidate the results and/or may cause discomfort:" toTextGroup:spiroCommonIssuesGroupText];
+    [self addText:@"- This is an issue with Spirometry" toTextGroup:spiroCommonIssuesGroupText];
+    [self addText:@"- This is another issue with Spirometry" toTextGroup:spiroCommonIssuesGroupText];
+    [self addText:@"- This is the final issue with Spirometry" toTextGroup:spiroCommonIssuesGroupText];
+    
+    [self.coachingInfoText addObject:spiroCommonIssuesGroup];
+}
+
+- (void)addText:(NSString*)text toTextGroup:(NSMutableArray*)textGroup {
+    if (textGroup.count > 0) {
+        text = [NSString stringWithFormat:@"\n\n%@", text];
+    }
+    [textGroup addObject:text];
+}
+
+- (void)beginCoachingInfoDisplay {
+    [self showNextTextItem];
+    [self.actionButton setTitle:@"Continue" forState:UIControlStateNormal];
+    [self.actionButton setTitle:@"Continue" forState:UIControlStateSelected];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:1.0 animations:^{
+            self.actionButton.alpha = 1.0;
+        }];
+    });
+}
+
+- (IBAction)actionButtonTapped:(id)sender {
+    if (self.allInfoShown) {
+        
+    } else {
+        [self showNextTextItem];
+    }
+    
+}
+
+- (void)showNextTextItem {
+    NSDictionary* currentGroup = self.coachingInfoText[self.currentTextGroup];
+    if (self.currentTextGroupItem < currentGroup.count) {
+        if ([self.infoHeader.text isEqualToString:@""]) {
+            [self setInfoHeaderText:currentGroup[@"Header"]];
+        }
+        
+        NSArray* currentGroupText = currentGroup[@"GroupText"];
+        // If additional text items exit, append to existing text
+        [self setInfoBodyText:[NSString stringWithFormat:@"%@%@", self.infoBody.text, currentGroupText[self.currentTextGroupItem]]];
+        self.currentTextGroupItem += 1;
+    } else if (self.currentTextGroup + 1 < self.coachingInfoText.count) {
+        // The next group of items exists
+        self.currentTextGroupItem = 0;
+        self.currentTextGroup += 1;
+        [self setInfoBodyText:@""];
+        [self setInfoHeaderText:@""];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self showNextTextItem];        // After small delay to clear screen, return to function with newly updated group
+        });
+    } else {
+        // All groups have been displayed
+        [self allInfoHasBeenShown];
+    }
+}
+
+- (void)setLabelText:(NSString*)text forLabel:(UILabel*)label {
+    // Adapted from: http://stackoverflow.com/questions/3073520/animate-text-change-in-uilabel
+    
+    CATransition *animation = [CATransition animation];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.type = kCATransitionFade;
+    animation.duration = 1.5;
+    [label.layer addAnimation:animation forKey:@"kCATransitionFade"];
+    
+    // This will fade:
+    label.text = text;
+}
+
+- (void)setInfoBodyText:(NSString*)text {
+    [self setLabelText:text forLabel:self.infoBody];
+}
+
+- (void)setInfoHeaderText:(NSString*)text {
+    [self setLabelText:text forLabel:self.infoHeader];
+}
+
+
+- (void)allInfoHasBeenShown {
+    self.allInfoShown = true;
+    
+    [UIView animateWithDuration:1.0
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         self.actionButton.alpha = 0.0;
+                         [self setInfoHeaderText:@""];
+                         [self setInfoBodyText:@""];
+                     }
+                     completion:^(BOOL finished) {
+                         [self setInfoHeaderText:@"Get Ready..."];
+                         [self setInfoBodyText:@"Now we're going to test your knowledge of spirometry with a short quiz.\n\nWhen you are ready, tap the button at the bottom of the screen."];
+                         [self.actionButton setTitle:@"I'm Ready" forState:UIControlStateNormal];
+                         [self.actionButton setTitle:@"I'm Ready" forState:UIControlStateSelected];
+                         [UIView animateWithDuration:1.0 animations:^{
+                             self.actionButton.alpha = 1.0;
+                         }];
+                     }];
+}
+
+@end

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Spiro Coaching Info View Controller-->
+        <scene sceneID="tak-DI-hGi">
+            <objects>
+                <viewController storyboardIdentifier="SpiroCoachingInfoScene" id="hah-wa-c8j" customClass="SpiroCoachingInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CI2-57-9aE"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vzw-YE-wJg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EC6-67-R5U">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's talk about Spirometry." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sO9-G9-Sgl">
+                                <rect key="frame" x="169" y="35" width="263" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="7BG-CZ-FPK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Vf-Bz-BCh">
+                                <rect key="frame" x="20" y="530" width="560" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="sWN-p9-LCU"/>
+                                </constraints>
+                                <state key="normal" title="Action Button"/>
+                                <connections>
+                                    <action selector="actionButtonTapped:" destination="hah-wa-c8j" eventType="touchUpInside" id="gF1-1a-PoT"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wtT-MJ-EK8">
+                                <rect key="frame" x="30" y="125" width="540" height="284"/>
+                                <mutableString key="text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nV-Cu-kY5">
+                                <rect key="frame" x="30" y="94" width="60" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="yet-fW-nKl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="yet-fW-nKl"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6Vf-Bz-BCh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wtT-MJ-EK8" secondAttribute="bottom" constant="20" id="6Vs-2y-oap"/>
+                            <constraint firstItem="wtT-MJ-EK8" firstAttribute="leading" secondItem="EC6-67-R5U" secondAttribute="leadingMargin" constant="10" id="9ai-ES-hjc"/>
+                            <constraint firstItem="sO9-G9-Sgl" firstAttribute="centerX" secondItem="EC6-67-R5U" secondAttribute="centerX" id="B9l-oX-cxe"/>
+                            <constraint firstItem="1nV-Cu-kY5" firstAttribute="leading" secondItem="wtT-MJ-EK8" secondAttribute="leading" id="FU7-BJ-ifU"/>
+                            <constraint firstItem="wtT-MJ-EK8" firstAttribute="top" secondItem="1nV-Cu-kY5" secondAttribute="bottom" constant="10" id="Ht8-Lh-b3T"/>
+                            <constraint firstItem="Vzw-YE-wJg" firstAttribute="top" secondItem="6Vf-Bz-BCh" secondAttribute="bottom" constant="20" id="OhS-TY-ifM"/>
+                            <constraint firstItem="6Vf-Bz-BCh" firstAttribute="centerX" secondItem="EC6-67-R5U" secondAttribute="centerX" id="TKD-ra-PoW"/>
+                            <constraint firstItem="sO9-G9-Sgl" firstAttribute="top" secondItem="CI2-57-9aE" secondAttribute="bottom" constant="15" id="TVk-Lm-pGr"/>
+                            <constraint firstItem="wtT-MJ-EK8" firstAttribute="centerY" secondItem="EC6-67-R5U" secondAttribute="centerY" id="ULL-9y-dQ4"/>
+                            <constraint firstItem="wtT-MJ-EK8" firstAttribute="centerX" secondItem="EC6-67-R5U" secondAttribute="centerX" id="Uqe-zI-pgT"/>
+                            <constraint firstItem="1nV-Cu-kY5" firstAttribute="top" secondItem="sO9-G9-Sgl" secondAttribute="bottom" constant="35" id="WAP-sV-BUY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wtT-MJ-EK8" secondAttribute="trailing" constant="10" id="ccX-Db-wzg"/>
+                            <constraint firstItem="6Vf-Bz-BCh" firstAttribute="leading" secondItem="EC6-67-R5U" secondAttribute="leading" constant="20" id="lP1-KP-H0s"/>
+                            <constraint firstAttribute="trailing" secondItem="6Vf-Bz-BCh" secondAttribute="trailing" constant="20" id="yxa-8S-UJU"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ULL-9y-dQ4"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="actionButton" destination="6Vf-Bz-BCh" id="hta-Yv-KvB"/>
+                        <outlet property="infoBody" destination="wtT-MJ-EK8" id="Luo-8I-orc"/>
+                        <outlet property="infoHeader" destination="1nV-Cu-kY5" id="7py-fj-9PP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xSL-D6-xTH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1407" y="-2876"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="z2S-MH-d3B">
+            <objects>
+                <viewController id="Prr-4r-4L4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mUU-er-HQa"/>
+                        <viewControllerLayoutGuide type="bottom" id="icR-jb-Rxt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VTM-SW-7ok">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's talk about Spirometry." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlO-Xo-xMa">
+                                <rect key="frame" x="168" y="28" width="264" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="4pq-ls-1PL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tlO-Xo-xMa" firstAttribute="centerX" secondItem="VTM-SW-7ok" secondAttribute="centerX" id="Ed7-lT-AUC"/>
+                            <constraint firstItem="tlO-Xo-xMa" firstAttribute="top" secondItem="mUU-er-HQa" secondAttribute="bottom" constant="8" id="ZMi-YY-Beu"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BZS-LH-5ee" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-690" y="-2876"/>
+        </scene>
+    </scenes>
+</document>

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		090359F41BD1773100DFC582 /* SpiroModalPages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */; };
-		090906ED1C71791700EDCB75 /* BackGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 090906EC1C71791700EDCB75 /* BackGestureViewController.m */; };
+		090906ED1C71791700EDCB75 /* SpiroDataTransitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 090906EC1C71791700EDCB75 /* SpiroDataTransitionViewController.m */; };
 		090B8FD11C7648A000A4480B /* UserDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 090B8FD01C7648A000A4480B /* UserDataHandler.m */; };
 		091D178D1BFB9C510044D830 /* BufferedOverlapQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D17821BFB9C510044D830 /* BufferedOverlapQueue.m */; };
 		091D178E1BFB9C510044D830 /* CubicSpline.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D17841BFB9C510044D830 /* CubicSpline.m */; };
@@ -25,6 +25,8 @@
 		092C2D001C7291150074A638 /* TestCompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 092C2CFF1C7291150074A638 /* TestCompleteViewController.m */; };
 		09786C881BB8810F006F4315 /* SpiroCoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C871BB8810F006F4315 /* SpiroCoreViewController.m */; };
 		09786C8B1BB8D363006F4315 /* SpiroGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */; };
+		098368851C84FAA500169E88 /* SpiroCoaching.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 098368841C84FAA500169E88 /* SpiroCoaching.storyboard */; };
+		098368881C84FB3200169E88 /* SpiroCoachingInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 098368871C84FB3200169E88 /* SpiroCoachingInfoViewController.m */; };
 		09A6BAA71BAB56B20024360F /* SpiroModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */; };
 		09BD47B21BE8AB63000CF238 /* ModalUserDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BD47B11BE8AB63000CF238 /* ModalUserDataViewController.m */; };
 		09E819621C6E50AE0048B165 /* ExperimenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E819611C6E50AE0048B165 /* ExperimenterViewController.m */; };
@@ -53,8 +55,8 @@
 
 /* Begin PBXFileReference section */
 		090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpiroModalPages.storyboard; sourceTree = "<group>"; };
-		090906EB1C71791700EDCB75 /* BackGestureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackGestureViewController.h; sourceTree = "<group>"; };
-		090906EC1C71791700EDCB75 /* BackGestureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackGestureViewController.m; sourceTree = "<group>"; };
+		090906EB1C71791700EDCB75 /* SpiroDataTransitionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiroDataTransitionViewController.h; sourceTree = "<group>"; };
+		090906EC1C71791700EDCB75 /* SpiroDataTransitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiroDataTransitionViewController.m; sourceTree = "<group>"; };
 		090B8FCF1C7648A000A4480B /* UserDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataHandler.h; sourceTree = "<group>"; };
 		090B8FD01C7648A000A4480B /* UserDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataHandler.m; sourceTree = "<group>"; };
 		091D17811BFB9C510044D830 /* BufferedOverlapQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BufferedOverlapQueue.h; path = AudioDSPUtils/BufferedOverlapQueue.h; sourceTree = "<group>"; };
@@ -88,6 +90,9 @@
 		09786C871BB8810F006F4315 /* SpiroCoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiroCoreViewController.m; sourceTree = "<group>"; };
 		09786C891BB8D363006F4315 /* SpiroGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiroGameViewController.h; sourceTree = "<group>"; };
 		09786C8A1BB8D363006F4315 /* SpiroGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiroGameViewController.m; sourceTree = "<group>"; };
+		098368841C84FAA500169E88 /* SpiroCoaching.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpiroCoaching.storyboard; sourceTree = "<group>"; };
+		098368861C84FB3200169E88 /* SpiroCoachingInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiroCoachingInfoViewController.h; sourceTree = "<group>"; };
+		098368871C84FB3200169E88 /* SpiroCoachingInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiroCoachingInfoViewController.m; sourceTree = "<group>"; };
 		09A6BAA51BAB56B20024360F /* SpiroModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiroModalViewController.h; sourceTree = "<group>"; };
 		09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiroModalViewController.m; sourceTree = "<group>"; };
 		09BD47B01BE8AB63000CF238 /* ModalUserDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalUserDataViewController.h; sourceTree = "<group>"; };
@@ -197,6 +202,24 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		098368821C84F9C800169E88 /* SpiroQuiz */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SpiroQuiz;
+			sourceTree = "<group>";
+		};
+		098368831C84F9D800169E88 /* SpiroCoaching */ = {
+			isa = PBXGroup;
+			children = (
+				098368861C84FB3200169E88 /* SpiroCoachingInfoViewController.h */,
+				098368871C84FB3200169E88 /* SpiroCoachingInfoViewController.m */,
+				098368841C84FAA500169E88 /* SpiroCoaching.storyboard */,
+				098368821C84F9C800169E88 /* SpiroQuiz */,
+			);
+			name = SpiroCoaching;
+			sourceTree = "<group>";
+		};
 		09FB9DFF1BD42236005C8507 /* ModalPages */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,11 +267,12 @@
 				091E85BF1C0E85FE00F0B1AF /* SpiroNavigationViewController.m */,
 				09E819601C6E50AE0048B165 /* ExperimenterViewController.h */,
 				09E819611C6E50AE0048B165 /* ExperimenterViewController.m */,
-				090906EB1C71791700EDCB75 /* BackGestureViewController.h */,
-				090906EC1C71791700EDCB75 /* BackGestureViewController.m */,
+				090906EB1C71791700EDCB75 /* SpiroDataTransitionViewController.h */,
+				090906EC1C71791700EDCB75 /* SpiroDataTransitionViewController.m */,
 				092C2CFE1C7291150074A638 /* TestCompleteViewController.h */,
 				092C2CFF1C7291150074A638 /* TestCompleteViewController.m */,
 				B63612291B1CC38500289665 /* Main.storyboard */,
+				098368831C84F9D800169E88 /* SpiroCoaching */,
 				090359ED1BD03AAB00DFC582 /* SpiroModal */,
 				090359F51BD1782600DFC582 /* SpiroGame */,
 				B636121F1B1CC38500289665 /* Supporting Files */,
@@ -391,6 +415,7 @@
 				090359F41BD1773100DFC582 /* SpiroModalPages.storyboard in Resources */,
 				B644C62A1B619C29002D3484 /* VortexWhistleRed.m4a in Resources */,
 				B63612301B1CC38500289665 /* LaunchScreen.xib in Resources */,
+				098368851C84FAA500169E88 /* SpiroCoaching.storyboard in Resources */,
 				B636122D1B1CC38500289665 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,9 +439,10 @@
 				09E819621C6E50AE0048B165 /* ExperimenterViewController.m in Sources */,
 				091E85C01C0E85FE00F0B1AF /* SpiroNavigationViewController.m in Sources */,
 				09F6BA521BD54CD100668F27 /* ModalAddNotesViewController.m in Sources */,
-				090906ED1C71791700EDCB75 /* BackGestureViewController.m in Sources */,
+				090906ED1C71791700EDCB75 /* SpiroDataTransitionViewController.m in Sources */,
 				091D17A81BFBA1090044D830 /* FlowVolumeDataAnalyzer.m in Sources */,
 				09BD47B21BE8AB63000CF238 /* ModalUserDataViewController.m in Sources */,
+				098368881C84FB3200169E88 /* SpiroCoachingInfoViewController.m in Sources */,
 				091D17921BFB9C510044D830 /* PeakFinder.m in Sources */,
 				09FB9E081BD428F4005C8507 /* ModalActionPageViewController.m in Sources */,
 				09227E291BE81C8900FCE6AD /* VortexWhistleStudyViewController.m in Sources */,

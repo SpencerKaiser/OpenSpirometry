@@ -1,5 +1,5 @@
 //
-//  BackGestureViewController.h
+//  SpiroDataTransitionViewController.h
 //  OpenSpirometry
 //
 //  Created by Spencer Kaiser on 2/14/16.
@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BackGestureViewController : UIViewController
+@interface SpiroDataTransitionViewController : UIViewController
+
+typedef enum {
+    SpiroTransitionDefault,
+    SpiroTransitionCoachingSplitter
+} SpiroTransitionType;
+
 @property (strong, nonatomic) NSMutableDictionary* userData;        //Need to make sure this isn't retained by this VC (will this VC dealloc???)
+@property (assign, nonatomic) SpiroTransitionType type;
 @end
