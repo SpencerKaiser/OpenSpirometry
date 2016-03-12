@@ -8,7 +8,9 @@
 
 #import "ExperimenterViewController.h"
 #import "SpiroDataTransitionViewController.h"
+#import "UserData.h"
 #import "UserDataHandler.h"
+
 
 @interface ExperimenterViewController () <UIPopoverPresentationControllerDelegate>
 // UI ELEMENTS
@@ -35,6 +37,7 @@
 @property (strong, nonatomic) NSString* selectedMouthpiece;
 @property (strong, nonatomic) NSString* selectedDownstreamTube;
 
+@property (strong, nonatomic) UserData* sharedUserData;
 @property (strong, nonatomic) UserDataHandler* userDataHandler;
 @end
 
@@ -45,6 +48,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.sharedUserData = [UserData sharedInstance];
     self.userDataHandler = [[UserDataHandler alloc] init];
     
     // UI MODIFICATION
@@ -104,6 +108,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self.sharedUserData clearAllData];         // In case we are returning to this VC after a successful test
     [self checkUserIDLength:self.userIDField];
 }
 
@@ -250,6 +255,7 @@
             break;
         }
     }
+    [self userGroupChanged:self.userGroupControl];
 }
 
 - (void)dismissKeyboard {
@@ -310,7 +316,8 @@
         userConfigData[@"Coaching"] = @"True";
     }
     
-    welcomeVC.userData = userConfigData;       // Pass user data to destination VC
+    self.sharedUserData.userData = userConfigData;
+    
     welcomeVC.type = SpiroTransitionCoachingSplitter;   // Next VC will evaluate whether or not to show coaching
     
     [self presentViewController:welcomeVC animated:YES completion:nil];
@@ -320,7 +327,7 @@
 
 - (void)checkUserIDLength:(UITextField *)userIDField {
     self.userID = self.userIDField.text;
-    if (self.userID.length > 0 && self.userID.length < 3) {
+    if ((self.userID.length > 0 && self.userID.length < 3) || self.userID.length > 3) {
         self.userIDHelpLabel.text = @"User ID MUST be 3 numbers long";
         self.userIDHelpLabel.textColor = [UIColor redColor];
     } else if (self.userID.length == 3 && [self.userDataHandler userDataFileExistsForUserID:self.userID]) {

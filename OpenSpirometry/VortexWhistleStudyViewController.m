@@ -7,6 +7,7 @@
 //
 
 #import "VortexWhistleStudyViewController.h"
+#import "UserData.h"
 
 @interface VortexWhistleStudyViewController ()
 
@@ -29,14 +30,16 @@
 //    self.helpText.text = @"After beginning calibration, remain as quiet as possible until prompted to begin using the whistle."
     self.descriptionLabel.text = @"Press the 'Begin Effort' button below.";
     
+    UserData* sharedUserData = [UserData sharedInstance];
+    self.userConfigData = sharedUserData.userData;
+    
     if (self.userConfigData) {
         NSLog(@"User Config Data: %@", self.userConfigData);
         [super storeUserConfigData:self.userConfigData];
         self.userConfigData = nil;      // We no longer need a copy in this subclass
     } else {
-        [NSException raise:@"User Config Data not found" format:@"User configuration data MUST be passed into this View Controller."];
+        [NSException raise:@"User Config Data not found" format:@"User configuration data is required and was not found within the UserData singleton."];
     }
-    
 }
 
 //-(void)viewDidAppear:(BOOL)animated {

@@ -1,0 +1,62 @@
+[
+  {
+    "Question": "How long should it take to reach the maximum speed you can exhale?",
+    "Answers": [
+      "Immediately - as soon as the effort begins",
+      "After 1 second",
+      "After a few seconds"
+    ],
+    "AnswerIndex": 0,
+    "FeedbackText": "You should exhale as much as you can as fast as you can. As a result, you should reach your maximum exhalation speed immediately after starting the effort."
+  },
+  {
+    "Question": "When are you finished with an effort?",
+    "Answers": [
+      "After you’ve blown as hard as you can",
+      "After a couple of seconds",
+      "After all the air has been expelled from your lungs; up to 7 seconds"
+    ],
+    "AnswerIndex": 2,
+    "FeedbackText": "An effort has been successfully completed after all the air has been expelled from your lungs. It may be an unfamiliar feeling, but it is important to empty your lungs during the effort."
+  },
+  {
+    "Question": "What should you do if you feel like coughing during the test?",
+    "Answers": [
+      "Go ahead and cough; you can perform a make-up effort",
+      "Cough and continue the effort",
+      "Try to suppress the cough"
+    ],
+    "AnswerIndex": 0,
+    "FeedbackText": "Don’t suppress your cough. If you need to cough, go ahead! Once the effort is over, continue the test like normal and one of the following efforts will replace the one which was interrupted by a cough."
+  },
+  {
+    "Question": "What should you do if you feel light-headed during the test?",
+    "Answers": [
+      "Finish the effort, then sit down",
+      "Stop and sit down immediately",
+      "Ignore it and continue the test"
+    ],
+    "AnswerIndex": 1,
+    "FeedbackText": "If you feel light-headed, sit down immediately. After resting if you feel capable of continuing the test, you may do so with our consent. As a reminder, you are free to discontinue the test at any time."
+  },
+  {
+    "Question": "What should your posture be during the test?",
+    "Answers": [
+      "Doesn’t matter",
+      "Sitting upright where taking a deep breath is comfortable",
+      "Standing up"
+    ],
+    "AnswerIndex": 1,
+    "FeedbackText": "It is important to sit upright in a comfortable position which allows maximum airflow in and out of your lungs. Do your best not to slouch in your seat."
+  },
+  {
+    "Question": "How do you think your lung function compares to your healthy peers?",
+    "Answers": [
+      "100% of expected",
+      "90% of expected",
+      "80% of expected",
+      "Less than 80% of expected"
+    ],
+    "FeedbackText": "We’ll let you know how you performed once we finish today’s tests.\n\nGood luck and thanks again for participating!"
+  }
+]

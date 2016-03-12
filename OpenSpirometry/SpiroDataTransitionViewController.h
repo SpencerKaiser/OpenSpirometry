@@ -15,6 +15,6 @@ typedef enum {
     SpiroTransitionCoachingSplitter
 } SpiroTransitionType;
 
-@property (strong, nonatomic) NSMutableDictionary* userData;        //Need to make sure this isn't retained by this VC (will this VC dealloc???)
+//@property (strong, nonatomic) NSMutableDictionary* userData;        //Need to make sure this isn't retained by this VC (will this VC dealloc???)
 @property (assign, nonatomic) SpiroTransitionType type;
 @end

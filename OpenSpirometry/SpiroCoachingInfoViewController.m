@@ -7,6 +7,7 @@
 //
 
 #import "SpiroCoachingInfoViewController.h"
+#import "QuizQuestionViewController.h"
 
 @interface SpiroCoachingInfoViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *infoHeader;
@@ -108,7 +109,7 @@
 
 - (IBAction)actionButtonTapped:(id)sender {
     if (self.allInfoShown) {
-        
+        [self presentQuizVC];
     } else {
         [self showNextTextItem];
     }
@@ -116,13 +117,15 @@
 }
 
 - (void)showNextTextItem {
+    self.actionButton.enabled = true;
     NSDictionary* currentGroup = self.coachingInfoText[self.currentTextGroup];
-    if (self.currentTextGroupItem < currentGroup.count) {
+    NSArray* currentGroupText = currentGroup[@"GroupText"];
+    if (self.currentTextGroupItem < currentGroupText.count) {
         if ([self.infoHeader.text isEqualToString:@""]) {
             [self setInfoHeaderText:currentGroup[@"Header"]];
         }
         
-        NSArray* currentGroupText = currentGroup[@"GroupText"];
+        
         // If additional text items exit, append to existing text
         [self setInfoBodyText:[NSString stringWithFormat:@"%@%@", self.infoBody.text, currentGroupText[self.currentTextGroupItem]]];
         self.currentTextGroupItem += 1;
@@ -132,7 +135,8 @@
         self.currentTextGroup += 1;
         [self setInfoBodyText:@""];
         [self setInfoHeaderText:@""];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.actionButton.enabled = false;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self showNextTextItem];        // After small delay to clear screen, return to function with newly updated group
         });
     } else {
@@ -147,7 +151,7 @@
     CATransition *animation = [CATransition animation];
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     animation.type = kCATransitionFade;
-    animation.duration = 1.5;
+    animation.duration = 0.5;
     [label.layer addAnimation:animation forKey:@"kCATransitionFade"];
     
     // This will fade:
@@ -165,8 +169,7 @@
 
 - (void)allInfoHasBeenShown {
     self.allInfoShown = true;
-    
-    [UIView animateWithDuration:1.0
+    [UIView animateWithDuration:0.5
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
@@ -175,14 +178,23 @@
                          [self setInfoBodyText:@""];
                      }
                      completion:^(BOOL finished) {
+                         self.actionButton.enabled = false;
                          [self setInfoHeaderText:@"Get Ready..."];
                          [self setInfoBodyText:@"Now we're going to test your knowledge of spirometry with a short quiz.\n\nWhen you are ready, tap the button at the bottom of the screen."];
                          [self.actionButton setTitle:@"I'm Ready" forState:UIControlStateNormal];
                          [self.actionButton setTitle:@"I'm Ready" forState:UIControlStateSelected];
                          [UIView animateWithDuration:1.0 animations:^{
                              self.actionButton.alpha = 1.0;
+                             self.actionButton.enabled = true;
+
                          }];
                      }];
+}
+
+- (void)presentQuizVC {
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"SpiroCoaching" bundle:nil];
+    QuizQuestionViewController* quizVC = [storyboard instantiateViewControllerWithIdentifier:@"QuizQuestionScene"];
+    [self presentViewController:quizVC animated:YES completion:nil];
 }
 
 @end

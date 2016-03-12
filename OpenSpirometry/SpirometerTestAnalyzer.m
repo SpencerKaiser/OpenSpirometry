@@ -10,7 +10,7 @@
 #import "UserDataHandler.h"
 #import <Foundation/Foundation.h>
 
-#define numEffortsForFixedDurationType 1
+#define numEffortsForFixedDurationType 4
 #define TimeStamp [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]]
 
 @interface SpirometerTestAnalyzer()

@@ -113,7 +113,7 @@
         case SpiroCompletionModal:
         {
             actionPageConfigParams[@"Label"] = @"Test Complete";
-            actionPageConfigParams[@"Description"] = @"All tests have been completed.\n\nPress the button below to conclude the test.";
+            actionPageConfigParams[@"Description"] = @"All tests have been completed.\n\nPress the button below to conclude the test or swipe left to add notes about today's test or this effort.";
             actionPageConfigParams[@"Button"] = @"Conclude Test";
             
 
