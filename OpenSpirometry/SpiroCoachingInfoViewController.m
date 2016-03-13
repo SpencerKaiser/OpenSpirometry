@@ -118,6 +118,9 @@
 
 - (void)showNextTextItem {
     self.actionButton.enabled = true;
+    [UIView animateWithDuration:0.5 animations:^(void){
+        self.actionButton.alpha = 1.0;
+    }];
     NSDictionary* currentGroup = self.coachingInfoText[self.currentTextGroup];
     NSArray* currentGroupText = currentGroup[@"GroupText"];
     if (self.currentTextGroupItem < currentGroupText.count) {
@@ -136,6 +139,9 @@
         [self setInfoBodyText:@""];
         [self setInfoHeaderText:@""];
         self.actionButton.enabled = false;
+        [UIView animateWithDuration:0.5 animations:^(void){
+            self.actionButton.alpha = 0.0;
+        }];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self showNextTextItem];        // After small delay to clear screen, return to function with newly updated group
         });

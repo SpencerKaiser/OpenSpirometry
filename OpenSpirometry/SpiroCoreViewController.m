@@ -41,7 +41,7 @@
 #pragma mark - INITIALIZATION
 #pragma mark Effort Analyzer
     //----------EFFORT ANALYZER----------
-    self.effortAnalyzer = [[SpirometerEffortAnalyzer alloc] init];
+    self.effortAnalyzer = [SpirometerEffortAnalyzer sharedInstance];
     self.effortAnalyzer.delegate = self;
     self.effortAnalyzer.prefferredAudioMaxUpdateIntervalInSeconds = 1.0/24.0; // the default is 30FPS, so setting lower
     // the FPS possible on this depends on the audio buffer size and sampling rate, which is different for different phones

@@ -99,7 +99,7 @@
     self.selectedAnswerIndex = index;
     
     self.actionButton.enabled = true;
-    [UIView animateWithDuration:1.0 animations:^{
+    [UIView animateWithDuration:0.5 animations:^{
         self.actionButton.alpha = 1.0;
     }completion:nil];
     
@@ -121,50 +121,53 @@
     if (self.answerVCs) {
         // USER HAS SUBMITTED ANSWER
         // Remove answer VCs from container view
-        for (int i = 0; i < self.answerVCs.count; i++) {
-            QuizAnswerViewController* answerVC = self.answerVCs[i];
-            [answerVC.view removeFromSuperview];
-            [answerVC removeFromParentViewController];
-        }
-        self.answerVCs = nil;
-        
-        float validationViewWidth = self.mainContainer.frame.size.width;
-        float validationViewHeight = self.mainContainer.frame.size.height;
-        
-        CGRect validationViewRect = CGRectMake(0.0, 0.0, validationViewWidth, validationViewHeight);
-        
-        [self.answerValidationView setFrame:validationViewRect];
-        
-        int correctAnswerIndex = [self.currentQuestion[@"AnswerIndex"] intValue];
-        
-        if (self.currentQuestion[@"AnswerIndex"]) {
-            if (correctAnswerIndex == self.selectedAnswerIndex) {
-                self.answerValidationLabel.text = @"Correct";
-                [self.answerValidationLabel setTextColor:[UIColor greenColor]];
-            } else {
-                self.answerValidationLabel.text = @"Incorrect";
-                NSArray* answers = self.currentQuestion[@"Answers"];
-                self.answerTextLabel.text = [NSString stringWithFormat:@"You Chose \"%@\"", answers[self.selectedAnswerIndex]];
-                [self.answerValidationLabel setTextColor:[UIColor redColor]];
-            }
-        } else {
-            self.answerValidationLabel.text = @"";
-            self.answerTextLabel.text = @"";
-        }
-        
-        self.answerFeedbackLabel.text = self.currentQuestion[@"FeedbackText"];
-        
-        [self.mainContainer addSubview:self.answerValidationView];
-        
         self.actionButton.enabled = false;
-        [UIView animateWithDuration:1.0 animations:^{
+        
+        [UIView animateWithDuration:0.5 animations:^(void){
+            self.mainContainer.alpha = 0.0;         // Fade out view while answers are removed
             self.actionButton.alpha = 0.0;
-        }completion:^(BOOL finished) {
+        } completion:^(BOOL finished){
+            for (int i = 0; i < self.answerVCs.count; i++) {
+                QuizAnswerViewController* answerVC = self.answerVCs[i];
+                [answerVC.view removeFromSuperview];
+                [answerVC removeFromParentViewController];
+            }
+            self.answerVCs = nil;
+            
+            float validationViewWidth = self.mainContainer.frame.size.width;
+            float validationViewHeight = self.mainContainer.frame.size.height;
+            
+            CGRect validationViewRect = CGRectMake(0.0, 0.0, validationViewWidth, validationViewHeight);
+            
+            [self.answerValidationView setFrame:validationViewRect];
+            
+            int correctAnswerIndex = [self.currentQuestion[@"AnswerIndex"] intValue];
+            
+            if (self.currentQuestion[@"AnswerIndex"]) {
+                if (correctAnswerIndex == self.selectedAnswerIndex) {
+                    self.answerValidationLabel.text = @"Correct";
+                    [self.answerValidationLabel setTextColor:[UIColor greenColor]];
+                } else {
+                    self.answerValidationLabel.text = @"Incorrect";
+                    NSArray* answers = self.currentQuestion[@"Answers"];
+                    self.answerTextLabel.text = [NSString stringWithFormat:@"You Chose \"%@\"", answers[self.selectedAnswerIndex]];
+                    [self.answerValidationLabel setTextColor:[UIColor redColor]];
+                }
+            } else {
+                self.answerValidationLabel.text = @"";
+                self.answerTextLabel.text = @"";
+            }
+            
+            self.answerFeedbackLabel.text = self.currentQuestion[@"FeedbackText"];
+            
+            [self.mainContainer addSubview:self.answerValidationView];
+            
             [self.actionButton setTitle:@"Continue" forState:UIControlStateNormal];
             [self.actionButton setTitle:@"Continue" forState:UIControlStateSelected];
             self.actionButton.enabled = true;
-            [UIView animateWithDuration:2.0 animations:^{
-                self.actionButton.alpha = 1.0;
+            [UIView animateWithDuration:1.5 animations:^{
+                    self.actionButton.alpha = 1.0;
+                    self.mainContainer.alpha = 1.0; // Fade main container back now that feedback has been added
             }];
         }];
     } else {

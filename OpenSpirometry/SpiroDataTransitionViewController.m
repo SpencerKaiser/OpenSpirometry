@@ -12,6 +12,7 @@
 #import "UserData.h"
 
 @interface SpiroDataTransitionViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *actionButton;
 
 @end
 
@@ -19,9 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-//    NSLog(@"%@", self.userData);
     
     UITapGestureRecognizer *tripleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tripleTapHandler:)];
     tripleTap.numberOfTapsRequired = 3;
@@ -31,6 +29,11 @@
     if (!self.type) {
         self.type = SpiroTransitionDefault;
     }
+    
+    [self.actionButton.layer setBorderWidth:1.0];
+    [self.actionButton.layer setCornerRadius:5.0];
+    [self.actionButton.layer setBorderColor:[self.actionButton.titleLabel.textColor CGColor]];
+
 }
 
 - (void)tripleTapHandler:(UIGestureRecognizer *)gestureRecognizer {

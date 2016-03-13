@@ -26,6 +26,10 @@
     
     // UI VARIABLE MODIFICATION
     [self.actionButton setTitle:@"Begin Effort" forState:UIControlStateNormal];
+    [self.actionButton.layer setBorderWidth:2.0];
+    [self.actionButton.layer setCornerRadius:5.0];
+    [self.actionButton.layer setBorderColor:[self.actionButton.titleLabel.textColor CGColor]];
+    
     self.titleLabel.text = @"Ready for Calibration";
 //    self.helpText.text = @"After beginning calibration, remain as quiet as possible until prompted to begin using the whistle."
     self.descriptionLabel.text = @"Press the 'Begin Effort' button below.";
@@ -47,49 +51,72 @@
 //}
 
 -(void)modalDismissed {
-    self.titleLabel.text = @"Ready for Calibration";
-    self.descriptionLabel.text = @"Press the 'Begin Effort' button below.";
+    [self setLabelText:@"Ready for Calibration" forLabel:self.titleLabel];
+    [self setLabelText:@"Press the 'Begin Effort' button below." forLabel:self.descriptionLabel];
     self.actionButton.enabled = true;
+    [UIView animateWithDuration:0.5 animations:^(void){
+        self.actionButton.alpha = 1.0;
+    }];
 }
 
 - (IBAction)actionButtonPressed:(id)sender {
     if (self.errorOccurred) {
-        self.titleLabel.text = @"Ready for Calibration";
-        self.descriptionLabel.text = @"Press the 'Begin Effort' button below.";
+        [self setLabelText:@"Ready for Calibration" forLabel:self.titleLabel];
+        [self setLabelText:@"Press the 'Begin Effort' button below." forLabel:self.descriptionLabel];
         self.errorOccurred = false;
+        [UIView animateWithDuration:0.5 animations:^(void){
+            self.actionButton.alpha = 1.0;
+        }];
     } else {
         [super prepareForGameStart];
-        self.titleLabel.text = @"Calibrating...";
-        self.descriptionLabel.text = @"Stay as quiet as possible for a few more seconds.";
+        [self setLabelText:@"Calibrating..." forLabel:self.titleLabel];
+        [self setLabelText:@"Stay as quiet as possible for a few more seconds." forLabel:self.descriptionLabel];
         self.actionButton.enabled = false;
+        [UIView animateWithDuration:0.5 animations:^(void){
+            self.actionButton.alpha = 0.0;
+        }];
     }
 }
 
+- (void)setLabelText:(NSString*)text forLabel:(UILabel*)label {
+    // Adapted from: http://stackoverflow.com/questions/3073520/animate-text-change-in-uilabel
+    
+    CATransition *animation = [CATransition animation];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.type = kCATransitionFade;
+    animation.duration = 0.25;
+    [label.layer addAnimation:animation forKey:@"kCATransitionFade"];
+    
+    // This will fade:
+    label.text = text;
+}
+
 -(void)readyForGameStart{
-    self.titleLabel.text = @"Calibration Complete";
-    self.descriptionLabel.text = @"Start when ready";
+    [self setLabelText:@"Calibration Complete" forLabel:self.titleLabel];
+    [self setLabelText:@"Start when ready" forLabel:self.descriptionLabel];
 }
 
 -(void)userBeganTest {
-    self.titleLabel.text = @"EXHALE!";
-    self.descriptionLabel.text = @"Keep going";
+    [self setLabelText:@"EXHALE!" forLabel:self.titleLabel];
+    [self setLabelText:@"Keep going!" forLabel:self.descriptionLabel];
 }
 
 -(void)userNearingCompletion {
-    self.titleLabel.text = @"ALMOST THERE!";
-    self.descriptionLabel.text = @"Exhale as long as possible";
+    [self setLabelText:@"ALMOST THERE!" forLabel:self.titleLabel];
+    [self setLabelText:@"Exhale as long as possible" forLabel:self.descriptionLabel];
 }
 
 -(void)userFinishedTest {
-    self.titleLabel.text = @"Effort Complete";
-    self.descriptionLabel.text = @"";
+    [self setLabelText:@"Effort Complete" forLabel:self.titleLabel];
+    [self setLabelText:@"" forLabel:self.descriptionLabel];
     [super gameHasEnded];
 }
 
 -(void)errorOccured: (NSString*) error {
     self.errorOccurred = true;
-    self.titleLabel.text = @"Whoops!";
-    self.descriptionLabel.text = @"Something went wrong.\n\nWhen you're ready to continue, hit the button below and you'll be able to restart the effort.";
+    
+    [self setLabelText:@"Whoops!" forLabel:self.titleLabel];
+    [self setLabelText:@"Something went wrong.\n\nWhen you're ready to continue, hit the button below and you'll be able to restart the effort." forLabel:self.descriptionLabel];
     
     [self.actionButton setTitle:@"Continue" forState:UIControlStateNormal];
     [self.actionButton setTitle:@"Continue" forState:UIControlStateSelected];
