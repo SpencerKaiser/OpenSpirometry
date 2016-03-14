@@ -1,0 +1,27 @@
+[
+  {
+    "Header": "What is Spirometry?",
+    "GroupText": [
+      "Spirometry (spy-ROM-uh-tree) is a common office test used to assess how well your lungs work by measuring how much air you inhale, how much you exhale and how quickly you exhale.",
+      "Spirometry is used to diagnose asthma, chronic obstructive pulmonary disease (COPD) and other conditions that affect breathing."
+    ]
+  },
+  {
+    "Header": "What is a spirometry test?",
+    "GroupText": [
+      "A test consists of efforts which are individual maneuvers with the spirometer",
+      "A test requires between 3-5 efforts before enough data has been collected",
+      "During an effort, you should begin exhaling when prompted and you should exhale as hard as you can for as long as you can",
+      "An effort should conclude when you have expelled all the air from your lungs. This feeling should be relatively new and it may be slightly uncomfortable."
+    ]
+  },
+  {
+    "Header": "Common Issues",
+    "GroupText": [
+      "There are several issues that arise during spirometry efforts that invalidate the results and/or may cause discomfort:",
+      "- This is an issue with Spirometry",
+      "- This is another issue with Spirometry",
+      "- This is the final issue with Spirometry"
+    ]
+  }
+]

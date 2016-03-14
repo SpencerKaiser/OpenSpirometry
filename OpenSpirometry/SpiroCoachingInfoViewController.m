@@ -39,7 +39,7 @@
     
     
     self.coachingInfoText = [[NSMutableArray alloc] init];
-    [self setCoachingText];
+    [self loadCoachingText];
     
     self.currentTextGroup = 0;
     self.currentTextGroupItem = 0;
@@ -61,38 +61,11 @@
 //    self.actionButton.alpha = self.actionButton.alpha;
 }
 
-- (void)setCoachingText {
-    // SPIRO INTRO TEXT
-    NSMutableDictionary* spiroIntroGroup = [[NSMutableDictionary alloc] init];
-    spiroIntroGroup[@"Header"] = @"What is Spirometry?";
-    spiroIntroGroup[@"GroupText"] = [[NSMutableArray alloc] init];
+- (void)loadCoachingText {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"CoachingText" ofType:@"json"];
+    NSLog(@"QuizQuestions.json File Path: %@", filePath);
     
-    NSMutableArray* spiroIntroGroupText = spiroIntroGroup[@"GroupText"];
-    [self addText:@"Spirometry (spy-ROM-uh-tree) is a common office test used to assess how well your lungs work by measuring how much air you inhale, how much you exhale and how quickly you exhale." toTextGroup:spiroIntroGroupText];
-    [self addText:@"Spirometry is used to diagnose asthma, chronic obstructive pulmonary disease (COPD) and other conditions that affect breathing." toTextGroup:spiroIntroGroupText];
-    
-    [self.coachingInfoText addObject:spiroIntroGroup];
-    
-
-    // COMMON SPIRO ISSUES GROUP
-    NSMutableDictionary* spiroCommonIssuesGroup = [[NSMutableDictionary alloc] init];
-    spiroCommonIssuesGroup[@"Header"] = @"Common Issues";
-    spiroCommonIssuesGroup[@"GroupText"] = [[NSMutableArray alloc] init];
-    
-    NSMutableArray* spiroCommonIssuesGroupText = spiroCommonIssuesGroup[@"GroupText"];
-    [self addText:@"There are several issues that arise during spirometry efforts that invalidate the results and/or may cause discomfort:" toTextGroup:spiroCommonIssuesGroupText];
-    [self addText:@"- This is an issue with Spirometry" toTextGroup:spiroCommonIssuesGroupText];
-    [self addText:@"- This is another issue with Spirometry" toTextGroup:spiroCommonIssuesGroupText];
-    [self addText:@"- This is the final issue with Spirometry" toTextGroup:spiroCommonIssuesGroupText];
-    
-    [self.coachingInfoText addObject:spiroCommonIssuesGroup];
-}
-
-- (void)addText:(NSString*)text toTextGroup:(NSMutableArray*)textGroup {
-    if (textGroup.count > 0) {
-        text = [NSString stringWithFormat:@"\n\n%@", text];
-    }
-    [textGroup addObject:text];
+    self.coachingInfoText = [NSJSONSerialization JSONObjectWithData:[[NSData alloc] initWithContentsOfFile:filePath] options:NSJSONReadingMutableContainers error:nil];
 }
 
 - (void)beginCoachingInfoDisplay {
@@ -130,7 +103,12 @@
         
         
         // If additional text items exit, append to existing text
-        [self setInfoBodyText:[NSString stringWithFormat:@"%@%@", self.infoBody.text, currentGroupText[self.currentTextGroupItem]]];
+        NSString* bodyText = currentGroupText[self.currentTextGroupItem];
+        
+        if (self.currentTextGroupItem > 0) {
+            bodyText = [NSString stringWithFormat:@"\n\n%@", bodyText];
+        }
+        [self setInfoBodyText:[NSString stringWithFormat:@"%@%@", self.infoBody.text, bodyText]];
         self.currentTextGroupItem += 1;
     } else if (self.currentTextGroup + 1 < self.coachingInfoText.count) {
         // The next group of items exists

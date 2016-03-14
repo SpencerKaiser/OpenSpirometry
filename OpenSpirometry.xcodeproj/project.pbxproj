@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		090359F41BD1773100DFC582 /* SpiroModalPages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */; };
+		090785041C96296E00BCCE51 /* CoachingText.json in Resources */ = {isa = PBXBuildFile; fileRef = 090785031C96296E00BCCE51 /* CoachingText.json */; };
 		090906ED1C71791700EDCB75 /* SpiroDataTransitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 090906EC1C71791700EDCB75 /* SpiroDataTransitionViewController.m */; };
 		090B8FD11C7648A000A4480B /* UserDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 090B8FD01C7648A000A4480B /* UserDataHandler.m */; };
 		091D178D1BFB9C510044D830 /* BufferedOverlapQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 091D17821BFB9C510044D830 /* BufferedOverlapQueue.m */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		090359F31BD1773100DFC582 /* SpiroModalPages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpiroModalPages.storyboard; sourceTree = "<group>"; };
+		090785031C96296E00BCCE51 /* CoachingText.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CoachingText.json; sourceTree = "<group>"; };
 		090906EB1C71791700EDCB75 /* SpiroDataTransitionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiroDataTransitionViewController.h; sourceTree = "<group>"; };
 		090906EC1C71791700EDCB75 /* SpiroDataTransitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiroDataTransitionViewController.m; sourceTree = "<group>"; };
 		090B8FCF1C7648A000A4480B /* UserDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataHandler.h; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				098368861C84FB3200169E88 /* SpiroCoachingInfoViewController.h */,
 				098368871C84FB3200169E88 /* SpiroCoachingInfoViewController.m */,
 				098368841C84FAA500169E88 /* SpiroCoaching.storyboard */,
+				090785031C96296E00BCCE51 /* CoachingText.json */,
 				098368821C84F9C800169E88 /* SpiroQuiz */,
 			);
 			name = SpiroCoaching;
@@ -431,6 +434,7 @@
 			files = (
 				094672A81C94DDA4003303BA /* QuizQuestions.json in Resources */,
 				B636122B1B1CC38500289665 /* Main.storyboard in Resources */,
+				090785041C96296E00BCCE51 /* CoachingText.json in Resources */,
 				090359F41BD1773100DFC582 /* SpiroModalPages.storyboard in Resources */,
 				B644C62A1B619C29002D3484 /* VortexWhistleRed.m4a in Resources */,
 				B63612301B1CC38500289665 /* LaunchScreen.xib in Resources */,
