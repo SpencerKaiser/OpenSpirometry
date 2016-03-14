@@ -17,17 +17,19 @@
   {
     "Header": "How do I perform a Spirometry effort?",
     "GroupText": [
-      "Before starting an effort, take a seat in a chair with armrests and sit upright in a comfortable position which allows maximum airflow in and out of your lungs.",
-      "A brief calibration period is required at the start of the effort. Remain as quiet as possible during this period.",
+      "Before starting, take a seat in a chair with armrests and sit upright in a comfortable position which allows maximum airflow in and out of your lungs.",
+      "A brief calibration period is required at the start of the effort; remain as quiet as possible during this period.",
       "When prompted to exhale, take a deep breath then exhale as hard as you can for as long as you can.",
-      "After beginning to exhale, you should reach maximum exhalation speed immediately after beginning the effort.",
-      "An effort will conclude when you have expelled all the air from your lungs. This feeling could be unfamiliar and it may be slightly uncomfortable."
+      "An effort will conclude when you have expelled all the air from your lungs. This feeling could be unfamiliar and it may be slightly uncomfortable.",
+      "After you are finished exhaling, remain as quiet as possible until you are told the test has completed"
     ]
   },
   {
     "Header": "Common Issues",
     "GroupText": [
       "There are several issues that arise during spirometry efforts that invalidate the results and/or may cause discomfort:",
+      "• After beginning to exhale, you must exhale as hard as you can; you should reach maximum exhalation speed immediately.",
+      "• Towards the end of an effort it may feel as though your lungs are empty, but keep exhaling until you are physically unable to.",
       "• If you feel the need to cough during an effort, go ahead and cough and you will be able to retry the effort.",
       "• If you feel lightheaded during the effort, stop immediately. If you feel you are able to continue after a break, you may do so with our consent."
     ]
