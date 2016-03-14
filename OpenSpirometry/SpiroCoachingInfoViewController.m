@@ -164,7 +164,7 @@
                      completion:^(BOOL finished) {
                          self.actionButton.enabled = false;
                          [self setInfoHeaderText:@"Get Ready..."];
-                         [self setInfoBodyText:@"Now we're going to test your knowledge of spirometry with a short quiz.\n\nWhen you are ready, tap the button at the bottom of the screen."];
+                         [self setInfoBodyText:@"Now we're going to test your knowledge of spirometry with a short quiz.\n\nIf you are not sure how to answer a question, make a guess and you will be given feedback regarding the correct answer.\n\n\n\nWhen you are ready, tap the button at the bottom of the screen."];
                          [self.actionButton setTitle:@"I'm Ready" forState:UIControlStateNormal];
                          [self.actionButton setTitle:@"I'm Ready" forState:UIControlStateSelected];
                          [UIView animateWithDuration:1.0 animations:^{

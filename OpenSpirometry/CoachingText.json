@@ -7,21 +7,29 @@
     ]
   },
   {
-    "Header": "What is a spirometry test?",
+    "Header": "What is a Spirometry test?",
     "GroupText": [
-      "A test consists of efforts which are individual maneuvers with the spirometer",
-      "A test requires between 3-5 efforts before enough data has been collected",
-      "During an effort, you should begin exhaling when prompted and you should exhale as hard as you can for as long as you can",
-      "An effort should conclude when you have expelled all the air from your lungs. This feeling should be relatively new and it may be slightly uncomfortable."
+      "A Spirometry test consists of efforts which are individual maneuvers with a spirometer.",
+      "A test requires between 3 and 5 efforts before enough data has been collected.",
+      "Resuts from a Spirometry test can be used as an indicator of lung function and airway obstruction."
+    ]
+  },
+  {
+    "Header": "How do I perform a Spirometry effort?",
+    "GroupText": [
+      "Before starting an effort, take a seat in a chair with armrests and sit upright in a comfortable position which allows maximum airflow in and out of your lungs.",
+      "A brief calibration period is required at the start of the effort. Remain as quiet as possible during this period.",
+      "When prompted to exhale, take a deep breath then exhale as hard as you can for as long as you can.",
+      "After beginning to exhale, you should reach maximum exhalation speed immediately after beginning the effort.",
+      "An effort will conclude when you have expelled all the air from your lungs. This feeling could be unfamiliar and it may be slightly uncomfortable."
     ]
   },
   {
     "Header": "Common Issues",
     "GroupText": [
       "There are several issues that arise during spirometry efforts that invalidate the results and/or may cause discomfort:",
-      "- This is an issue with Spirometry",
-      "- This is another issue with Spirometry",
-      "- This is the final issue with Spirometry"
+      "• If you feel the need to cough during an effort, go ahead and cough and you will be able to retry the effort.",
+      "• If you feel lightheaded during the effort, stop immediately. If you feel you are able to continue after a break, you may do so with our consent."
     ]
   }
 ]
