@@ -1,5 +1,13 @@
 [
   {
+    "Header": "About Lung Function",
+    "GroupText": [
+      "The American Thoracic Society has setup studies to measure lung function based on your age, height, and gender.",
+      "If your performance deviates significantly from expected values, you may suffer from a lung illness like asthma or COPD.",
+      "After the today’s tests have concluded, we’ll provide you with information about your percent of expected lung function."
+    ]
+  },
+  {
     "Header": "What is Spirometry?",
     "GroupText": [
       "Spirometry (spy-ROM-uh-tree) is a common office test used to assess how well your lungs work by measuring how much air you inhale, how much you exhale and how quickly you exhale.",
