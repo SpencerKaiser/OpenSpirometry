@@ -121,6 +121,9 @@
     [self.actionButton setTitle:@"Continue" forState:UIControlStateNormal];
     [self.actionButton setTitle:@"Continue" forState:UIControlStateSelected];
     self.actionButton.enabled = true;
+    [UIView animateWithDuration:0.5 animations:^(void){
+        self.actionButton.alpha = 1.0;
+    }];
 }
 
 -(void)dealloc{
