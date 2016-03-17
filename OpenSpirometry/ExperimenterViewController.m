@@ -7,6 +7,7 @@
 //
 
 #import "ExperimenterViewController.h"
+#import "VortexWhistleStudyViewController.h"
 #import "SpiroDataTransitionViewController.h"
 #import "UserData.h"
 #import "UserDataHandler.h"
@@ -353,9 +354,6 @@
 }
 
 - (void)presentWelcomeVC {
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    SpiroDataTransitionViewController* welcomeVC = [storyboard instantiateViewControllerWithIdentifier:@"UserWelcomeScene"];
-    
     NSMutableDictionary* userConfigData = [[NSMutableDictionary alloc] init];
     userConfigData[@"UserID"] = self.userID;
     userConfigData[@"UserGroup"] = [self.userGroupControl titleForSegmentAtIndex:self.userGroupControl.selectedSegmentIndex];
@@ -375,9 +373,16 @@
     
     self.sharedUserData.userData = userConfigData;
     
-    welcomeVC.type = SpiroTransitionCoachingSplitter;   // Next VC will evaluate whether or not to show coaching
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    [self presentViewController:welcomeVC animated:YES completion:nil];
+    if ([[self.userGroupControl titleForSegmentAtIndex:self.userGroupControl.selectedSegmentIndex] isEqualToString:@"PWG"]) {
+        VortexWhistleStudyViewController* testVC = [storyboard instantiateViewControllerWithIdentifier:@"VortexWhistleStudyViewScene"];
+        [self presentViewController:testVC animated:YES completion:nil];
+    } else {
+        SpiroDataTransitionViewController* welcomeVC = [storyboard instantiateViewControllerWithIdentifier:@"UserWelcomeScene"];
+        welcomeVC.type = SpiroTransitionCoachingSplitter;   // Next VC will evaluate whether or not to show coaching
+        [self presentViewController:welcomeVC animated:YES completion:nil];
+    }
 }
 
 #pragma mark - DATA CHECKERS

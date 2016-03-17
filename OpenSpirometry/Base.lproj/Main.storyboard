@@ -9,7 +9,7 @@
         <!--Vortex Whistle Study View Controller-->
         <scene sceneID="QWF-BM-wAC">
             <objects>
-                <viewController id="VAu-B6-mx8" customClass="VortexWhistleStudyViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VortexWhistleStudyViewScene" id="VAu-B6-mx8" customClass="VortexWhistleStudyViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7qa-Hd-Hbh"/>
                         <viewControllerLayoutGuide type="bottom" id="jkt-dQ-LOv"/>
