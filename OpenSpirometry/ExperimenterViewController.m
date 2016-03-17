@@ -145,6 +145,10 @@
         self.downstreamButton.alpha = 0.0;
         self.downstreamLabel.alpha = 0.0;
         
+        self.enableCoachingSwitch.on = false;
+        self.enableCoachingSwitch.enabled = false;
+        self.switchLabel.textColor = [UIColor lightGrayColor];
+        
         self.mouthpieceLabel.text = @"PWG File:";
         
         self.selectedMouthpiece = nil;
@@ -385,7 +389,7 @@
         self.userIDHelpLabel.textColor = [UIColor redColor];
     } else if (self.userID.length == 3 && [self.userDataHandler userDataFileExistsForUserID:self.userID]) {
         self.userIDHelpLabel.text = @"User Data File Found";
-        self.userIDHelpLabel.textColor = [UIColor greenColor];        
+        self.userIDHelpLabel.textColor = [UIColor greenColor];
         [self selectUserGroup:[self.userDataHandler getUserGroupForID:self.userID]];
     }
     else {
