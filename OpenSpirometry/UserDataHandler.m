@@ -67,12 +67,13 @@
     NSString* currUserID = self.userID;
     NSString* currUserDataFilePath = self.userDataFilePath;
     
+    
     self.userID = userID;
     NSMutableDictionary* userData = [self getUserDataForID:userID];
     
     NSString* userGroup = userData[@"Metadata"][@"UserGroup"];
     
-    
+    // Restore state of UserDataHandler
     self.userID = currUserID;
     self.userDataFilePath = currUserDataFilePath;
 
