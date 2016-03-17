@@ -19,19 +19,17 @@
     [super viewDidLoad];
     NSLog(@"Created OptionsTableViewController");
     
-    [self setOptionType:self.type];
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+//    [self setOptionType:self.type];
+//    [self setTableData];
 }
 
 - (void)setOptionType:(NSString*)type {
     self.type = type;
-    
+    [self setTableData];
+    [self.tableView reloadData];
+}
+
+- (void)setTableData {
     if ([self.type isEqual: @"Mouthpiece"]) {
         self.options = [NSArray arrayWithObjects:
                         @"Mouthpiece A (Blue)",
@@ -49,13 +47,114 @@
                         @"Downstream D (Yellow)",
                         @"Downstream E (Black)",
                         nil];
+    } else if ([self.type isEqual: @"PWG"]) {
+        self.options = [NSArray arrayWithObjects:
+                        @"ATS24.1",
+                        @"ATS24.2",
+                        @"ATS24.3",
+                        @"ATS24.4",
+                        @"ATS24.5",
+                        @"ATS24.6",
+                        @"ATS24.7",
+                        @"ATS24.8",
+                        @"ATS24.9",
+                        @"ATS24.10",
+                        @"ATS24.12",
+                        @"ATS24.12",
+                        @"ATS24.13",
+                        @"ATS24.14",
+                        @"ATS24.15",
+                        @"ATS24.16",
+                        @"ATS24.17",
+                        @"ATS24.18",
+                        @"ATS24.19",
+                        @"ATS24.20",
+                        @"ATS24.21",
+                        @"ATS24.22",
+                        @"ATS24.23",
+                        @"ATS24.24",
+                        @"ATS24*.1",
+                        @"ATS24*.2",
+                        @"ATS24*.3",
+                        @"ATS24*.4",
+                        @"ATS24*.5",
+                        @"ATS24*.6",
+                        @"ATS24*.7",
+                        @"ATS24*.8",
+                        @"ATS24*.9",
+                        @"ATS24*.10",
+                        @"ATS24*.12",
+                        @"ATS24*.12",
+                        @"ATS24*.13",
+                        @"ATS24*.14",
+                        @"ATS24*.15",
+                        @"ATS24*.16",
+                        @"ATS24*.17",
+                        @"ATS24*.18",
+                        @"ATS24*.19",
+                        @"ATS24*.20",
+                        @"ATS24*.21",
+                        @"ATS24*.22",
+                        @"ATS24*.23",
+                        @"ATS24*.24",
+                        @"ATS26.1",
+                        @"ATS26.2",
+                        @"ATS26.3",
+                        @"ATS26.4",
+                        @"ATS26.5",
+                        @"ATS26.6",
+                        @"ATS26.7",
+                        @"ATS26.8",
+                        @"ATS26.9",
+                        @"ATS26.10",
+                        @"ATS26.12",
+                        @"ATS26.12",
+                        @"ATS26.13",
+                        @"ATS26.14",
+                        @"ATS26.15",
+                        @"ATS26.16",
+                        @"ATS26.17",
+                        @"ATS26.18",
+                        @"ATS26.19",
+                        @"ATS26.20",
+                        @"ATS26.21",
+                        @"ATS26.22",
+                        @"ATS26.23",
+                        @"ATS26.24",
+                        @"ATS26.25",
+                        @"ATS26.26",
+                        @"ProfA0100",
+                        @"ProfA0150",
+                        @"ProfA0200",
+                        @"ProfA0300",
+                        @"ProfA0450",
+                        @"ProfA0600",
+                        @"ProfA0720",
+                        @"ProfA0870",
+                        @"ProfA1020",
+                        @"ProfA1170",
+                        @"ProfB0720",
+                        @"ProfB072025",
+                        @"ProfB072050",
+                        @"ProfB072075",
+                        @"ISO2678.1",
+                        @"ISO2678.2",
+                        @"ISO2678.3",
+                        @"ISO2678.4",
+                        @"ISO2678.5",
+                        @"ISO2678.6",
+                        @"ISO2678.7",
+                        @"ISO2678.8",
+                        @"ISO2678.9",
+                        @"ISO2678.10",
+                        @"ISO2678.11",
+                        @"ISO2678.12",
+                        @"ISO2678.13",
+                        nil];
     } else {
-        [NSException raise:@"Invalid Popover Type" format:@"An invalid popover type was used..."];
+        [NSException raise:@"Invalid Popover Type" format:@"An invalid popover type was used... [OptionsTableViewController.m]"];
     }
-        
-        
     
-    [self.tableView reloadData];
 }
 
 - (void)selectionMade {
@@ -76,7 +175,7 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SpiroOptionCell" forIndexPath:indexPath];
     cell.textLabel.text = self.options[indexPath.row];
     return cell;

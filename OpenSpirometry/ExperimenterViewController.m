@@ -22,7 +22,10 @@
 @property (weak, nonatomic) IBOutlet UISwitch* enableCoachingSwitch;
 
 @property (weak, nonatomic) IBOutlet UIButton* mouthpieceButton;
+@property (weak, nonatomic) IBOutlet UILabel *mouthpieceLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton* downstreamButton;
+@property (weak, nonatomic) IBOutlet UILabel *downstreamLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton*completeButton;
 
@@ -35,6 +38,7 @@
 @property (strong, nonatomic) NSString* userID;
 @property (strong, nonatomic) NSString* popoverType;
 @property (strong, nonatomic) NSString* selectedMouthpiece;
+@property (strong, nonatomic) NSString* selectedPWGFile;
 @property (strong, nonatomic) NSString* selectedDownstreamTube;
 
 @property (strong, nonatomic) UserData* sharedUserData;
@@ -71,6 +75,10 @@
                          action:@selector(checkUserIDLength:)
                forControlEvents:UIControlEventEditingDidEnd];
     
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    NSDictionary *attributes = @{ NSParagraphStyleAttributeName: paragraphStyle };
+    [self.userGroupControl setTitleTextAttributes:attributes forState:UIControlStateSelected];
     
     [self.userGroupControl addTarget:self
                               action:@selector(userGroupChanged:)
@@ -130,15 +138,49 @@
 }
 
 - (void)userGroupChanged:(UISegmentedControl *)userGroupSegmentedControl {
-    if (userGroupSegmentedControl.selectedSegmentIndex == 1) {
-        // PARTICIPANT IS IN APP + COACHING GROUP
-        self.enableCoachingSwitch.enabled = true;
-        self.switchLabel.textColor = [UIColor blackColor];
+    int selected = (int)userGroupSegmentedControl.selectedSegmentIndex;
+    
+    if (selected == 3) {
+        // PWG Group
+        self.downstreamButton.alpha = 0.0;
+        self.downstreamLabel.alpha = 0.0;
+        
+        self.mouthpieceLabel.text = @"PWG File:";
+        
+        self.selectedMouthpiece = nil;
+        if (self.selectedPWGFile) {
+            [self.mouthpieceButton setTitle:self.selectedPWGFile forState:UIControlStateSelected];
+            [self.mouthpieceButton setTitle:self.selectedPWGFile forState:UIControlStateNormal];
+        } else {
+            [self.mouthpieceButton setTitle:@"Select a PWG File" forState:UIControlStateSelected];
+            [self.mouthpieceButton setTitle:@"Select a PWG File" forState:UIControlStateNormal];
+        }
     } else {
-        self.enableCoachingSwitch.on = false;
-        self.enableCoachingSwitch.enabled = false;
-        self.switchLabel.textColor = [UIColor lightGrayColor];
+        // ALL OTHER USER GROUPS
+        self.downstreamButton.alpha = 1.0;
+        self.downstreamLabel.alpha = 1.0;
+        self.selectedPWGFile = nil;
+        
+        self.mouthpieceLabel.text = @"Mouthpiece:";
+        if (self.selectedMouthpiece) {
+            [self.mouthpieceButton setTitle:self.selectedMouthpiece forState:UIControlStateSelected];
+            [self.mouthpieceButton setTitle:self.selectedMouthpiece forState:UIControlStateNormal];
+        } else {
+            [self.mouthpieceButton setTitle:@"Select a Mouthpiece" forState:UIControlStateSelected];
+            [self.mouthpieceButton setTitle:@"Select a Mouthpiece" forState:UIControlStateNormal];
+        }
+        
+        if (selected == 1) {
+            // PARTICIPANT IS IN APP + COACHING GROUP
+            self.enableCoachingSwitch.enabled = true;
+            self.switchLabel.textColor = [UIColor blackColor];
+        } else {
+            self.enableCoachingSwitch.on = false;
+            self.enableCoachingSwitch.enabled = false;
+            self.switchLabel.textColor = [UIColor lightGrayColor];
+        }
     }
+    
     [self checkRequiredFields];
 }
 
@@ -161,11 +203,15 @@
             self.downstreamButton.enabled = true;
         }
         
-    } else {
+    } else if ([self.popoverType isEqualToString:@"Downstream"]) {
         self.selectedDownstreamTube = selection;
         //        NSLog(@"Downstream Tube Selected: %@", selection);
         [self.downstreamButton setTitle:self.selectedDownstreamTube forState:UIControlStateNormal];
         [self.downstreamButton setTitle:self.selectedDownstreamTube forState:UIControlStateSelected];
+    } else if ([self.popoverType isEqualToString:@"PWG"]) {
+        self.selectedPWGFile = selection;
+        [self.mouthpieceButton setTitle:self.selectedPWGFile forState:UIControlStateNormal];
+        [self.mouthpieceButton setTitle:self.selectedPWGFile forState:UIControlStateSelected];
     }
     [self.popover dismissViewControllerAnimated:YES completion:nil];
     [self checkRequiredFields];
@@ -173,7 +219,12 @@
 
 
 - (IBAction)mouthpieceButtonTapped:(id)sender {
-    [self setPopoverTypeAndPresent:@"Mouthpiece"];
+    if (self.userGroupControl.selectedSegmentIndex == 3) {
+        [self setPopoverTypeAndPresent:@"PWG"];
+    } else {
+        [self setPopoverTypeAndPresent:@"Mouthpiece"];
+    }
+
 }
 
 - (IBAction)downstreamButtonTapped:(id)sender {
@@ -274,19 +325,17 @@
     self.popoverController.delegate = self;
     self.popoverController.sourceView = self.view;
     
-    //    NSLog(@"View Weidth: %f, Height: %f", self.view.frame.size.width, self.view.frame.size.height);
-    //    NSLog(@"Button X: %f, Y: %f", self.downstreamButton.frame.origin.x, self.downstreamButton.frame.origin.y);
     
     CGFloat xPos, yPos;
     
-    if ([self.popoverType isEqualToString:@"Mouthpiece"]) {
+    if ([self.popoverType isEqualToString:@"Mouthpiece"] || [self.popoverType isEqualToString:@"PWG"]) {
         xPos = self.mouthpieceButton.frame.origin.x + (0.5 * self.mouthpieceButton.frame.size.width) - (0.5 * self.popoverWidth);
         yPos = self.mouthpieceButton.frame.origin.y;
     } else if ([self.popoverType isEqualToString:@"Downstream"]){
         xPos = self.downstreamButton.frame.origin.x + (0.5 * self.downstreamButton.frame.size.width) - (0.5 * self.popoverWidth);
         yPos = self.downstreamButton.frame.origin.y;
     } else {
-        [NSException raise:@"Invalid Popover Type" format:@"An invalid popover type was used..."];
+        [NSException raise:@"Invalid Popover Type" format:@"An invalid popover type was used...[ExperimenterViewController.m]"];
     }
     
     self.popoverController.sourceRect = CGRectMake(xPos, yPos, self.popoverWidth, self.popoverHeight);
@@ -316,6 +365,10 @@
         userConfigData[@"Coaching"] = @"True";
     }
     
+    if (self.selectedPWGFile) {
+        userConfigData[@"PWGFile"] = self.selectedPWGFile;
+    }
+    
     self.sharedUserData.userData = userConfigData;
     
     welcomeVC.type = SpiroTransitionCoachingSplitter;   // Next VC will evaluate whether or not to show coaching
@@ -332,7 +385,7 @@
         self.userIDHelpLabel.textColor = [UIColor redColor];
     } else if (self.userID.length == 3 && [self.userDataHandler userDataFileExistsForUserID:self.userID]) {
         self.userIDHelpLabel.text = @"User Data File Found";
-        self.userIDHelpLabel.textColor = [UIColor greenColor];
+        self.userIDHelpLabel.textColor = [UIColor greenColor];        
         [self selectUserGroup:[self.userDataHandler getUserGroupForID:self.userID]];
     }
     else {
@@ -342,7 +395,7 @@
 }
 
 - (void)checkRequiredFields {
-    if (self.userID.length == 3 && ([self.selectedMouthpiece isEqual:@"DigiDoc Whistle"] || (self.selectedMouthpiece && self.selectedDownstreamTube))) {
+    if (self.userID.length == 3 && ([self.selectedMouthpiece isEqual:@"DigiDoc Whistle"] || (self.selectedMouthpiece && self.selectedDownstreamTube) || (self.selectedPWGFile))) {
         self.completeButton.enabled = true;
     } else {
         self.completeButton.enabled = false;
