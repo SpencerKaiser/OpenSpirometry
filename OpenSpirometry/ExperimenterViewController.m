@@ -290,7 +290,7 @@
     self.userID = nil;
     self.userIDField.text = @"";
     
-    self.userGroupControl.selectedSegmentIndex = 0;
+    [self selectUserGroup:@"App + Clinician"];
     
     self.enableCoachingSwitch.on = false;
     self.enableCoachingSwitch.enabled = false;
