@@ -8,6 +8,8 @@
 
 #import "SpiroCoachingInfoViewController.h"
 #import "QuizQuestionViewController.h"
+@import AVKit;
+@import AVFoundation;
 
 @interface SpiroCoachingInfoViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *infoHeader;
@@ -18,6 +20,11 @@
 @property (assign, nonatomic) int currentTextGroup;
 @property (assign, nonatomic) int currentTextGroupItem;
 @property (assign, nonatomic) BOOL allInfoShown;
+
+@property (assign, nonatomic) BOOL embeddedImage;
+@property (strong, nonatomic) UIImageView* image;
+@property (assign, nonatomic) BOOL embeddedVideo;
+@property (strong, nonatomic) AVPlayerViewController* videoController;
 
 @end
 
@@ -100,8 +107,6 @@
         if ([self.infoHeader.text isEqualToString:@""]) {
             [self setInfoHeaderText:currentGroup[@"Header"]];
         }
-        
-        
         // If additional text items exit, append to existing text
         NSString* bodyText = currentGroupText[self.currentTextGroupItem];
         
@@ -110,7 +115,53 @@
         }
         [self setInfoBodyText:[NSString stringWithFormat:@"%@%@", self.infoBody.text, bodyText]];
         self.currentTextGroupItem += 1;
+    } else if (currentGroup[@"Image"] && !self.embeddedImage) {
+        self.embeddedImage = true;
+        
+        self.image = [[UIImageView alloc] init];
+        self.image.image = [UIImage imageNamed:currentGroup[@"Image"]];
+        
+        float imageX, imageY, imageHeight, imageWidth, imagePadding;
+        imagePadding = 30.0;
+        imageX = self.infoBody.frame.origin.x;
+        imageY = self.infoBody.frame.origin.y + self.infoBody.frame.size.height + imagePadding;
+        imageWidth = self.infoBody.frame.size.width;
+        
+        float topUIElementsHeight = self.infoBody.frame.origin.y + self.infoBody.frame.size.height + imagePadding;
+        float bottomUIElementsHeight = self.view.frame.size.height - (self.actionButton.frame.origin.y - imagePadding);
+        imageHeight = self.view.frame.size.height - (bottomUIElementsHeight + topUIElementsHeight);
+        
+        self.image.frame = CGRectMake(imageX, imageY, imageWidth, imageHeight);
+        
+        [self.view addSubview:self.image];
+    } else if (currentGroup[@"Video"] && !self.embeddedVideo) {
+        self.embeddedVideo = true;
+        
+        self.videoController = [[AVPlayerViewController alloc] init];
+        NSURL *videoURL = [[NSBundle mainBundle]URLForResource:currentGroup[@"Video"] withExtension:@"mov"];
+        AVPlayer* player = [AVPlayer playerWithURL:videoURL];
+        self.videoController.player = player;
+        
+        // Set Player Controller Frame
+        float playerX, playerY, playerHeight, playerWidth, playerPadding;
+        playerPadding = 30.0;
+        playerX = self.infoBody.frame.origin.x;
+        playerY = self.infoBody.frame.origin.y + self.infoBody.frame.size.height + playerPadding;
+        playerWidth = self.infoBody.frame.size.width;
+    
+        float topUIElementsHeight = self.infoBody.frame.origin.y + self.infoBody.frame.size.height + playerPadding;
+        float bottomUIElementsHeight = self.view.frame.size.height - (self.actionButton.frame.origin.y - playerPadding);
+        playerHeight = self.view.frame.size.height - (bottomUIElementsHeight + topUIElementsHeight);
+        
+        self.videoController.view.frame = CGRectMake(playerX, playerY, playerWidth, playerHeight);
+//        self.videoController.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        
+        // Add player controller to view
+        [self.view addSubview:self.videoController.view];
+        
     } else if (self.currentTextGroup + 1 < self.coachingInfoText.count) {
+        [self removeEmbeddedContent];
+        
         // The next group of items exists
         self.currentTextGroupItem = 0;
         self.currentTextGroup += 1;
@@ -125,7 +176,22 @@
         });
     } else {
         // All groups have been displayed
+        [self removeEmbeddedContent];
         [self allInfoHasBeenShown];
+    }
+}
+
+- (void)removeEmbeddedContent {
+    if (self.embeddedImage) {
+        self.embeddedImage = false;
+        [self.image removeFromSuperview];
+        self.image = nil;
+    }
+    
+    if (self.embeddedVideo) {
+        self.embeddedVideo = false;
+        [self.videoController.view removeFromSuperview];
+        self.videoController = nil;
     }
 }
 
