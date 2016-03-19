@@ -101,8 +101,6 @@
     self.popoverWidth = self.view.frame.size.width * 0.80;
     self.popoverHeight = self.view.frame.size.height * 0.30;
     
-    self.popover.preferredContentSize = CGSizeMake(self.popoverWidth, self.popoverHeight);
-    
     UITapGestureRecognizer *tripleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tripleTapHandler:)];
     tripleTap.numberOfTapsRequired = 3;
     [self.view addGestureRecognizer:tripleTap];
@@ -338,6 +336,7 @@
     self.popoverController.delegate = self;
     self.popoverController.sourceView = self.view;
     
+    self.popover.preferredContentSize = CGSizeMake(self.popoverWidth, self.popoverHeight);
     
     CGFloat xPos, yPos;
     
@@ -350,6 +349,8 @@
     } else if ([self.popoverType isEqualToString:@"PWG"]) {
         xPos = self.pwgButton.frame.origin.x + (0.5 * self.pwgButton.frame.size.width) - (0.5 * self.popoverWidth);
         yPos = self.pwgButton.frame.origin.y;
+        
+        self.popover.preferredContentSize = CGSizeMake(self.popoverWidth, self.view.frame.size.height * 0.60);
     } else {
         
         [NSException raise:@"Invalid Popover Type" format:@"An invalid popover type was used...[ExperimenterViewController.m]"];
