@@ -52,10 +52,10 @@
   {
     "Question": "During your test today, how do you think your lungs will perform compared to healthy peers of your same age, weight, and height?",
     "Answers": [
-      "100% of expected",
-      "90% of expected",
-      "80% of expected",
-      "Less than 80% of expected"
+      "Between 100% and 90% of expected",
+      "Between 90% and 80% of expected",
+      "Between 80% and 70% of expected",
+      "Less than 70% of expected"
     ],
     "FeedbackText": "We’ll provide you with some information about your lung function after we've finished today’s tests.\n\nGood luck and thanks again for participating!"
   }
