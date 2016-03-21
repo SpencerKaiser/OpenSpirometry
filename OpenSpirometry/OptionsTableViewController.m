@@ -34,7 +34,7 @@
         self.options = [NSArray arrayWithObjects:
                         @"Mouthpiece A (Blue)",
                         @"Mouthpiece B (Red)",
-                        @"Mouthpiece C (Green)",
+                        @"Mouthpiece C (Purple)",
                         @"Mouthpiece D (Yellow)",
                         @"Mouthpiece E (Black)",
                         @"DigiDoc Whistle",
