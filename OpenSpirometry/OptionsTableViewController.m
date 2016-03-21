@@ -137,7 +137,7 @@
                         @"ProfB072025",
                         @"ProfB072050",
                         @"ProfB072075",
-                        @"ISO2678.1",
+                        @"ISO2678.1 ",
                         @"ISO2678.2",
                         @"ISO2678.3",
                         @"ISO2678.4",
@@ -153,6 +153,15 @@
                         @"Custom.1",
                         @"Custom.2",
                         @"Custom.3",
+                        @"Custom.4",
+                        @"Custom.5",
+                        @"Custom.6",
+                        @"Custom.7",
+                        @"Custom.8",
+                        @"Custom.9",
+                        @"Custom.10",
+                        @"Custom.11",
+                        @"Custom.12",
                         nil];
     } else {
         [NSException raise:@"Invalid Popover Type" format:@"An invalid popover type was used... [OptionsTableViewController.m]"];
