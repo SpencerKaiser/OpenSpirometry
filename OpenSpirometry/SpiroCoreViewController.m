@@ -24,6 +24,7 @@
 @property (nonatomic, assign) SpiroModalType modalType;
 
 @property (nonatomic, assign) BOOL testDidConclude;
+@property (nonatomic, assign) BOOL effortInProgress;
 
 
 // UI ELEMENTS
@@ -49,7 +50,7 @@
     
     // !!!: DEV MODE
     // **for debugging**: this turns on the debug mode for reading the effort from a file (only wav currently supported)
-    [self.effortAnalyzer activateDebugAudioModeWithWAVFile:@"VortexWhistleRed"]; // default audio file name
+//    [self.effortAnalyzer activateDebugAudioModeWithWAVFile:@"VortexWhistleRed"]; // default audio file name
     // END DEV
     
     [self.effortAnalyzer shouldSaveSeparateEffortsToDocumentDirectory:YES];
@@ -74,12 +75,33 @@
     leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
     leftSwipe.numberOfTouchesRequired = 2;
     [self.view addGestureRecognizer:leftSwipe];
+    
+    // GESTURE TO END EFFORT
+    UISwipeGestureRecognizer* rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightSwipeHandler:)];
+    rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
+    rightSwipe.numberOfTouchesRequired = 2;
+    [self.view addGestureRecognizer:rightSwipe];
+    
+    // GESTURE TO END TEST
+    UISwipeGestureRecognizer* right3Swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(right3SwipeHandler:)];
+    right3Swipe.direction = UISwipeGestureRecognizerDirectionRight;
+    right3Swipe.numberOfTouchesRequired = 3;
+    [self.view addGestureRecognizer:right3Swipe];
 }
 
 - (void)leftSwipeHandler:(UISwipeGestureRecognizer *)gestureRecognizer {
     [self.effortAnalyzer requestThatCurrentEffortShouldCancel];
 }
 
+- (void)rightSwipeHandler:(UISwipeGestureRecognizer *)gestureRecognizer {
+    [self.effortAnalyzer requestThatEffortShouldEnd];
+}
+
+- (void)right3SwipeHandler:(UISwipeGestureRecognizer *)gestureRecognizer {
+    if (!self.effortInProgress) {
+        [self forceTestEnd];
+    }
+}
 
 -(void)createModal {
     // Instantiate and configure SpiroModalViewController (no scene on storyboard)
@@ -258,6 +280,11 @@
     } else {
         [self presentModalOfType:SpiroEffortResultsModal];
     }
+    self.effortInProgress = false;
+}
+
+- (void)forceTestEnd {
+    [self presentModalOfType:SpiroCompletionModal];
 }
 
 
@@ -318,6 +345,7 @@
 -(void)didTimeoutWaitingForTestToStart {
     NSLog(@"[super] didTimeoutWaitingForTestToStart");
     [self errorOccured:@"didTimeoutWaitingForTestToStart"];
+    self.effortInProgress = false;
 }
 
 -(void)didStartExhaling {
@@ -333,6 +361,7 @@
 -(void)didCancelEffort {
     NSLog(@"[super] didCancelEffort");
     [self errorOccured:@"didCancelEffort"];
+    self.effortInProgress = false;
 }
 
 -(void)didEndEffortWithResults:(NSDictionary*)results {
@@ -367,6 +396,7 @@
 -(void)startSpiroEffort {
     //    NSLog(@"[super] startSpiroEffort \n\t-> SpiroEffortAnalyzer:beginListeningForEffort");
     [self.effortAnalyzer beginListeningForEffort];
+    self.effortInProgress = true;
 }
 
 -(void)saveSpiroEffort:(NSDictionary*)results {
