@@ -32,10 +32,9 @@
 		098368881C84FB3200169E88 /* SpiroCoachingInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 098368871C84FB3200169E88 /* SpiroCoachingInfoViewController.m */; };
 		0983688B1C865CE800169E88 /* QuizQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0983688A1C865CE800169E88 /* QuizQuestionViewController.m */; };
 		0983688E1C86636A00169E88 /* QuizAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0983688D1C86636A00169E88 /* QuizAnswerViewController.m */; };
-		099C15A31C9DBD8200614653 /* TutorialVideo.mov in Resources */ = {isa = PBXBuildFile; fileRef = 099C15A21C9DBD8200614653 /* TutorialVideo.mov */; };
-		099C15A51C9DBF4100614653 /* CoachingImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 099C15A41C9DBF4100614653 /* CoachingImage.png */; };
 		09A6BAA71BAB56B20024360F /* SpiroModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */; };
 		09BD47B21BE8AB63000CF238 /* ModalUserDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BD47B11BE8AB63000CF238 /* ModalUserDataViewController.m */; };
+		09D51B3D1CA1F2E700D2A237 /* VortexSpirometryTutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 09D51B3C1CA1F2E700D2A237 /* VortexSpirometryTutorial.mov */; };
 		09E819621C6E50AE0048B165 /* ExperimenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E819611C6E50AE0048B165 /* ExperimenterViewController.m */; };
 		09E819651C6E91B30048B165 /* OptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E819641C6E91B20048B165 /* OptionsTableViewController.m */; };
 		09F6BA521BD54CD100668F27 /* ModalAddNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F6BA511BD54CD100668F27 /* ModalAddNotesViewController.m */; };
@@ -108,12 +107,11 @@
 		0983688A1C865CE800169E88 /* QuizQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizQuestionViewController.m; sourceTree = "<group>"; };
 		0983688C1C86636A00169E88 /* QuizAnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizAnswerViewController.h; sourceTree = "<group>"; };
 		0983688D1C86636A00169E88 /* QuizAnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizAnswerViewController.m; sourceTree = "<group>"; };
-		099C15A21C9DBD8200614653 /* TutorialVideo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = TutorialVideo.mov; sourceTree = "<group>"; };
-		099C15A41C9DBF4100614653 /* CoachingImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CoachingImage.png; sourceTree = "<group>"; };
 		09A6BAA51BAB56B20024360F /* SpiroModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiroModalViewController.h; sourceTree = "<group>"; };
 		09A6BAA61BAB56B20024360F /* SpiroModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiroModalViewController.m; sourceTree = "<group>"; };
 		09BD47B01BE8AB63000CF238 /* ModalUserDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalUserDataViewController.h; sourceTree = "<group>"; };
 		09BD47B11BE8AB63000CF238 /* ModalUserDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalUserDataViewController.m; sourceTree = "<group>"; };
+		09D51B3C1CA1F2E700D2A237 /* VortexSpirometryTutorial.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = VortexSpirometryTutorial.mov; sourceTree = "<group>"; };
 		09E819601C6E50AE0048B165 /* ExperimenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperimenterViewController.h; sourceTree = "<group>"; };
 		09E819611C6E50AE0048B165 /* ExperimenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExperimenterViewController.m; sourceTree = "<group>"; };
 		09E819631C6E91B20048B165 /* OptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsTableViewController.h; sourceTree = "<group>"; };
@@ -249,8 +247,7 @@
 		099C15A11C9DBCEE00614653 /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				099C15A41C9DBF4100614653 /* CoachingImage.png */,
-				099C15A21C9DBD8200614653 /* TutorialVideo.mov */,
+				09D51B3C1CA1F2E700D2A237 /* VortexSpirometryTutorial.mov */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -446,15 +443,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09D51B3D1CA1F2E700D2A237 /* VortexSpirometryTutorial.mov in Resources */,
 				094672A81C94DDA4003303BA /* QuizQuestions.json in Resources */,
 				B636122B1B1CC38500289665 /* Main.storyboard in Resources */,
 				090785041C96296E00BCCE51 /* CoachingText.json in Resources */,
 				090359F41BD1773100DFC582 /* SpiroModalPages.storyboard in Resources */,
 				B644C62A1B619C29002D3484 /* VortexWhistleRed.m4a in Resources */,
 				B63612301B1CC38500289665 /* LaunchScreen.xib in Resources */,
-				099C15A51C9DBF4100614653 /* CoachingImage.png in Resources */,
 				098368851C84FAA500169E88 /* SpiroCoaching.storyboard in Resources */,
-				099C15A31C9DBD8200614653 /* TutorialVideo.mov in Resources */,
 				B636122D1B1CC38500289665 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

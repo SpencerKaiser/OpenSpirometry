@@ -41,5 +41,12 @@
       "• However, if you feel lightheaded during the effort, stop immediately. If you feel you are able to continue after a break, you may do so with our approval.",
       "• If you feel the need to cough during an effort, go ahead and cough and you will be able to retry the effort."
     ]
-  }
+  },
+ {
+ "Header": "Tutorial",
+ "GroupText": [
+               "Now we'll show you a brief video showing you how to use the whistle and the app."
+               ],
+ "Video": "VortexSpirometryTutorial"
+ }
 ]
