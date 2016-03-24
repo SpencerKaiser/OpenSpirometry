@@ -1,6 +1,6 @@
 [
   {
-    "Question": "After an effort begins, how long should it take to reach your maximum exhalation speed?",
+    "Question": "After an effort begins, how long should it take to reach your maximum blowing speed?",
     "Answers": [
       "Immediately - as soon as the effort begins",
       "After 1 second",
@@ -12,9 +12,9 @@
   {
     "Question": "When are you finished with an effort?",
     "Answers": [
-      "After you’ve blown as hard as you can",
+      "After I've blown as hard as you can",
       "After a couple of seconds",
-      "After all the air has been expelled from your lungs; at least 5 seconds"
+      "After all the air has been expelled from my lungs, at least 5 seconds"
     ],
     "AnswerIndex": 2,
     "FeedbackText": "An effort has been successfully completed after all the air has been expelled from your lungs. It may be an unfamiliar feeling, but it is important to empty your lungs during the effort."
@@ -22,7 +22,7 @@
   {
     "Question": "What should you do if you feel like coughing during the test?",
     "Answers": [
-      "Go ahead and cough; you can perform a make-up effort",
+      "Go ahead and cough; I can perform a make-up effort",
       "Cough and continue the effort",
       "Try to suppress the cough"
     ],
@@ -50,13 +50,13 @@
     "FeedbackText": "It is important to sit upright in a comfortable position which allows maximum airflow in and out of your lungs. Do your best not to slouch in your seat."
   },
   {
-    "Question": "During your test today, how do you think your lungs will perform compared to healthy peers of your same age, weight, and height?",
+    "Question": "During your test today, how do you think your lung function will compare to healthy peers of your same age, gender, and height?",
     "Answers": [
-      "Between 100% and 90% of expected",
-      "Between 90% and 80% of expected",
-      "Between 80% and 70% of expected",
+      "Between 90% and 100% of expected",
+      "Between 80% and 90% of expected",
+      "Between 70% and 80% of expected",
       "Less than 70% of expected"
     ],
-    "FeedbackText": "We’ll provide you with some information about your lung function after we've finished today’s tests.\n\nGood luck and thanks again for participating!"
+    "FeedbackText": "Thanks! We’ll provide you with some information about your lung function after we've finished today’s tests.\n\nGood luck and thanks again for participating!"
   }
 ]
