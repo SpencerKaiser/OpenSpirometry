@@ -497,6 +497,7 @@
     checkPassed = (self.userID.length == 3);
     checkPassed = checkPassed && self.selectedMouthpiece;
     
+    
     if (![self.selectedMouthpiece isEqualToString:@"DigiDoc Whistle"]) {
         // Digidoc Whistle NOT selected
         checkPassed = checkPassed && self.selectedDownstreamTube && self.selectedBall && self.selectedSidestack;

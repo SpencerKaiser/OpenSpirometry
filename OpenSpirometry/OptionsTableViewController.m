@@ -49,6 +49,30 @@
                         nil];
     } else if ([self.type isEqual: @"PWG"]) {
         self.options = [NSArray arrayWithObjects:
+                        @"Custom.1",
+                        @"Custom.2",
+                        @"Custom.3",
+                        @"Custom.4",
+                        @"Custom.5",
+                        @"Custom.6",
+                        @"Custom.7",
+                        @"Custom.8",
+                        @"Custom.9",
+                        @"Custom.10",
+                        @"Custom.11",
+                        @"Custom.12",
+                        @"Custom.13",
+                        @"Custom.14",
+                        @"Custom.15",
+                        @"Custom.16",
+                        @"Custom.17",
+                        @"Custom.18",
+                        @"Custom.19",
+                        @"Custom.20",
+                        @"Custom.21",
+                        @"Custom.22",
+                        @"Custom.23",
+                        @"Custom.24",
                         @"ATS24.1",
                         @"ATS24.2",
                         @"ATS24.3",
@@ -150,31 +174,19 @@
                         @"ISO2678.11",
                         @"ISO2678.12",
                         @"ISO2678.13",
-                        @"Custom.1",
-                        @"Custom.2",
-                        @"Custom.3",
-                        @"Custom.4",
-                        @"Custom.5",
-                        @"Custom.6",
-                        @"Custom.7",
-                        @"Custom.8",
-                        @"Custom.9",
-                        @"Custom.10",
-                        @"Custom.11",
-                        @"Custom.12",
                         nil];
     } else if ([self.type isEqual: @"Ball"]) {
         self.options = [NSArray arrayWithObjects:
-                        @"10% Infill (Blue)",
-                        @"20% Infill (Red)",
-                        @"30% Infill (Green)",
+                        @"0% Infill (Blue)",
+                        @"10% Infill (Green)",
+                        @"20% Infill (Yellow)",
                         nil];
 
     } else if ([self.type isEqual: @"Sidestack"]) {
         self.options = [NSArray arrayWithObjects:
                         @"Sidestack A (Blue)",
-                        @"Sidestack B (Red)",
-                        @"Sidestack C (Green)",
+                        @"Sidestack B (Green)",
+                        @"Sidestack C (Yellow)",
                         nil];
 
     } else {
