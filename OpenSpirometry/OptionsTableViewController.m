@@ -163,6 +163,20 @@
                         @"Custom.11",
                         @"Custom.12",
                         nil];
+    } else if ([self.type isEqual: @"Ball"]) {
+        self.options = [NSArray arrayWithObjects:
+                        @"10% Infill (Blue)",
+                        @"20% Infill (Red)",
+                        @"30% Infill (Green)",
+                        nil];
+
+    } else if ([self.type isEqual: @"Sidestack"]) {
+        self.options = [NSArray arrayWithObjects:
+                        @"Sidestack A (Blue)",
+                        @"Sidestack B (Red)",
+                        @"Sidestack C (Green)",
+                        nil];
+
     } else {
         [NSException raise:@"Invalid Popover Type" format:@"An invalid popover type was used... [OptionsTableViewController.m]"];
     }

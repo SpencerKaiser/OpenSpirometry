@@ -25,11 +25,17 @@
 @property (weak, nonatomic) IBOutlet UIButton* mouthpieceButton;
 @property (weak, nonatomic) IBOutlet UIButton* downstreamButton;
 
-@property (weak, nonatomic) IBOutlet UILabel *pwgLabel;
-@property (weak, nonatomic) IBOutlet UIButton *pwgButton;
-@property (weak, nonatomic) IBOutlet UIView *pwgSpacer;
+@property (weak, nonatomic) IBOutlet UIButton* ballButton;
+@property (weak, nonatomic) IBOutlet UILabel* ballLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton*completeButton;
+@property (weak, nonatomic) IBOutlet UIButton* sidestackButton;
+@property (weak, nonatomic) IBOutlet UILabel* sideStackLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel* pwgLabel;
+@property (weak, nonatomic) IBOutlet UIButton* pwgButton;
+@property (weak, nonatomic) IBOutlet UIView* pwgSpacer;
+
+@property (weak, nonatomic) IBOutlet UIButton* completeButton;
 
 @property (strong, nonatomic) OptionsTableViewController* popover;
 @property (weak, nonatomic) UIPopoverPresentationController* popoverController;
@@ -40,8 +46,10 @@
 @property (strong, nonatomic) NSString* userID;
 @property (strong, nonatomic) NSString* popoverType;
 @property (strong, nonatomic) NSString* selectedMouthpiece;
-@property (strong, nonatomic) NSString* selectedPWGFile;
 @property (strong, nonatomic) NSString* selectedDownstreamTube;
+@property (strong, nonatomic) NSString* selectedBall;
+@property (strong, nonatomic) NSString* selectedSidestack;
+@property (strong, nonatomic) NSString* selectedPWGFile;
 
 @property (strong, nonatomic) UserData* sharedUserData;
 @property (strong, nonatomic) UserDataHandler* userDataHandler;
@@ -91,6 +99,7 @@
     self.enableCoachingSwitch.enabled = false;      //Disable the switch itself by default
     self.switchLabel.textColor = [UIColor lightGrayColor];
     
+    [self hideBallAndSidestackElements];
     [self hidePWGElements];
     
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -158,7 +167,6 @@
     } else {
         // ALL OTHER USER GROUPS
         [self hidePWGElements];
-        self.selectedPWGFile = nil;
         
         if (self.selectedMouthpiece) {
             [self.mouthpieceButton setTitle:self.selectedMouthpiece forState:UIControlStateSelected];
@@ -194,11 +202,17 @@
             [self.downstreamButton setTitle:@"None" forState:UIControlStateNormal];
             [self.downstreamButton setTitle:@"None" forState:UIControlStateSelected];
             self.downstreamButton.enabled = false;
+            [self hideBallAndSidestackElements];
         } else {
-            [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateNormal];
-            [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateSelected];
-            
+            NSString* downstreamText = @"Select a Downstream Tube";
+            if (self.selectedDownstreamTube) {
+                downstreamText = self.selectedDownstreamTube;
+            }
+            [self.downstreamButton setTitle:downstreamText forState:UIControlStateNormal];
+            [self.downstreamButton setTitle:downstreamText forState:UIControlStateSelected];
             self.downstreamButton.enabled = true;
+            
+            [self showBallAndSidestackElements];
         }
         
     } else if ([self.popoverType isEqualToString:@"Downstream"]) {
@@ -210,6 +224,14 @@
         self.selectedPWGFile = selection;
         [self.pwgButton setTitle:self.selectedPWGFile forState:UIControlStateNormal];
         [self.pwgButton setTitle:self.selectedPWGFile forState:UIControlStateSelected];
+    } else if ([self.popoverType isEqualToString:@"Ball"]) {
+        self.selectedBall = selection;
+        [self.ballButton setTitle:self.selectedBall forState:UIControlStateNormal];
+        [self.ballButton setTitle:self.selectedBall forState:UIControlStateSelected];
+    } else if ([self.popoverType isEqualToString:@"Sidestack"]) {
+        self.selectedSidestack = selection;
+        [self.sidestackButton setTitle:self.selectedSidestack forState:UIControlStateNormal];
+        [self.sidestackButton setTitle:self.selectedSidestack forState:UIControlStateSelected];
     }
     [self.popover dismissViewControllerAnimated:YES completion:nil];
     [self checkRequiredFields];
@@ -222,6 +244,14 @@
 
 - (IBAction)downstreamButtonTapped:(id)sender {
     [self setPopoverTypeAndPresent:@"Downstream"];
+}
+
+- (IBAction)ballButtonTapped:(id)sender {
+    [self setPopoverTypeAndPresent:@"Ball"];
+}
+
+- (IBAction)sidestackButtonTapped:(id)sender {
+    [self setPopoverTypeAndPresent:@"Sidestack"];
 }
 
 - (IBAction)pwgButtonTapped:(id)sender {
@@ -284,7 +314,9 @@
     [self.downstreamButton setTitle:@"Select a Downstream Tube" forState:UIControlStateSelected];
     self.downstreamButton.enabled = true;
     
-    self.selectedPWGFile = nil;
+    [self hideBallAndSidestackElements];
+    
+
     [self hidePWGElements];
     
     self.userID = nil;
@@ -313,6 +345,7 @@
 }
 
 - (void)hidePWGElements {
+    self.selectedPWGFile = nil;
     self.pwgButton.hidden = true;
     self.pwgLabel.hidden = true;
     self.pwgSpacer.hidden = true;
@@ -322,6 +355,36 @@
     self.pwgButton.hidden = false;
     self.pwgLabel.hidden = false;
     self.pwgSpacer.hidden = false;
+}
+
+- (void)hideBallAndSidestackElements {
+    self.selectedBall = nil;
+    self.ballButton.hidden = true;
+    self.ballLabel.hidden = true;
+    
+    self.selectedSidestack = nil;
+    self.sidestackButton.hidden = true;
+    self.sideStackLabel.hidden = true;
+}
+
+- (void)showBallAndSidestackElements {
+    NSString* ballText = @"Select a Ball";
+    if (self.selectedBall) {
+        ballText = self.selectedBall;
+    }
+    [self.ballButton setTitle:ballText forState:UIControlStateNormal];
+    [self.ballButton setTitle:ballText forState:UIControlStateSelected];
+    self.ballButton.hidden = false;
+    self.ballLabel.hidden = false;
+    
+    NSString* sidestackText = @"Select a Sidestack";
+    if (self.selectedSidestack) {
+        sidestackText = self.selectedSidestack;
+    }
+    [self.sidestackButton setTitle:sidestackText forState:UIControlStateNormal];
+    [self.sidestackButton setTitle:sidestackText forState:UIControlStateSelected];
+    self.sidestackButton.hidden = false;
+    self.sideStackLabel.hidden = false;
 }
 
 
@@ -351,8 +414,13 @@
         yPos = self.pwgButton.frame.origin.y;
         
         self.popover.preferredContentSize = CGSizeMake(self.popoverWidth, self.view.frame.size.height * 0.60);
+    } else if ([self.popoverType isEqualToString:@"Ball"]) {
+        xPos = self.ballButton.frame.origin.x + (0.5 * self.ballButton.frame.size.width) - (0.5 * self.popoverWidth);
+        yPos = self.ballButton.frame.origin.y;
+    } else if ([self.popoverType isEqualToString:@"Sidestack"]) {
+        xPos = self.sidestackButton.frame.origin.x + (0.5 * self.sidestackButton.frame.size.width) - (0.5 * self.popoverWidth);
+        yPos = self.sidestackButton.frame.origin.y;
     } else {
-        
         [NSException raise:@"Invalid Popover Type" format:@"An invalid popover type was used...[ExperimenterViewController.m]"];
     }
     
@@ -382,6 +450,14 @@
     
     if (self.selectedPWGFile) {
         userConfigData[@"PWGFile"] = self.selectedPWGFile;
+    }
+    
+    if (self.selectedBall) {
+        userConfigData[@"Ball"] = self.selectedBall;
+    }
+    
+    if (self.selectedSidestack) {
+        userConfigData[@"Sidestack"] = self.selectedSidestack;
     }
     
     self.sharedUserData.userData = userConfigData;
@@ -423,7 +499,7 @@
     
     if (![self.selectedMouthpiece isEqualToString:@"DigiDoc Whistle"]) {
         // Digidoc Whistle NOT selected
-        checkPassed = checkPassed && self.selectedDownstreamTube;
+        checkPassed = checkPassed && self.selectedDownstreamTube && self.selectedBall && self.selectedSidestack;
     }
     
     NSString* userGroup = [self.userGroupControl titleForSegmentAtIndex:self.userGroupControl.selectedSegmentIndex];
