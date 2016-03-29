@@ -197,7 +197,7 @@
         [self.mouthpieceButton setTitle:self.selectedMouthpiece forState:UIControlStateNormal];
         [self.mouthpieceButton setTitle:self.selectedMouthpiece forState:UIControlStateSelected];
         
-        if ([self.selectedMouthpiece isEqualToString:@"DigiDoc Whistle"]) {
+        if ([self.selectedMouthpiece isEqualToString:@"DigiDoc 1"] || [self.selectedMouthpiece isEqualToString:@"DigiDoc 2"]) {
             self.selectedDownstreamTube = nil;
             [self.downstreamButton setTitle:@"None" forState:UIControlStateNormal];
             [self.downstreamButton setTitle:@"None" forState:UIControlStateSelected];
@@ -305,6 +305,7 @@
 #pragma mark - UI MODIFIERS
 
 - (void)resetFields {
+    
     self.selectedMouthpiece = nil;
     [self.mouthpieceButton setTitle:@"Select a Mouthpiece" forState:UIControlStateNormal];
     [self.mouthpieceButton setTitle:@"Select a Mouthpiece" forState:UIControlStateSelected];
@@ -321,6 +322,7 @@
     
     self.userID = nil;
     self.userIDField.text = @"";
+    self.userIDHelpLabel.text = @"";
     
     [self selectUserGroup:@"App + Clinician"];
     
@@ -498,7 +500,7 @@
     checkPassed = checkPassed && self.selectedMouthpiece;
     
     
-    if (![self.selectedMouthpiece isEqualToString:@"DigiDoc Whistle"]) {
+    if (![self.selectedMouthpiece isEqualToString:@"DigiDoc 1"] && ![self.selectedMouthpiece isEqualToString:@"DigiDoc 2"]) {
         // Digidoc Whistle NOT selected
         checkPassed = checkPassed && self.selectedDownstreamTube && self.selectedBall && self.selectedSidestack;
     }
