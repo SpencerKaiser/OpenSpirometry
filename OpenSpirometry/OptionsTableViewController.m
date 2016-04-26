@@ -184,6 +184,10 @@
 
     } else if ([self.type isEqual: @"Sidestack"]) {
         self.options = [NSArray arrayWithObjects:
+                        @"Sidestack (Red)",
+                        @"Sidestack (Purple 2)",
+                        @"Sidestack (Purple 4)",
+                        @"Sidestack (Purple 8)",
                         @"Sidestack A (Blue)",
                         @"Sidestack B (Green)",
                         @"Sidestack C (Yellow)",
